@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3><a th:href="@{/category}">Back</a></h3>
+<!--<div th:if="${mess}">-->
+<!--    <h3 th:text="${mess}"></h3>-->
+<!--</div>-->
+
+<form th:action="@{/category/create}" th:object="${category}" method="post">
+    <label>Name
+        <input type="text" class="form-control" th:field="*{name}">
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        <input type="text" class="form-control" th:field="*{description}">
+        <input type="text" class="form-control" th:field="*{image}">
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
