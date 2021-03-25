@@ -1,6 +1,9 @@
 package com.model;
 
 import lombok.Data;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,7 +13,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Product implements Serializable {
+public class Product implements Serializable, Validator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -18,10 +21,10 @@ public class Product implements Serializable {
     @NotEmpty
     @Column(nullable = false)
     private String nameProduct;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private Long price;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private Long rating;
     @NotEmpty
@@ -38,13 +41,29 @@ public class Product implements Serializable {
     private String warranty;
 
 
-
-
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")      //category - product (n - 1) ok
     private Category category;
 
     @ManyToMany(mappedBy = "productListTag", fetch = FetchType.EAGER)        //ok
     private List<Tag> tags = new ArrayList<>();
+
+
+    //validation
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return Product.class.isAssignableFrom(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        Product product = (Product) target;
+        String nameProduct = product.getNameProduct();
+        ValidationUtils.rejectIfEmpty(errors, "nameProduct", "name.empty");
+        if (nameProduct.length() > 250 || nameProduct.length() < 2) {
+            errors.rejectValue("nameProduct", "name.length");
+        }
+    }
+
 
 }

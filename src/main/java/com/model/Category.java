@@ -44,9 +44,9 @@ public class Category implements Serializable, Validator {
     public void validate(Object target, Errors errors) {
         Category category = (Category) target;
         String nameCate = category.getName();
-        ValidationUtils.rejectIfEmpty(errors, "name", "nameCate.empty");
+        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
         if (nameCate.length() > 250 || nameCate.length() < 2) {
-            errors.rejectValue("name", "nameCate.length");
+            errors.rejectValue("name", "name.length");
         }
     }
 }

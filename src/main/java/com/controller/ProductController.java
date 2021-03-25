@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.model.Category;
+import com.model.Product;
 import com.service.CategoryServiceImpl;
 import com.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +22,25 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
+    @Autowired
+    private CategoryServiceImpl categoryService;
+
     @GetMapping("/product")
     public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
-        model.addAttribute("categories", productService.selectAll(pageable));
+        model.addAttribute("products", productService.selectAll(pageable));
         return "back-end/product/product-list";
     }
 
     @GetMapping("/product/create")
-    public String showCategoryAddForm(Model model) {
-        model.addAttribute("product", new Category());
+    public String showProductAddForm(Model model) {
+        model.addAttribute("product", new Product());
+        model.addAttribute("categories", categoryService.findALl());
         return "back-end/product/product-add";
     }
 
     @PostMapping("/product/create")
-    public String addCategory(@Valid @ModelAttribute("product") Category product, BindingResult bindingResult, Model model) {
-        new Category().validate(product, bindingResult);
+    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/product/product-add";
         } else {
@@ -52,8 +56,8 @@ public class ProductController {
     }
 
     @PostMapping("/product/update")
-    public String update(@Valid @ModelAttribute("product") Category product, BindingResult bindingResult, Model model) {
-        new Category().validate(product, bindingResult);
+    public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/product/product-edit";
         } else {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a th:href="@{/product/create}">Add</a>
+<!--<div th:if="${success}">-->
+<!--    <h3 th:text="${success}"></h3>-->
+<!--</div>-->
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>price</td>
+        <td>rating</td>
+        <td>description</td>
+        <td>image</td>
+        <td>status</td>
+        <td>size</td>
+        <td>color</td>
+        <td>length</td>
+        <td>fabric</td>
+        <td>warranty</td>
+        <td>action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prtoduct : ${products}">
+        <td th:text="${prtoduct.id}"></td>
+        <td th:text="${prtoduct.nameProduct}"></td>
+        <td th:text="${prtoduct.price}"></td>
+        <td th:text="${prtoduct.rating}"></td>
+        <td th:text="${prtoduct.description}"></td>
+        <td th:text="${prtoduct.image}"></td>
+        <td th:text="${prtoduct.status}"></td>
+        <td th:text="${prtoduct.size}"></td>
+        <td th:text="${prtoduct.color}"></td>
+        <td th:text="${prtoduct.length}"></td>
+        <td th:text="${prtoduct.fabric}"></td>
+        <td th:text="${prtoduct.warranty}"></td>
+        <td>
+            <a th:href="@{/prtoduct/update/{id}(id = ${prtoduct.id})}">Edit</a>
+            <a th:href="@{/prtoduct/delete/{id}(id = ${prtoduct.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+
+
+</table>
+<div>
+    <a th:href="@{'/prtoduct'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">Previous</a>
+    <span th:text="${products.number + 1}"></span>/<span th:text="${products.totalPages}"></span>
+    <a th:href="@{'/prtoduct'(page=${products.number + 1})}" th:if="${products.hasNext()}">Next</a>
+</div>
+</body>
+</html>
