@@ -25,7 +25,7 @@ public class TagController {
     public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
         model.addAttribute("tags", service.selectAll(pageable));
 //        return "back-end/tag/tag-list";
-        return "back-end/tag/test-frag";
+        return "back-end/tag/tag-list";
     }
 
     @GetMapping("/tag/create")
