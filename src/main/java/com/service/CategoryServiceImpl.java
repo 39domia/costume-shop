@@ -13,8 +13,6 @@ import java.util.Optional;
 @Service
 public class CategoryServiceImpl implements IBaseService<Category> {
 
-
-
     @Autowired
     CategoryRepository repository;
 
@@ -34,13 +32,13 @@ public class CategoryServiceImpl implements IBaseService<Category> {
     }
 
     @Override
-    public void add(Category customer) {
-        repository.save(customer);
+    public void add(Category category) {
+        repository.save(category);
     }
 
     @Override
-    public void update(Category customer) {
-        repository.save(customer);
+    public void update(Category category) {
+        repository.save(category);
     }
 
     @Override

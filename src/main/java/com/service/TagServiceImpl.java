@@ -39,7 +39,6 @@ public class TagServiceImpl implements IBaseService<Tag> {
     @Override
     public void update(Tag tag) {
         repository.save(tag);
-
     }
 
     @Override
