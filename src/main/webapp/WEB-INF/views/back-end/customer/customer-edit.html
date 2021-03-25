@@ -58,31 +58,97 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name customer" class="form-control"
                                                        th:field="*{firstName}">
-                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{firstName}">Name Error</span>
+                                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</span>
                                                 <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="email-input" class=" form-control-label">Description</label>
+                                                <label for="email-input" class=" form-control-label">Last Name</label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="email-input"
                                                        placeholder="Enter desciption" class="form-control"
-                                                       th:field="*{description}">
+                                                       th:field="*{lastName}">
                                                 <small class="help-block form-text">Please enter your
-                                                    Description</small>
+                                                    last name</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label">image</label>
+                                                <label for="companyName" class=" form-control-label">company Name</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input"
+                                                <input type="text" id="companyName"
                                                        placeholder="image link" class="form-control"
-                                                       th:field="*{image}">
-                                                <small class="help-block form-text">Please enter a image</small>
+                                                       th:field="*{companyName}">
+                                                <small class="help-block form-text">Please enter a company Name</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="address1" class=" form-control-label">Address 1</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="address1"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{address1}">
+                                                <small class="help-block form-text">Please enter a address1</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="address2" class=" form-control-label">Address 2</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="address2"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{address2}">
+                                                <small class="help-block form-text">Please enter a  address2</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="city" class=" form-control-label">city</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="city"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{city}">
+                                                <small class="help-block form-text">Please enter a city</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="email" class=" form-control-label">email</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="email"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{email}">
+                                                <small class="help-block form-text">Please enter a email</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="phone" class=" form-control-label">phone</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="phone"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{phone}">
+                                                <small class="help-block form-text">Please enter a phone</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="note" class=" form-control-label">Note</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="note"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{note}">
+                                                <small class="help-block form-text">Please enter a note</small>
                                             </div>
                                         </div>
                                         <div class="card-footer">
