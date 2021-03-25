@@ -27,6 +27,12 @@ public class CategoryController {
         return "back-end/category/category-list";
     }
 
+    @GetMapping("/category/view/{id}")
+    public String viewCategory(@PathVariable Long id, Model model){
+        model.addAttribute("category", categoryService.findOne(id));
+        return "back-end/category/category-view";
+    }
+
     @GetMapping("/category/create")
     public String showCategoryAddForm(Model model) {
         model.addAttribute("category", new Category());
