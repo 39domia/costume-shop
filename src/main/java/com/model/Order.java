@@ -1,6 +1,9 @@
 package com.model;
 
 import lombok.Data;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -41,5 +44,20 @@ public class Order implements Serializable {
     private Customer customer;
 
 
-
+    //validation
+//    @Override
+//    public boolean supports(Class<?> clazz) {
+//        return Order.class.isAssignableFrom(clazz);
+//    }
+//
+//
+//    @Override
+//    public void validate(Object target, Errors errors) {
+//        Order tag = (Order) target;
+//        String nameTag = tag.getName();
+//        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
+//        if (nameTag.length() > 250 || nameTag.length() < 2) {
+//            errors.rejectValue("name", "name.length");
+//        }
+//    }
 }
