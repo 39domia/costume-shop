@@ -101,7 +101,7 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/costumeshop");
         dataSource.setUsername( "root" );
-        dataSource.setPassword( "password" );
+        dataSource.setPassword( "1234" );
         return dataSource;
     }
 
