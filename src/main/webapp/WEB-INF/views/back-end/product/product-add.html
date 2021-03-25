@@ -57,7 +57,7 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name product" class="form-control"
                                                        th:field="*{nameProduct}">
-                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>
+<!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
                                                 <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                                 <label for="email-input" class=" form-control-label">price</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="email-input"
+                                                <input type="number" id="email-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{price}">
                                                 <small class="help-block form-text">Please enter your
@@ -78,7 +78,7 @@
                                                 <label for="rating" class=" form-control-label">rating</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="rating"
+                                                <input type="number" id="rating"
                                                        placeholder="image link" class="form-control"
                                                        th:field="*{rating}">
                                                 <small class="help-block form-text">Please enter a rating</small>
@@ -111,7 +111,7 @@
                                                 <label for="status-input" class=" form-control-label">status</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="status-input"
+                                                <input type="number" id="status-input"
                                                        placeholder="image link" class="form-control"
                                                        th:field="*{rating}">
                                                 <small class="help-block form-text">Please enter a status</small>
@@ -122,7 +122,7 @@
                                                 <label for="size-input" class=" form-control-label">size</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="size-input"
+                                                <input type="number" id="size-input"
                                                        placeholder="image link" class="form-control"
                                                        th:field="*{size}">
                                                 <small class="help-block form-text">Please enter a size</small>
@@ -146,7 +146,7 @@
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="length-input"
                                                        placeholder="image link" class="form-control"
-                                                       th:field="*{rating}">
+                                                       th:field="*{length}">
                                                 <small class="help-block form-text">Please enter a length</small>
                                             </div>
                                         </div>

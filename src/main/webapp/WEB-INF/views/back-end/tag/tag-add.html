@@ -2,22 +2,104 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>product Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
 </head>
 <body>
 
-<h3><a th:href="@{/tag}">Back</a></h3>
-<!--<div th:if="${mess}">-->
-<!--    <h3 th:text="${mess}"></h3>-->
-<!--</div>-->
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
 
-<form th:action="@{/tag/create}" th:object="${tag}" method="post">
-    <label>Name
-        <input type="text" class="form-control" th:field="*{name}">
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-    </label>
-    <input type="submit" value="Submit">
-</form>
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
 
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="${product}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <!--                            <div class="col-lg-6">-->
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Add Form</strong> product
+                                </div>
+                                <div class="card-body card-block">
+                                    <!--<div th:if="${mess}">-->
+                                    <!--    <h3 th:text="${mess}"></h3>-->
+                                    <!--</div>-->
+                                    <form th:action="@{/product/create}" th:object="${product}" method="post"
+                                          class="form-horizontal">
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Name product</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input"
+                                                       placeholder="Name product" class="form-control"
+                                                       th:field="*{name}">
+                                                <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+                                                <small class="form-text text-muted">Không được bỏ trống</small>
+                                            </div>
+                                        </div>
+
+                                        <div style=" display: flex; justify-content: space-between">
+                                            <div class="card-footer" style=" display: flex">
+                                                <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                                <a type="reset" class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fa fa-ban"></i> Reset
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            </div>-->
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
 </body>
 </html>

@@ -65,16 +65,8 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>price</th>
-                                        <th>rating</th>
-                                        <th>description</th>
                                         <th>image</th>
                                         <th>status</th>
-                                        <th>size</th>
-                                        <th>color</th>
-                                        <th>length</th>
-                                        <th>fabric</th>
-                                        <th>warranty</th>
-                                        <th>action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -83,26 +75,19 @@
                                         <td th:text="${product.id}"></td>
                                         <td th:text="${product.nameProduct}"></td>
                                         <td th:text="${product.price}"></td>
-                                        <td th:text="${product.rating}"></td>
-                                        <td th:text="${product.description}"></td>
                                         <td th:text="${product.image}"></td>
                                         <td th:text="${product.status}"></td>
-                                        <td th:text="${product.size}"></td>
-                                        <td th:text="${product.color}"></td>
-                                        <td th:text="${product.length}"></td>
-                                        <td th:text="${product.fabric}"></td>
-                                        <td th:text="${product.warranty}"></td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button
+                                                <a
                                                         class="item"
                                                         data-toggle="tooltip"
                                                         data-placement="top"
                                                         title="Send"
                                                 >
                                                     <i class="zmdi zmdi-mail-send"></i>
-                                                </button>
-                                                <button
+                                                </a>
+                                                <a
                                                         class="item"
                                                         data-toggle="tooltip"
                                                         data-placement="top"
@@ -110,8 +95,8 @@
                                                         th:href="@{/product/update/{id}(id = ${product.id})}"
                                                 >
                                                     <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                                <button
+                                                </a>
+                                                <a
                                                         class="item"
                                                         data-toggle="tooltip"
                                                         data-placement="top"
@@ -119,7 +104,7 @@
                                                         th:href="@{/product/delete/{id}(id = ${product.id})}"
                                                 >
                                                     <i class="zmdi zmdi-delete"></i>
-                                                </button>
+                                                </a>
                                                 <button
                                                         class="item"
                                                         data-toggle="tooltip"
