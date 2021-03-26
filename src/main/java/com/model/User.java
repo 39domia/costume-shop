@@ -36,7 +36,5 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER) //product - category (1 - n)
-    private List<Order> orders = new ArrayList<>();
 
 }

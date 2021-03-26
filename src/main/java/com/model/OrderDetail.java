@@ -15,8 +15,9 @@ public class OrderDetail implements Serializable {
     private Long id;
     @OneToOne
     private Product product;
+
     @ManyToOne
-    @JoinColumn(name="idOder")
+    @JoinColumn(name="order_id")
     private Order order;
     private Long quantity;
 
