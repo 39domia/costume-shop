@@ -128,7 +128,6 @@
                                     </ul>
                                 </nav>
 
-
                                 <div>
                                     <a th:href="@{'/category'(page=${categories.number - 1})}" th:if="${categories.hasPrevious()}">Previous</a>
                                     <span th:text="${categories.number + 1}"></span>/<span th:text="${categories.totalPages}"></span>

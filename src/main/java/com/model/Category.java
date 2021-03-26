@@ -22,7 +22,6 @@ public class Category implements Serializable, Validator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-
     @NotEmpty
     @Column(name = "nameCategory", nullable = false)
     private String name;

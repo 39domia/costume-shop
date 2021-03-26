@@ -32,7 +32,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
+<<<<<<< HEAD
                             <a type="reset" class="btn btn-primary btn-sm" th:href="@{/product}">Back
+=======
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="${product}">Back
+>>>>>>> faf2d64c073e3c15a0fb0042ed6cb1e630849254
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -57,7 +61,11 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name product" class="form-control"
                                                        th:field="*{nameProduct}">
+<<<<<<< HEAD
                                                 <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+=======
+<!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+>>>>>>> faf2d64c073e3c15a0fb0042ed6cb1e630849254
                                                 <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
@@ -86,8 +94,12 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
+<<<<<<< HEAD
                                                 <label for="description-input"
                                                        class=" form-control-label">Description</label>
+=======
+                                                <label for="description-input" class=" form-control-label">Description</label>
+>>>>>>> faf2d64c073e3c15a0fb0042ed6cb1e630849254
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="description-input"
@@ -113,8 +125,9 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="status-input"
-                                                       placeholder="image link" class="form-control"
+                                                       placeholder="image link" class="form-control"s
                                                        th:field="*{status}">
+
                                                 <small class="help-block form-text">Please enter a status</small>
                                             </div>
                                         </div>
@@ -173,6 +186,7 @@
                                                 <small class="help-block form-text">Please enter a warranty</small>
                                             </div>
                                         </div>
+<<<<<<< HEAD
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="Category-input" class=" form-control-label">Category</label>
@@ -185,6 +199,15 @@
                                                             th:text="${cate.name}"></option>
                                                 </select>
                                             </div>
+=======
+                                        <div class="col-12 col-md-9">
+                                            <select type="text" id="Category-input"
+                                                    class="form-control"
+                                                    th:field="*{category}">
+                                                <option th:each="cate : ${ca}" th:value="${cate.id}"
+                                                        th:text="${cate.name}"></option>
+                                            </select>
+>>>>>>> faf2d64c073e3c15a0fb0042ed6cb1e630849254
                                         </div>
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary btn-sm" value="Submit">
