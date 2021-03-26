@@ -61,6 +61,7 @@
                                         <th>price</th>
                                         <th>image</th>
                                         <th>status</th>
+                                        <th>Category</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -70,6 +71,8 @@
                                         <td th:text="${product.price}"></td>
                                         <td th:text="${product.image}"></td>
                                         <td th:text="${product.status}"></td>
+                                        <td th:text="${product.category.name}"></td>
+
                                         <td>
                                             <div class="table-data-feature">
                                                 <a      class="item"

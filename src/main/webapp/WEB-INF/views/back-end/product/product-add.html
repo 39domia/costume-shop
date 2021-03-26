@@ -57,7 +57,7 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name product" class="form-control"
                                                        th:field="*{nameProduct}">
-<!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+                                                <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
                                                 <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
@@ -86,7 +86,8 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="description-input" class=" form-control-label">Description</label>
+                                                <label for="description-input"
+                                                       class=" form-control-label">Description</label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="description-input"
@@ -172,6 +173,20 @@
                                                 <small class="help-block form-text">Please enter a warranty</small>
                                             </div>
                                         </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="Category-input" class=" form-control-label">Category</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select type="text" id="Category-input"
+                                                        class="form-control"
+                                                        th:field="*{category}">
+                                                    <option th:each="cate : ${categories}" th:value="${cate.id}"
+                                                            th:text="${cate.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div style=" display: flex; justify-content: space-between">
                                             <div class="card-footer" style=" display: flex">
                                                 <button type="submit" class="btn btn-primary btn-sm" value="Submit">

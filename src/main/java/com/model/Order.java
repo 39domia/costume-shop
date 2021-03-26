@@ -31,17 +31,35 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private Long status;
 
+    //customer
+
+    @NotEmpty
+    @Column(nullable = false)
+    private String firstName;
+    @NotEmpty
+    @Column(nullable = false)
+    private String lastName;
+    private String companyName;//
+    @NotEmpty
+    @Column(nullable = false)
+    private String address1;
+    private String address2;//
+    @NotEmpty
+    @Column(nullable = false)
+    private String city;
+    @NotEmpty
+    @Column(nullable = false)
+    private String email;
+    @NotEmpty
+    @Column(nullable = false)
+    private String phone;
+    private String note;//
+
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")      //category - product (n - 1)
-    private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")      //category - product (n - 1)
-    private Customer customer;
 
 
     //validation

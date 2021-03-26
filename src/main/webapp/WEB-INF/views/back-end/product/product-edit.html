@@ -172,6 +172,14 @@
                                                 <small class="help-block form-text">Please enter a warranty</small>
                                             </div>
                                         </div>
+                                        <div class="col-12 col-md-9">
+                                            <select type="text" id="Category-input"
+                                                    class="form-control"
+                                                    th:field="*{category}">
+                                                <option th:each="cate : ${ca}" th:value="${cate.id}"
+                                                        th:text="${cate.name}"></option>
+                                            </select>
+                                        </div>
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary btn-sm" value="Submit">
                                                 <i class="fa fa-dot-circle-o"></i> Submit

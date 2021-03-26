@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.model.Category;
 import com.model.Product;
 import com.service.CategoryServiceImpl;
 import com.service.ProductServiceImpl;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -25,10 +28,25 @@ public class ProductController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
+//    @ModelAttribute
+//    public List<Category> categoryList(){
+//        return categoryService.findALl();
+//    }
+//
+//    public Optional<Category> categoryById(Long id){
+//        return categoryService.findOne(id);
+//   }
+
     @GetMapping("/product")
     public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
         model.addAttribute("products", productService.selectAll(pageable));
         return "back-end/product/product-list";
+    }
+
+    @GetMapping("/product/view/{id}")
+    public String viewProduct(@PathVariable Long id, Model model){
+        model.addAttribute("product", productService.findOne(id));
+        return "back-end/category/category-view";
     }
 
     @GetMapping("/product/create")
@@ -52,6 +70,7 @@ public class ProductController {
     @GetMapping("/product/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.findOne(id));
+//        model.addAttribute("categories", categoryService.findALl());
         return "back-end/product/product-edit";
     }
 
