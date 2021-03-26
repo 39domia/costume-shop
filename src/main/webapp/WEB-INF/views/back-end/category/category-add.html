@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Category Table</title>
+    <title>Add Category</title>
     <th:block th:replace="back-end/layout/link::linkHeader">
     </th:block>
 </head>
@@ -64,10 +64,10 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="email-input" class=" form-control-label">Description</label>
+                                                <label for="description-input" class=" form-control-label">Description</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="email-input"
+                                                <input type="text" id="description-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{description}">
                                                 <small class="help-block form-text">Please enter your

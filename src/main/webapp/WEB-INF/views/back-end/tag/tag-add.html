@@ -32,7 +32,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="${product}">Back
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="${tag}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -43,10 +43,7 @@
                                     <strong>Add Form</strong> product
                                 </div>
                                 <div class="card-body card-block">
-                                    <!--<div th:if="${mess}">-->
-                                    <!--    <h3 th:text="${mess}"></h3>-->
-                                    <!--</div>-->
-                                    <form th:action="@{/product/create}" th:object="${product}" method="post"
+                                    <form th:action="@{/tag/create}" th:object="${tag}" method="post"
                                           class="form-horizontal">
                                         <input type="hidden" th:field="*{id}">
                                         <div class="row form-group">
@@ -57,7 +54,7 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name product" class="form-control"
                                                        th:field="*{name}">
-                                                <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+<!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>-->
                                                 <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
@@ -70,11 +67,8 @@
                                                 <a type="reset" class="btn btn-danger btn-sm" href="#">
                                                     <i class="fa fa-ban"></i> Reset
                                                 </a>
-
                                             </div>
-
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
