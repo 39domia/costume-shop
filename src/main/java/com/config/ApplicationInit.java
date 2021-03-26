@@ -2,7 +2,6 @@ package com.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-//dffdfd
 @Configuration
 public class ApplicationInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
