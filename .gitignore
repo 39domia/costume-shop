@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-/src/main/java/com/config/ApplicationConfig.java
+!**/src/main/java/com/config/
 
 ### NetBeans ###
 /nbproject/private/
