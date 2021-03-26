@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <h3 class="title-5 m-b-35">data table</h3>
+                            <div class="table-data__tool">
+                                <div class="table-data__tool-left">
+                                </div>
+                                <div class="table-data__tool-right">
+                                    <a class="au-btn au-btn-icon au-btn--green au-btn--small"
+                                            th:href="@{/product/create}">
+                                        <i class="zmdi zmdi-plus"></i>add item
+                                    </a>
+                                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                        <select class="js-select2" name="type">
+                                            <option selected="selected">Export</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 2</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-responsive-data2">
+                                <table class="table table-data2">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>price</th>
+                                        <th>image</th>
+                                        <th>status</th>
+                                        <th>Category</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="tr-shadow" th:each="product :${products}">
+                                        <td th:text="${product.id}"></td>
+                                        <td th:text="${product.nameProduct}"></td>
+                                        <td th:text="${product.price}"></td>
+                                        <td th:text="${product.image}"></td>
+                                        <td th:text="${product.status}"></td>
+                                        <td th:text="${product.category.name}"></td>
+
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a      class="item"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Send">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a
+                                                        class="item"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Edit"
+                                                        th:href="@{/product/update/{id}(id = ${product.id})}"
+                                                >
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </a>
+                                                <a href="#" th:onclick="|deleteNote(${product.id})|"
+                                                   class="item"
+                                                   data-toggle="tooltip"
+                                                   data-placement="top"
+                                                   title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacer"></tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <a th:href="@{'/prtoduct'(page=${products.number - 1})}"
+                                       th:if="${products.hasPrevious()}">Previous</a>
+                                    <span th:text="${products.number + 1}"></span>/<span
+                                        th:text="${products.totalPages}"></span>
+                                    <a th:href="@{'/prtoduct'(page=${products.number + 1})}"
+                                       th:if="${products.hasNext()}">Next</a>
+                                </div>
+
+                            </div>
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function deleteNote(id) {
+            let showMessage = confirm("Do you want to delete ?");
+            if (showMessage) {
+                alert("Delete successfully!")
+                window.location = "/product/delete/" + id;
+            } else {
+            }
+        }
+    </script>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
+</body>
+</html>
