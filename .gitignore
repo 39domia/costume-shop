@@ -8,7 +8,7 @@
 *.ear
 *.nar
 hs_err_pid*
-src/
+src/main/java/com/config
 
 ##############################
 ## Maven
