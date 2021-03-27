@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>product Table</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
+</head>
+<body>
+
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/product}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <!--                            <div class="col-lg-6">-->
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Edit Form</strong> product
+                                </div>
+                                <div class="card-body card-block">
+                                    <!--<div th:if="${mess}">-->
+                                    <!--    <h3 th:text="${mess}"></h3>-->
+                                    <!--</div>-->
+                                    <form th:action="@{/product/update}" th:object="${product}" method="post"
+                                          class="form-horizontal">
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="text-input" class=" form-control-label">Name product</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="text-input"
+                                                       placeholder="Name product" class="form-control"
+                                                       th:field="*{nameProduct}">
+                                                <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
+                                                <small class="form-text text-muted">Không được bỏ trống</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="email-input" class=" form-control-label">price</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" id="email-input"
+                                                       placeholder="Enter desciption" class="form-control"
+                                                       th:field="*{price}">
+                                                <small class="help-block form-text">Please enter your
+                                                    price</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="rating" class=" form-control-label">rating</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" id="rating"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{rating}">
+                                                <small class="help-block form-text">Please enter a rating</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="description-input"
+                                                       class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="description-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{description}">
+                                                <small class="help-block form-text">Please enter a description</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="image-input" class=" form-control-label">image</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="image-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{image}">
+                                                <small class="help-block form-text">Please enter a image</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="status-input" class=" form-control-label">status</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="status-input"
+                                                       placeholder="image link" class="form-control"s
+                                                       th:field="*{status}">
+
+                                                <small class="help-block form-text">Please enter a status</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="size-input" class=" form-control-label">size</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="number" id="size-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{size}">
+                                                <small class="help-block form-text">Please enter a size</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="color-input" class=" form-control-label">color</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="color-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{color}">
+                                                <small class="help-block form-text">Please enter a color</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="length-input" class=" form-control-label">length</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="length-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{rating}">
+                                                <small class="help-block form-text">Please enter a length</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="fabric-input" class=" form-control-label">fabric</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="fabric-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{fabric}">
+                                                <small class="help-block form-text">Please enter a fabric</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="warranty-input" class=" form-control-label">warranty</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="warranty-input"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{warranty}">
+                                                <small class="help-block form-text">Please enter a warranty</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="Category-input" class=" form-control-label">Category</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select type="text" id="Category-input"
+                                                        class="form-control"
+                                                        th:field="*{category.id}">
+                                                    <option th:each="cate : ${categories}" th:value="${cate.id}"
+                                                            th:text="${cate.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                                <i class="fa fa-dot-circle-o"></i> Submit
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            </div>-->
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+</th:block>
+</body>
+</html>
