@@ -20,7 +20,7 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    private Date createDate;
+    private Date createDate = new Date();
     private Date doneTime;
     @NotEmpty
     @Column(nullable = false)
@@ -43,9 +43,7 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String address1;
     private String address2;//
-    @NotEmpty
-    @Column(nullable = false)
-    private String city;
+
     @NotEmpty
     @Column(nullable = false)
     private String email;
@@ -57,7 +55,9 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
-
+    @ManyToOne
+    @JoinColumn(name = "province_id", referencedColumnName = "id")      //category - product (n - 1) ok
+    private Province province;
 
 
 
