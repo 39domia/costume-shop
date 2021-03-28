@@ -32,6 +32,9 @@ public class Product implements Serializable, Validator {
     private Long rating;
     @NotEmpty
     @Column(nullable = false)
+    private String shortDescription;
+    @NotEmpty
+    @Column(nullable = false)
     private String description;
     @NotEmpty
     @Column(nullable = false)

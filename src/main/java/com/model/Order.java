@@ -20,9 +20,8 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @NotEmpty
-    @Column(nullable = false)
-    private Date date;
+    private Date createDate;
+    private Date doneTime;
     @NotEmpty
     @Column(nullable = false)
     private String paymentMethod;
