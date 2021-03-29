@@ -83,6 +83,7 @@
                                                         data-toggle="tooltip"
                                                         data-placement="top"
                                                         title="View"
+                                                        th:href="@{/category/view/{id}(id = ${category.id})}"
                                                 >
                                                     <i class="fas fa-eye"></i>
                                                 </a>
@@ -111,29 +112,28 @@
 
                                 <nav aria-label="Search results pages">
                                     <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link"
-                                               th:href="@{'/category'(page=${categories.number - 1})}" th:if="${categories.hasPrevious()}"
-                                            >Previous</a>
-                                        </li>
-                                        <li class="page-item" th:each="page : ${categories.totalPages}">
-                                            <a class="page-link" href="#" th:text="${categories.number + 1}"></a>
+                                        <li class="page-item">
+                                            <a class="page-link" th:href="@{'/category'(page=${categories.number - 1})}"
+                                               th:if="${categories.hasPrevious()}">Previous</a>
                                         </li>
 
-                                        <li class="page-item" >
+                                        <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,categories.totalPages -1)}">
+                                            <th:block th:if="${categories.number == pIndex}">
+                                                <a style="background-color: #0c5460"  class="page-link" th:href="@{'/category'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                            <th:block th:if="${categories.number != pIndex}">
+                                                <a class="page-link" th:href="@{'/category'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                        </li>
+
+                                        <li class="page-item">
                                             <a class="page-link"
-                                               th:href="@{'/category'(page=${categories.number + 1})}" th:if="${categories.hasNext()}"
+                                               th:href="@{'/category'(page=${categories.number + 1})}"
+                                               th:if="${categories.hasNext()}"
                                             >Next</a>
                                         </li>
                                     </ul>
                                 </nav>
-
-
-                                <div>
-                                    <a th:href="@{'/category'(page=${categories.number - 1})}" th:if="${categories.hasPrevious()}">Previous</a>
-                                    <span th:text="${categories.number + 1}"></span>/<span th:text="${categories.totalPages}"></span>
-                                    <a th:href="@{'/category'(page=${categories.number + 1})}" th:if="${categories.hasNext()}">Next</a>
-                                </div>
 
                             </div>
                             <!-- END DATA TABLE -->

@@ -32,90 +32,66 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="${customer}">Back
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/order}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <!--                            <div class="col-lg-6">-->
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>Edit Form</strong> Customer
+                                    <strong>Edit Form</strong> order
                                 </div>
                                 <div class="card-body card-block">
                                     <!--<div th:if="${mess}">-->
                                     <!--    <h3 th:text="${mess}"></h3>-->
                                     <!--</div>-->
-                                    <form th:action="@{/customer/update}" th:object="${customer}" method="post"
+                                    <form th:action="@{/order/update}" th:object="${order}" method="post"
                                           class="form-horizontal">
                                         <input type="hidden" th:field="*{id}">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="text-input" class=" form-control-label">Name
-                                                    customer</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="text-input"
-                                                       placeholder="Name customer" class="form-control"
-                                                       th:field="*{firstName}">
-                                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</span>
-                                                <small class="form-text text-muted">Không được bỏ trống</small>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="email-input" class=" form-control-label">Last Name</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="email-input"
-                                                       placeholder="Enter desciption" class="form-control"
-                                                       th:field="*{lastName}">
-                                                <small class="help-block form-text">Please enter your
-                                                    last name</small>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="companyName" class=" form-control-label">company Name</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="companyName"
-                                                       placeholder="image link" class="form-control"
-                                                       th:field="*{companyName}">
-                                                <small class="help-block form-text">Please enter a company Name</small>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="address1" class=" form-control-label">Address 1</label>
+                                                <label for="address1" class=" form-control-label">Address 1 : </label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="address1"
-                                                       placeholder="image link" class="form-control"
+                                                       placeholder="Address 1 :" class="form-control"
                                                        th:field="*{address1}">
-                                                <small class="help-block form-text">Please enter a address1</small>
+                                                <span th:if="${#fields.hasErrors('address1')}" th:errors="*{firstName}">Name Error</span>
+                                                <small class="form-text text-muted">Please enter your address</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="address2" class=" form-control-label">Address 2</label>
+                                                <label for="address2" class=" form-control-label">Address 2 :</label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="address2"
-                                                       placeholder="image link" class="form-control"
+                                                       placeholder="Address 2" class="form-control"
                                                        th:field="*{address2}">
-                                                <small class="help-block form-text">Please enter a  address2</small>
+                                                <small class="help-block form-text">Please enter your
+                                                    address 2</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="city" class=" form-control-label">city</label>
+                                                <label for="city" class=" form-control-label">City</label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="city"
-                                                       placeholder="image link" class="form-control"
+                                                       placeholder="City" class="form-control"
                                                        th:field="*{city}">
                                                 <small class="help-block form-text">Please enter a city</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="companyName" class=" form-control-label">Company Name </label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="companyName"
+                                                       placeholder="Company Name " class="form-control"
+                                                       th:field="*{companyName}">
+                                                <small class="help-block form-text">Please enter a company Name</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -123,10 +99,54 @@
                                                 <label for="email" class=" form-control-label">email</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="email"
-                                                       placeholder="image link" class="form-control"
+                                                <input type="email" id="email"
+                                                       placeholder="email" class="form-control"
                                                        th:field="*{email}">
-                                                <small class="help-block form-text">Please enter a email</small>
+                                                <small class="help-block form-text">Please enter a  email</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="firstName" class=" form-control-label">first Name</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="firstName"
+                                                       placeholder="first Name" class="form-control"
+                                                       th:field="*{firstName}">
+                                                <small class="help-block form-text">Please enter a first Name</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="lastName" class=" form-control-label">last Name</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="lastName"
+                                                       placeholder="last Name" class="form-control"
+                                                       th:field="*{lastName}">
+                                                <small class="help-block form-text">Please enter a last Name</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="note" class=" form-control-label">Note</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea  id="note"
+                                                        class="form-control"
+                                                          th:field="*{note}"></textarea>
+                                                <small class="help-block form-text">Please enter a note</small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="paymentMethod" class=" form-control-label">payment Method</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="paymentMethod"
+                                                       placeholder="image link" class="form-control"
+                                                       th:field="*{payment Method}">
+                                                <small class="help-block form-text">Please enter a payment Method</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -135,20 +155,20 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="number" id="phone"
-                                                       placeholder="image link" class="form-control"
+                                                       placeholder="phone" class="form-control"
                                                        th:field="*{phone}">
                                                 <small class="help-block form-text">Please enter a phone</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="note" class=" form-control-label">Note</label>
+                                                <label for="status1" class=" form-control-label">status</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="note"
-                                                       placeholder="image link" class="form-control"
-                                                       th:field="*{note}">
-                                                <small class="help-block form-text">Please enter a note</small>
+                                                <input type="number" id="status1"
+                                                       placeholder="status" class="form-control"
+                                                       th:field="*{status}">
+                                                <small class="help-block form-text">Please enter a status</small>
                                             </div>
                                         </div>
                                         <div class="card-footer">

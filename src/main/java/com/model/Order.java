@@ -20,14 +20,13 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @NotEmpty
     @Column(nullable = false)
     private Date date;
     @NotEmpty
     @Column(nullable = false)
     private String paymentMethod;
 
-    @NotEmpty
+
     @Column(nullable = false)
     private Long status;
 
@@ -62,20 +61,39 @@ public class Order implements Serializable {
 
 
 
-    //validation
-//    @Override
-//    public boolean supports(Class<?> clazz) {
-//        return Order.class.isAssignableFrom(clazz);
-//    }
-//
-//
-//    @Override
-//    public void validate(Object target, Errors errors) {
-//        Order tag = (Order) target;
-//        String nameTag = tag.getName();
-//        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
-//        if (nameTag.length() > 250 || nameTag.length() < 2) {
-//            errors.rejectValue("name", "name.length");
-//        }
-//    }
+//    validation
+
+    public boolean supports(Class<?> clazz) {
+        return Order.class.isAssignableFrom(clazz);
+    }
+
+
+
+    public void validate(Object target, Errors errors) {
+        Order tag = (Order) target;
+        String nameTag = tag.getAddress1();
+        ValidationUtils.rejectIfEmpty(errors, "address1", "name.empty");
+        if (nameTag.length() > 250 || nameTag.length() < 2) {
+            errors.rejectValue("name", "name.length");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", date=" + date +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", status=" + status +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", city='" + city + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }

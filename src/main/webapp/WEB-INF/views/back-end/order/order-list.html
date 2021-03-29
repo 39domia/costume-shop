@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <h3 class="title-5 m-b-35">data table</h3>
+                            <h3 class="title-5 m-b-35">Data table</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
 
@@ -42,33 +42,30 @@
                                     >
                                         <i class="zmdi zmdi-plus"></i>add item
                                     </a>
-                                    <div
-                                            class="rs-select2--dark rs-select2--sm rs-select2--dark2"
-                                    >
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">
                                 <table class="table table-data2">
                                     <thead>
                                     <tr>
-
                                         <th>ID</th>
+                                        <th>Last Name</th>
+                                        <th>email</th>
+                                        <th>phone</th>
+                                        <th>address1</th>
                                         <th>Date</th>
-                                        <th>paymentMethod</th>
-                                        <th>status</th>
-                                        <th>action</th>
+                                        <th>Payment Method</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr class="tr-shadow" th:each="order : ${orders}">
                                         <td th:text="${order.id}"></td>
+                                        <td th:text="${order.lastName}"></td>
+                                        <td th:text="${order.email}"></td>
+                                        <td th:text="${order.phone}"></td>
+                                        <td th:text="${order.address1}"></td>
                                         <td th:text="${order.date}"></td>
                                         <td th:text="${order.paymentMethod}"></td>
                                         <td th:text="${order.status}"></td>
@@ -78,7 +75,8 @@
                                                         class="item"
                                                         data-toggle="tooltip"
                                                         data-placement="top"
-                                                        title="Send"
+                                                        title="view"
+                                                        th:href="@{/order/view/{id}(id = ${order.id})}"
                                                 >
                                                     <i class="fas fa-eye"></i>
                                                 </a>
@@ -97,25 +95,35 @@
                                                    data-placement="top"
                                                    title="Delete">
                                                     <i class="zmdi zmdi-delete"></i></a>
-                                                <a
-                                                        class="item"
-                                                        data-toggle="tooltip"
-                                                        data-placement="top"
-                                                        title="More"
-                                                >
-                                                    <i class="zmdi zmdi-more"></i>
-                                                </a>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
-                                <div>
-                                    <a th:href="@{'/order'(page=${orders.number - 1})}" th:if="${orders.hasPrevious()}">Previous</a>
-                                    <span th:text="${orders.number + 1}"></span>/<span th:text="${orders.totalPages}"></span>
-                                    <a th:href="@{'/order'(page=${orders.number + 1})}" th:if="${orders.hasNext()}">Next</a>
-                                </div>
+                                <nav aria-label="Search results pages">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" th:href="@{'/order'(page=${orders.number - 1})}"
+                                               th:if="${orders.hasPrevious()}">Previous</a>
+                                        </li>
+
+                                        <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,orders.totalPages -1)}">
+                                            <th:block th:if="${orders.number == pIndex}">
+                                                <a style="background-color: #0c5460"  class="page-link" th:href="@{'/order'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                            <th:block th:if="${orders.number != pIndex}">
+                                                <a class="page-link" th:href="@{'/order'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               th:href="@{'/order'(page=${orders.number + 1})}"
+                                               th:if="${orders.hasNext()}"
+                                            >Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                             <!-- END DATA TABLE -->
                         </div>

@@ -1,10 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>view product</title>
+    <th:block th:replace="back-end/layout/link::linkHeader">
+    </th:block>
 </head>
 <body>
 
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <th:block th:replace="back-end/layout/header-mobile::headerMobile">
+    </th:block>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <th:block th:replace="back-end/layout/side-bar::sideBar">
+    </th:block>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <th:block th:replace="back-end/layout/header::headerDesktop">
+        </th:block>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="ml-3 mb-4">
+                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/product}">Back
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <!--                            <div class="col-lg-6">-->
+
+                            <div class="row"    >
+                                <!-- FORM ADD-->
+                                <div class="col-12 col-md-12">
+                                    <div class="card-header">
+                                        <strong th:text="${product.id}"></strong>
+                                    </div>
+                                    <form>
+                                        <div class="card-body card-block">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">name :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.nameProduct}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">price :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:src="${product.price}"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">rating :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:src="${product.rating}"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Description :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.description}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">image :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <img th:src="${product.image}">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">status :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.status}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">size :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.size}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">color :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.color}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">length :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.length}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">fabric :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.fabric}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">warranty :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.warranty}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            </div>-->
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="back-end/layout/link::script">
+
+</th:block>
 </body>
 </html>

@@ -93,13 +93,37 @@
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
-                                <div>
-                                    <a th:href="@{'/prtoduct'(page=${tags.number - 1})}" th:if="${tags.hasPrevious()}">Previous</a>
-                                    <span th:text="${tags.number + 1}"></span>/<span
-                                        th:text="${tags.totalPages}"></span>
-                                    <a th:href="@{'/prtoduct'(page=${tags.number + 1})}"
-                                       th:if="${tags.hasNext()}">Next</a>
-                                </div>
+                                <nav aria-label="Search results pages">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" th:href="@{'/tag'(page=${tags.number - 1})}"
+                                               th:if="${tags.hasPrevious()}">Previous</a>
+                                        </li>
+
+                                        <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,tags.totalPages -1)}">
+                                            <th:block th:if="${tags.number == pIndex}">
+                                                <a style="background-color: #0c5460"  class="page-link" th:href="@{'/tag'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                            <th:block th:if="${tags.number != pIndex}">
+                                                <a class="page-link" th:href="@{'/tag'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                            </th:block>
+                                        </li>
+
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               th:href="@{'/tag'(page=${tags.number + 1})}"
+                                               th:if="${tags.hasNext()}"
+                                            >Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+<!--                                <div>-->
+<!--                                    <a th:href="@{'/tag'(page=${tags.number - 1})}" th:if="${tags.hasPrevious()}">Previous</a>-->
+<!--                                    <span th:text="${tags.number + 1}"></span>/<span-->
+<!--                                        th:text="${tags.totalPages}"></span>-->
+<!--                                    <a th:href="@{'/tag'(page=${tags.number + 1})}"-->
+<!--                                       th:if="${tags.hasNext()}">Next</a>-->
+<!--                                </div>-->
 
                             </div>
                             <!-- END DATA TABLE -->

@@ -46,7 +46,7 @@ public class ProductController {
     @GetMapping("/product/view/{id}")
     public String viewProduct(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.findOne(id));
-        return "back-end/category/category-view";
+        return "back-end/product/product-view";
     }
 
     @GetMapping("/product/create")
