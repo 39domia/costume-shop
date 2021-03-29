@@ -14,11 +14,13 @@ public class OrderDetail implements Serializable {
     @Column(nullable = false)
     private Long id;
     @OneToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
     @JoinColumn(name="order_id")
     private Order order;
+
     private Long quantity;
 
 

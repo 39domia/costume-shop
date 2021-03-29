@@ -9,6 +9,7 @@
 *.nar
 hs_err_pid*
 src/main/java/com/config
+src/main/webapp/WEB-INF/views/back-end-test
 
 ##############################
 ## Maven

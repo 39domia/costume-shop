@@ -20,36 +20,35 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @Column(nullable = false)
-    private Date date;
-    @NotEmpty
+    private Date createDate = new Date();
+    private Date doneTime;
+//    @NotEmpty
     @Column(nullable = false)
     private String paymentMethod;
 
+//    @NotEmpty
 
     @Column(nullable = false)
     private Long status;
 
     //customer
 
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String firstName;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String lastName;
     private String companyName;//
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String address1;
     private String address2;//
-    @NotEmpty
-    @Column(nullable = false)
-    private String city;
-    @NotEmpty
+
+//    @NotEmpty
     @Column(nullable = false)
     private String email;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String phone;
     private String note;//
@@ -57,7 +56,9 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
-
+    @ManyToOne
+    @JoinColumn(name = "province_id", referencedColumnName = "id")      //category - product (n - 1) ok
+    private Province province;
 
 
 
@@ -82,7 +83,8 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", date=" + date +
+                ", createDate=" + createDate +
+                ", doneTime=" + doneTime +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", status=" + status +
                 ", firstName='" + firstName + '\'' +
@@ -90,7 +92,6 @@ public class Order implements Serializable {
                 ", companyName='" + companyName + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", address2='" + address2 + '\'' +
-                ", city='" + city + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", note='" + note + '\'' +

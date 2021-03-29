@@ -71,6 +71,7 @@ public class ProductController {
     public String showUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.findOne(id));
         model.addAttribute("categories", categoryService.findALl());
+
         return "back-end/product/product-edit";
     }
 

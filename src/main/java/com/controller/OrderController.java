@@ -3,6 +3,7 @@ package com.controller;
 
 import com.model.Order;
 import com.service.OrderServiceImpl;
+import com.service.ProvinceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -22,15 +23,25 @@ public class OrderController {
     @Autowired
     private OrderServiceImpl service;
 
+    @Autowired
+    private ProvinceServiceImpl provinceService;
+
     @GetMapping("/order")
     public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
         model.addAttribute("orders", service.selectAll(pageable));
         return "back-end/order/order-list";
     }
 
+    @GetMapping("/order/view/{id}")
+    public String viewCategory(@PathVariable Long id, Model model){
+        model.addAttribute("viewOrder", service.findOne(id));
+        return "back-end/order/order-view";
+    }
+
     @GetMapping("/order/create")
     public String showOrderAddForm(Model model) {
         model.addAttribute("order", new Order());
+        model.addAttribute("provinces", provinceService.findALl());
         return "back-end/order/order-add";
     }
 

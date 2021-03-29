@@ -8,11 +8,42 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <div class="page-wrapper">
     <!-- HEADER MOBILE-->
     <th:block th:replace="back-end/layout/header-mobile::headerMobile">
     </th:block>
     <!-- END HEADER MOBILE-->
+=======
+<h3><a th:href="@{/order}">Back</a></h3>
+<!--<div th:if="${mess}">-->
+<!--    <h3 th:text="${mess}"></h3>-->
+<!--</div>-->
+
+<form th:action="@{/order/create}" th:object="${order}" method="post">
+    <label>Name
+        <input type="number" class="form-control" th:field="*{status}">
+        <input type="text" class="form-control" th:field="*{firstName}">
+<!--        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>-->
+        <input type="text" class="form-control" th:field="*{lastName}">
+        <input type="text" class="form-control" th:field="*{companyName}">
+        <input type="text" class="form-control" th:field="*{address1}">
+        <input type="text" class="form-control" th:field="*{address2}">
+        <input type="text" class="form-control" th:field="*{email}">
+        <input type="text" class="form-control" th:field="*{phone}">
+        <input type="text" class="form-control" th:field="*{note}">
+        <select th:field="${order.paymentMethod}" id="">
+            <option th:value="1">COD</option>
+            <option th:value="2">bank</option>
+            <option th:value="3">paypal</option>
+        </select>
+        <select th:field="${order.province}">
+            <option th:each="pro: ${provinces}" th:value="${pro.id}" th:text="${pro.name}"></option>
+        </select>
+    </label>
+    <input type="submit" value="Submit">
+</form>
+>>>>>>> master
 
     <!-- MENU SIDEBAR-->
     <th:block th:replace="back-end/layout/side-bar::sideBar">
