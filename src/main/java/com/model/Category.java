@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +25,15 @@ public class Category extends CategoryValidator implements Serializable, Validat
     private Long id;
 
     @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(name = "nameCategory", nullable = false)
     private String name;
+    @NotEmpty
     private String description;
     private String image;
 
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER) //product - category (1 - n)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) //product - category (1 - n)
     private List<Product> products = new ArrayList<>();
 
 
