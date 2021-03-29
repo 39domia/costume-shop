@@ -79,7 +79,10 @@
                                         <td th:text="${category.id}"></td>
                                         <td th:text="${category.name}"></td>
                                         <td th:text="${category.description}"></td>
-                                        <td th:text="${category.image}"></td>
+                                        <td>
+                                            <img th:href="${category.image}">
+                                        </td>.
+
                                         <td>
                                             <div class="table-data-feature">
                                                 <a
