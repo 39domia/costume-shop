@@ -58,7 +58,10 @@ public class OrderController {
 
     @GetMapping("/order/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
+
         model.addAttribute("order", service.findOne(id).get());
+        model.addAttribute("provinces", provinceService.findALl());
+
         return "back-end/order/order-edit";
     }
 

@@ -74,13 +74,13 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="city" class=" form-control-label">City</label>
+                                                <label for="city" class=" form-control-label">city</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="city"
-                                                       placeholder="City" class="form-control"
-                                                       th:field="*{city}">
-                                                <small class="help-block form-text">Please enter a city</small>
+                                                <select type="text"
+                                                        class="form-control" th:field="*{province.id}" id="city">
+                                                    <option th:each="pro: ${provinces}" th:value="${pro.id}" th:text="${pro.name}"></option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -140,13 +140,15 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="paymentMethod" class=" form-control-label">payment Method</label>
+                                                <label for="paymentMethod" class=" form-control-label">Payment
+                                                    Method</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="paymentMethod"
-                                                       placeholder="image link" class="form-control"
-                                                       th:field="*{payment Method}">
-                                                <small class="help-block form-text">Please enter a payment Method</small>
+                                                <select th:field="${order.paymentMethod}" id="paymentMethod">
+                                                    <option th:value="1">COD</option>
+                                                    <option th:value="2">bank</option>
+                                                    <option th:value="3">paypal</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row form-group">
