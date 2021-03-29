@@ -16,12 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product implements Serializable, Validator {
+public class Product implements Serializable , Validator{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private Long id;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String nameProduct;
 //    @NotEmpty
@@ -30,13 +30,13 @@ public class Product implements Serializable, Validator {
 //    @NotEmpty
     @Column(nullable = false)
     private Long rating;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String shortDescription;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String description;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String image;
     private String status;
@@ -54,7 +54,7 @@ public class Product implements Serializable, Validator {
     @ManyToMany(mappedBy = "productListTag", fetch = FetchType.EAGER)        //ok
     private List<Tag> tags = new ArrayList<>();
 
-    //validation
+//    validation
     @Override
     public boolean supports(Class<?> clazz) {
         return Product.class.isAssignableFrom(clazz);

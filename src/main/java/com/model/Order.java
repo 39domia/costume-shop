@@ -22,32 +22,32 @@ public class Order implements Serializable {
     private Long id;
     private Date createDate = new Date();
     private Date doneTime;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String paymentMethod;
 
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private Long status;
 
     //customer
 
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String firstName;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String lastName;
     private String companyName;//
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String address1;
     private String address2;//
 
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String email;
-    @NotEmpty
+//    @NotEmpty
     @Column(nullable = false)
     private String phone;
     private String note;//
