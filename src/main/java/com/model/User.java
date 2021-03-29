@@ -5,18 +5,19 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 
 @Data
 @Entity
-public class User implements Serializable, Validator {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
     private String fullName;
 
@@ -24,28 +25,18 @@ public class User implements Serializable, Validator {
     @Column(nullable = false)
     private boolean role;
 
-    @NotEmpty
-    @Column(nullable = false)
     private String image;
     private String description;
     private String about;
 
-    @NotEmpty
+    @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
     private String password;
 
-    @NotEmpty
+    @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
     private String email;
 
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
 
-    @Override
-    public void validate(Object target, Errors errors) {
-
-    }
 }

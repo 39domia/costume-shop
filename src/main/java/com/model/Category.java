@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
-import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -24,11 +24,11 @@ public class Category extends CategoryValidator implements Serializable, Validat
     @Column(nullable = false)
     private Long id;
 
-    @NotEmpty
-    @Size(min = 2, max = 30)
+    @NotBlank(message = "Trường này không được để trống")
+    @Size( max = 250, message = "Độ dài tối đa [1 - 250]")
     @Column(name = "nameCategory", nullable = false)
     private String name;
-    @NotEmpty
+    @NotBlank(message = "Trường này không được để trống")
     private String description;
     private String image;
 

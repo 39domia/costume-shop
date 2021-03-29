@@ -33,7 +33,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/view/{id}")
-    public String viewCategory(@PathVariable Long id, Model model){
+    public String viewCategory(@PathVariable Long id, Model model) {
         model.addAttribute("viewOrder", service.findOne(id).get());
         return "back-end/order/order-view";
     }
@@ -48,32 +48,30 @@ public class OrderController {
     @PostMapping("/order/create")
     public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model) {
 //        new Order().validate(order, bindingResult);
-//        if (bindingResult.hasFieldErrors()) {
-//            return "back-end/order/order-add";
-//        } else {
-        service.add(order);
-        return "redirect:/order";
-//        }
+        if (bindingResult.hasFieldErrors()) {
+            return "back-end/order/order-add";
+        } else {
+            service.add(order);
+            return "redirect:/order";
+        }
     }
 
     @GetMapping("/order/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-
         model.addAttribute("order", service.findOne(id).get());
         model.addAttribute("provinces", provinceService.findALl());
-
         return "back-end/order/order-edit";
     }
 
     @PostMapping("/order/update")
     public String update(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model) {
 //        new Order().validate(order, bindingResult);
-//        if (bindingResult.hasFieldErrors()) {
-//            return "back-end/order/order-edit";
-//        } else {
-        service.update(order);
-        return "redirect:/order";
-//        }
+        if (bindingResult.hasFieldErrors()) {
+            return "back-end/order/order-edit";
+        } else {
+            service.update(order);
+            return "redirect:/order";
+        }
     }
 
     @GetMapping("/order/delete/{id}")

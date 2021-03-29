@@ -46,7 +46,7 @@ public class ProductController {
 
     @PostMapping("/product/create")
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
-        new Product().validate(product, bindingResult);
+//        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/product/product-add";
         } else {
@@ -65,7 +65,7 @@ public class ProductController {
 
     @PostMapping("/product/update")
     public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
-        new Product().validate(product, bindingResult);
+//        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/product/product-edit";
         } else {
