@@ -1,10 +1,9 @@
 package com.model;
 
+import com.validation.CategoryValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
@@ -17,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category implements Serializable, Validator {
+public class Category extends CategoryValidator implements Serializable, Validator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -33,19 +32,5 @@ public class Category implements Serializable, Validator {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER) //product - category (1 - n)
     private List<Product> products = new ArrayList<>();
 
-    //validation
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return Category.class.isAssignableFrom(clazz);
-    }
 
-    @Override
-    public void validate(Object target, Errors errors) {
-        Category category = (Category) target;
-        String nameCate = category.getName();
-        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
-        if (nameCate.length() > 250 || nameCate.length() < 2) {
-            errors.rejectValue("name", "name.length");
-        }
-    }
 }

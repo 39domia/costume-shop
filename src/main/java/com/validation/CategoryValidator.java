@@ -8,18 +8,17 @@ import org.springframework.validation.Validator;
 public class CategoryValidator implements Validator {
 
     @Override
-    public boolean supports(Class clazz) {
-        return Category.class.equals(clazz);
+    public boolean supports(Class<?> clazz) {
+        return Category.class.isAssignableFrom(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
         Category category = (Category) target;
-        if (category.getName().length() < 0) {
-            errors.rejectValue("name", "negativevalue");
-        } else if (category.getName().length() > 110) {
-            errors.rejectValue("name", "too.darn.old");
+        String nameCate = category.getName();
+        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
+        if (nameCate.length() > 250 || nameCate.length() < 2) {
+            errors.rejectValue("name", "name.length");
         }
     }
 }
