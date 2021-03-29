@@ -22,25 +22,25 @@ public class CategoryController {
     private CategoryServiceImpl categoryService;
 
     @GetMapping("/category")
-    public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
+    public String showAll(Model model, @PageableDefault(size = 5) Pageable pageable) {
         model.addAttribute("categories", categoryService.selectAll(pageable));
         return "back-end/category/category-list";
     }
 
     @GetMapping("/category/view/{id}")
-    public String viewCategory(@PathVariable Long id, Model model){
+    public String view(@PathVariable Long id, Model model){
         model.addAttribute("category", categoryService.findOne(id));
         return "back-end/category/category-view";
     }
 
     @GetMapping("/category/create")
-    public String showCategoryAddForm(Model model) {
+    public String showAddForm(Model model) {
         model.addAttribute("category", new Category());
         return "back-end/category/category-add";
     }
 
     @PostMapping("/category/create")
-    public String addCategory(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
+    public String add(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
         new Category().validate(category, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/category/category-add";
