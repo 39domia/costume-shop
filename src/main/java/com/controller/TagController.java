@@ -22,10 +22,16 @@ public class TagController {
     private TagServiceImpl service;
 
     @GetMapping("/tag")
-    public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
+    public String showAll(Model model, @PageableDefault(size = 5) Pageable pageable) {
         model.addAttribute("tags", service.selectAll(pageable));
 //        return "back-end/tag/tag-list";
         return "back-end/tag/tag-list";
+    }
+
+    @GetMapping("/tag/view/{id}")
+    public String view(@PathVariable Long id, Model model){
+        model.addAttribute("tag", service.findOne(id).get());
+        return "back-end/tag/tag-view";
     }
 
     @GetMapping("/tag/create")
@@ -47,7 +53,7 @@ public class TagController {
 
     @GetMapping("/tag/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("tag", service.findOne(id));
+        model.addAttribute("tag", service.findOne(id).get());
         return "back-end/tag/tag-edit";
     }
 

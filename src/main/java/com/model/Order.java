@@ -24,7 +24,7 @@ public class Order implements Serializable {
     private Date doneTime;
 //    @NotEmpty
     @Column(nullable = false)
-    private String paymentMethod;
+    private Long paymentMethod;
 
 //    @NotEmpty
 

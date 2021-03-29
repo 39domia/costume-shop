@@ -45,4 +45,9 @@ public class CategoryServiceImpl implements IBaseService<Category> {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public List<Category> search(String title) {
+        return repository.findByTitleContains(title);
+    }
+
 }
