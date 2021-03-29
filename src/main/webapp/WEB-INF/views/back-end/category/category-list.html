@@ -37,7 +37,7 @@
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
                                     <form th:action="@{/category/search}">
-                                        <input type="text" name="keyword" >
+                                        <input type="text" name="keyword">
                                         <input type="submit" value="search">
                                     </form>
                                 </div>
@@ -65,7 +65,6 @@
                                 <table class="table table-data2">
                                     <thead>
                                     <tr>
-
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Description</th>
@@ -75,7 +74,6 @@
                                     </thead>
                                     <tbody>
                                     <tr class="tr-shadow" th:each="category :${categories}">
-
                                         <td th:text="${category.id}"></td>
                                         <td th:text="${category.name}"></td>
                                         <td th:text="${category.description}"></td>
@@ -117,16 +115,21 @@
                                 <nav aria-label="Search results pages">
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a class="page-link" th:href="@{'/category'(page=${categories.number - 1})}"
+                                            <a class="page-link"
+                                               th:href="@{'/category'(page=${categories.number - 1})}"
                                                th:if="${categories.hasPrevious()}">Previous</a>
                                         </li>
 
-                                        <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,categories.totalPages -1)}">
+                                        <li class="page-item "
+                                            th:each="pIndex : ${#numbers.sequence(0,categories.totalPages -1)}">
                                             <th:block th:if="${categories.number == pIndex}">
-                                                <a style="background-color: #0c5460"  class="page-link" th:href="@{'/category'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                                <a style="background-color: #0c5460" class="page-link"
+                                                   th:href="@{'/category'(page=${pIndex})}"
+                                                   th:text="${pIndex +1}"></a>
                                             </th:block>
                                             <th:block th:if="${categories.number != pIndex}">
-                                                <a class="page-link" th:href="@{'/category'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                                <a class="page-link" th:href="@{'/category'(page=${pIndex})}"
+                                                   th:text="${pIndex +1}"></a>
                                             </th:block>
                                         </li>
 
@@ -140,24 +143,28 @@
                                 </nav>
 
                             </div>
-                            <!-- END DATA TABLE -->
+                            <th:block th:if="${searchMess!=null}">
+                                <h2 th:text="${searchMess}"></h2>
+                            </th:block>
                         </div>
+                        <!-- END DATA TABLE -->
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2018 Colorlib. All rights reserved. Template
-                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                                </p>
-                            </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>
+                                Copyright © 2018 Colorlib. All rights reserved. Template
+                                by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <th:block th:replace="back-end/layout/link::script">
 

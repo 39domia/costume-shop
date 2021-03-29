@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Category;
 import com.model.OrderDetail;
 import com.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,6 @@ public class OrderDetailServiceImpl implements IBaseService<OrderDetail> {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+
 }

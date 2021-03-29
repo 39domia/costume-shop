@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Category;
 import com.model.Province;
 import com.repository.ProvinceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,8 @@ public class ProvinceServiceImpl implements IBaseService<Province> {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+//    public Page<Province> findByNameContaining(String title, Pageable pageable) {
+//        return repository.findByNameContaining(title, pageable);
+//    }
 }

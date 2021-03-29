@@ -3,6 +3,7 @@ package com.controller;
 import com.model.Category;
 import com.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class CategoryController {
     }
 
     @GetMapping("/category/view/{id}")
-    public String view(@PathVariable Long id, Model model){
+    public String view(@PathVariable Long id, Model model) {
         model.addAttribute("category", categoryService.findOne(id).get());
         return "back-end/category/category-view";
     }
@@ -71,8 +72,11 @@ public class CategoryController {
     }
 
     @GetMapping("/category/search")
-    public  String search(@RequestParam String keyword, Model model, @PageableDefault(size = 5) Pageable pageable) {
-        model.addAttribute("categories", categoryService.findByNameContaining(keyword, pageable));
+    public String search(@RequestParam(defaultValue = "") String keyword, Model model, @PageableDefault(size = 5) Pageable pageable) {
+        Page<Category> categories = categoryService.findByNameContaining(keyword, pageable);
+        model.addAttribute("categories", categories);
+        if (!categories.hasContent())
+            model.addAttribute("searchMess", "Not found");
         return "back-end/category/category-list";
     }
 }

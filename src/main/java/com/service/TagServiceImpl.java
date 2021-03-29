@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Category;
 import com.model.Tag;
 import com.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,9 @@ public class TagServiceImpl implements IBaseService<Tag> {
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public Page<Tag> findByNameContaining(String name, Pageable pageable) {
+        return repository.findByNameContaining(name, pageable);
     }
 }

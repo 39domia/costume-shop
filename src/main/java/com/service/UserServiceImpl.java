@@ -1,6 +1,7 @@
 package com.service;
 
 
+import com.model.Category;
 import com.model.User;
 import com.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,9 @@ public class UserServiceImpl implements IBaseService<User> {
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public Page<User> findByFullNameContaining(String name, Pageable pageable) {
+        return repository.findByFullNameContaining(name, pageable);
     }
 }
