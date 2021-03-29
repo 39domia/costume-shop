@@ -60,7 +60,7 @@
                                                     <label class=" form-control-label">price :</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <p th:src="${product.price}"></p>
+                                                    <p th:text="${product.price}"></p>
                                                 </div>
                                             </div>
 
@@ -69,7 +69,7 @@
                                                     <label class=" form-control-label">rating :</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <p th:src="${product.rating}"></p>
+                                                    <p th:text="${product.rating}"></p>
                                                 </div>
                                             </div>
 
@@ -86,7 +86,7 @@
                                                     <label class=" form-control-label">image :</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <img th:src="${product.image}">
+                                                    <img th:src="${product.image}" style="max-width: 500px;max-height: 350px">
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -135,6 +135,14 @@
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <p th:text="${product.warranty}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">category :</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <p th:text="${product.category.name}"></p>
                                                 </div>
                                             </div>
                                         </div>

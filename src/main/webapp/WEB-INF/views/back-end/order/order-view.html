@@ -30,31 +30,158 @@
         <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
+
+
                     <div class="row">
-                        <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{order}">Back
-                            </a>
-                        </div>
-                        <div class="col-md-12">
-                            <!-- DATA TABLE -->
-                            <!--                            <div class="col-lg-6">-->
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong>Edit Form</strong> Customer
-                                </div>
-                                <div class="card-body card-block">
-                                    <div th:text="${viewOrder.get().id}"></div>
-                                    <div th:text="${viewOrder.get().paymentMethod}"></div>
-                                    <div th:text="${viewOrder.get().firstName}"></div>
-<!--                                    <div th:text="${viewOrder.get().orderDetails}"></div>-->
-                                    <div th:text="${viewOrder.get().province.name}"></div>
-                                </div>
+                        <!-- FORM ADD-->
+                        <div class="col-12 col-md-12">
+                            <div class="card-header">
+                                <strong th:text="${viewOrder.id}"></strong>
                             </div>
-                            <!--                            </div>-->
-                            <!-- END DATA TABLE -->
+                            <form th:object="${viewOrder}">
+                                <div class="card-body card-block">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Address1 :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{address1}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">address2 :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{address2}"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">company Name :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{companyName}"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Create Date :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{createDate}"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Done time :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{doneTime}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">email :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{email}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">Last name :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{lastName}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">first Name :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{firstName}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">note :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{note}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">paymentMethod :</label>
+                                        </div>
+                                        <th:block th:if="${viewOrder.paymentMethod == 1}">
+                                            <div class="col-12 col-md-9">
+                                                <p>COD</p>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:if="${viewOrder.paymentMethod == 2}">
+                                            <div class="col-12 col-md-9">
+                                                <p> Bank King</p>
+                                            </div>
+                                        </th:block>
+                                        <th:block th:if="${viewOrder.paymentMethod == 3}">
+                                            <div class="col-12 col-md-9">
+                                                <p> Paypal</p>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">phone :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{phone}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label">province :</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <p th:text="*{province.name}"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <h3 class="title-5 m-b-35">list order product</h3>
+                        <div class="table-responsive table-responsive-data2">
+                            <table class="table table-data2">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="tr-shadow" th:each="orderdt : ${orderDetails}">
+                                    <th:block th:if="${orderdt.order.id == viewOrder.id }">
+                                        <td th:text="${orderdt.id}"></td>
+                                        <td th:text="${orderdt.product.nameProduct}"></td>
+                                        <td th:text="${orderdt.product.price}"></td>
+                                        <td th:text="${orderdt.quantity}"></td>
+                                        <td th:text="${orderdt.product.price * orderdt.quantity}"></td>
+                                    </th:block>
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">

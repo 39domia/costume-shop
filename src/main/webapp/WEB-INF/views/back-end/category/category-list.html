@@ -80,8 +80,8 @@
                                         <td th:text="${category.name}"></td>
                                         <td th:text="${category.description}"></td>
                                         <td>
-                                            <img th:href="${category.image}">
-                                        </td>.
+                                            <img th:src="*{category.image}" height="200px" width="150px" >
+                                        </td>
 
                                         <td>
                                             <div class="table-data-feature">

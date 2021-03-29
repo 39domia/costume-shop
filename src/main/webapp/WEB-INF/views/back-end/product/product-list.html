@@ -69,7 +69,10 @@
                                         <td th:text="${product.id}"></td>
                                         <td th:text="${product.nameProduct}"></td>
                                         <td th:text="${product.price}"></td>
-                                        <td th:text="${product.image}"></td>
+                                        <td >
+                                            <img th:src="*{product.image}" height="200px" width="150px" >
+
+                                        </td>
                                         <td th:text="${product.status}"></td>
                                         <td th:text="${product.category.name}"></td>
 
