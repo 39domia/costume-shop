@@ -46,8 +46,8 @@ public class CategoryServiceImpl implements IBaseService<Category> {
         repository.deleteById(id);
     }
 
-    public Page<Category> findByNameContaining(String title, Pageable pageable) {
-        return repository.findByNameContaining(title, pageable);
+    public Page<Category> findByNameContaining(String name, Pageable pageable) {
+        return repository.findByNameContaining(name, pageable);
     }
 
 }

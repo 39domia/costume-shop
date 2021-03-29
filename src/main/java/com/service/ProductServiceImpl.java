@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Category;
 import com.model.Product;
 import com.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,9 @@ public class ProductServiceImpl implements IBaseService<Product> {
     @Override
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {
+        return repository.findByNameProductContaining(nameProduct, pageable);
     }
 }
