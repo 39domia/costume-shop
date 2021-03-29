@@ -30,7 +30,7 @@ public class TagController {
 
     @GetMapping("/tag/view/{id}")
     public String view(@PathVariable Long id, Model model){
-        model.addAttribute("tag", service.findOne(id));
+        model.addAttribute("tag", service.findOne(id).get());
         return "back-end/tag/tag-view";
     }
 
@@ -53,7 +53,7 @@ public class TagController {
 
     @GetMapping("/tag/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("tag", service.findOne(id));
+        model.addAttribute("tag", service.findOne(id).get());
         return "back-end/tag/tag-edit";
     }
 

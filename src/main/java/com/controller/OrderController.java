@@ -34,7 +34,7 @@ public class OrderController {
 
     @GetMapping("/order/view/{id}")
     public String viewCategory(@PathVariable Long id, Model model){
-        model.addAttribute("viewOrder", service.findOne(id));
+        model.addAttribute("viewOrder", service.findOne(id).get());
         return "back-end/order/order-view";
     }
 
@@ -58,7 +58,7 @@ public class OrderController {
 
     @GetMapping("/order/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("order", service.findOne(id));
+        model.addAttribute("order", service.findOne(id).get());
         return "back-end/order/order-edit";
     }
 

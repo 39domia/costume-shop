@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/user/view/{id}")
     public String view(@PathVariable Long id, Model model) {
-        model.addAttribute("user", service.findOne(id));
+        model.addAttribute("user", service.findOne(id).get());
         return "back-end/user/user-view";
     }
 
@@ -51,7 +51,7 @@ public class UserController {
 
     @GetMapping("/user/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("user", service.findOne(id));
+        model.addAttribute("user", service.findOne(id).get());
         return "back-end/user/user-edit";
     }
 

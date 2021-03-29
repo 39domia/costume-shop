@@ -1,8 +1,6 @@
 package com.controller;
 
-import com.model.Order;
 import com.model.OrderDetail;
-import com.service.OrderServiceImpl;
 import com.service.OrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +28,7 @@ public class OrderDetailController {
 
     @GetMapping("/order-detail/view/{id}")
     public String view(@PathVariable Long id, Model model) {
-        model.addAttribute("orderDetail", service.findOne(id));
+        model.addAttribute("orderDetail", service.findOne(id).get());
         return "back-end/order-detail/order-detail-view";
     }
 
@@ -53,7 +51,7 @@ public class OrderDetailController {
 
     @GetMapping("/order-detail/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("orderDetail", service.findOne(id));
+        model.addAttribute("orderDetail", service.findOne(id).get());
         return "back-end/order-detail/order-detail-edit";
     }
 

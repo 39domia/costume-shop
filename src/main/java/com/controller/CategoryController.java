@@ -29,7 +29,7 @@ public class CategoryController {
 
     @GetMapping("/category/view/{id}")
     public String view(@PathVariable Long id, Model model){
-        model.addAttribute("category", categoryService.findOne(id));
+        model.addAttribute("category", categoryService.findOne(id).get());
         return "back-end/category/category-view";
     }
 
@@ -52,7 +52,7 @@ public class CategoryController {
 
     @GetMapping("/category/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("category", categoryService.findOne(id));
+        model.addAttribute("category", categoryService.findOne(id).get());
         return "back-end/category/category-edit";
     }
 
@@ -71,5 +71,11 @@ public class CategoryController {
     public String delete(@PathVariable Long id) {
         categoryService.delete(id);
         return "redirect:/category";
+    }
+
+    @GetMapping("/category/search/{keyword}")
+    public  String search(@PathVariable String keyword, Model model) {
+        model.addAttribute("categories", categoryService.search(keyword));
+        return "back-end/category/category-list";
     }
 }

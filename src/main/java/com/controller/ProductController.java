@@ -33,7 +33,7 @@ public class ProductController {
 
     @GetMapping("/product/view/{id}")
     public String viewProduct(@PathVariable Long id, Model model){
-        model.addAttribute("product", productService.findOne(id));
+        model.addAttribute("product", productService.findOne(id).get());
         return "back-end/product/product-view";
     }
 
@@ -57,7 +57,7 @@ public class ProductController {
 
     @GetMapping("/product/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("product", productService.findOne(id));
+        model.addAttribute("product", productService.findOne(id).get());
         model.addAttribute("categories", categoryService.findALl());
 
         return "back-end/product/product-edit";
