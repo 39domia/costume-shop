@@ -168,6 +168,16 @@
         </div>
     </div>
 </div>
+<script>
+    function deleteNote(id) {
+        let showMessage = confirm("Do you want to delete ?");
+        if (showMessage) {
+            alert("Delete successfully!")
+            window.location = "/category/delete/" + id;
+        } else {
+        }
+    }
+</script>
 </div>
 <th:block th:replace="back-end/layout/link::script">
 
