@@ -54,4 +54,8 @@ public class ProductServiceImpl implements IBaseService<Product> {
     public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {
         return repository.findByNameProductContaining(nameProduct, pageable);
     }
+
+    public List<Product> findTop4ByOrderByIdDesc(){
+        return repository.findTop4ByOrderByIdDesc();
+    }
 }

@@ -8,7 +8,6 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class Category extends CategoryValidator implements Serializable, Validat
     private String image;
 
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) //product - category (1 - n)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //product - category (1 - n)
     private List<Product> products = new ArrayList<>();
 
 
