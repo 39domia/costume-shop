@@ -1,10 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="linkHeaders">
 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/css/dark.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/css/font-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="/assets/front-end/css/magnific-popup.css" type="text/css"/>
+
+    <link rel="stylesheet" href="/assets/front-end/css/responsive.css" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="/assets/front-end/include/rs-plugin/css/settings.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/assets/front-end/include/rs-plugin/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="/assets/front-end/include/rs-plugin/css/navigation.css">
+
+    <!-- Document Title
+    ============================================= -->
+    <title> Canvas</title>
+</th:block>
+
+<body>
+<th:block th:fragment="scripts">
+    <!-- External JavaScripts
+============================================= -->
+    <script type="text/javascript" src="/assets/front-end/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/front-end/js/plugins.js"></script>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script type="text/javascript" src="/assets/front-end/js/functions.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+    <script type="text/javascript" src="/assets/front-end/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript"
+            src="/assets/front-end/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+
+    <script type="text/javascript">
+
+        var tpj = jQuery;
+        tpj.noConflict();
+
+        tpj(document).ready(function () {
+
+            var apiRevoSlider = tpj('.tp-banner').show().revolution(
+                {
+                    sliderType: "standard",
+                    jsFileLocation: "include/rs-plugin/js/",
+                    sliderLayout: "fullwidth",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {},
+                    responsiveLevels: [1200, 992, 768, 480, 320],
+                    gridwidth: 1140,
+                    gridheight: 500,
+                    lazyType: "none",
+                    shadow: 0,
+                    spinner: "off",
+                    autoHeight: "off",
+                    disableProgressBar: "on",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        disableFocusListener: false,
+                    },
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        onHoverStop: "off",
+                        touch: {
+                            touchenabled: "on",
+                            swipe_threshold: 75,
+                            swipe_min_touches: 1,
+                            swipe_direction: "horizontal",
+                            drag_block_vertical: false
+                        },
+                        arrows: {
+                            style: "ares",
+                            enable: true,
+                            hide_onmobile: false,
+                            hide_onleave: false,
+                            tmp: '<div class="tp-title-wrap">	<span class="tp-arr-titleholder">{{title}}</span> </div>',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 10,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 10,
+                                v_offset: 0
+                            }
+                        }
+                    }
+                });
+            apiRevoSlider.bind("revolution.slide.onloaded", function (e) {
+                SEMICOLON.slider.sliderParallaxDimensions();
+            });
+        }); //ready
+    </script>
+</th:block>
 </body>
 </html>
