@@ -19,15 +19,7 @@ public class User implements Serializable {
 
     @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
-    private String fullName;
-
-    @NotEmpty
-    @Column(nullable = false)
-    private boolean role;
-
-    private String image;
-    private String description;
-    private String about;
+    private String email;
 
     @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
@@ -35,7 +27,16 @@ public class User implements Serializable {
 
     @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
-    private String email;
+    private String fullName;
+
+    @Column(nullable = false)
+    private boolean role;
+
+    private String image;
+    private String description;
+    private String about;
+
+
 
 
 

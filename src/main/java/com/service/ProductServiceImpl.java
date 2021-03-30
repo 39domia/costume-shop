@@ -58,4 +58,6 @@ public class ProductServiceImpl implements IBaseService<Product> {
     public List<Product> findTop4ByOrderByIdDesc(){
         return repository.findTop4ByOrderByIdDesc();
     }
+
+
 }
