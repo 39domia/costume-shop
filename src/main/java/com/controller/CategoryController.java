@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.model.Category;
+import com.repository.CategoryRepository;
 import com.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -19,6 +21,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryServiceImpl categoryService;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("/category")
     public String showAll(Model model, @PageableDefault(size = 5) Pageable pageable) {
@@ -56,14 +61,22 @@ public class CategoryController {
     }
 
     @PostMapping("/category/update")
-    public String update(@Validated @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
+    public String update(@Validated @ModelAttribute("category") Category category, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Category().validate(category, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/category/category-edit";
-        } else {
-            categoryService.update(category);
-            return "redirect:/category";
         }
+
+        Category categoryTemp = categoryRepository.findByName(category.getName());
+        if (categoryTemp != null) {
+            if (category.getName().equals(categoryTemp.getName()) && categoryTemp.getId() != category.getId()) {
+                attributes.addFlashAttribute("mess", "Tên ĐÃ TỒN TẠI");
+                return "redirect:/category";
+            }
+        }
+            categoryService.update(category);
+        attributes.addFlashAttribute("mess", "Thay đổi thành công");
+            return "redirect:/category";
     }
 
     @GetMapping("/category/delete/{id}")

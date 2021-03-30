@@ -1,6 +1,6 @@
 package com.controller.shop;
 
-import com.repository.ProductRepository;
+import com.service.CategoryServiceImpl;
 import com.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -13,20 +13,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class Homepage {
     @Autowired
-    ProductServiceImpl service;
+    ProductServiceImpl productService;
+
+    @Autowired
+    CategoryServiceImpl categoryService;
+
 
     @GetMapping("/index")
     public String index(@PageableDefault(size = 12) Pageable pageable, Model model){
 //        Pageable pageable1 =
-        model.addAttribute("findTop4ByOrderByIdDesc", service.findTop4ByOrderByIdDesc());
-        model.addAttribute("selectAllPage12", service.selectAll(pageable));
-//        model.addAttribute("product", service.findOne(id).get());
+        model.addAttribute("findTop4ByOrderByIdDesc", productService.findTop4ByOrderByIdDesc());
+        model.addAttribute("selectAllPage12", productService.selectAll(pageable));
+        model.addAttribute("findTop4ByOrderByRatingDesc", productService.findTop4ByOrderByRatingDesc());
+        model.addAttribute("findAllCategories", categoryService.findALl());
+//        model.addAttribute("product", productService.findOne(id).get());
         return "front-end/index";
     }
 
     @GetMapping("/product/quick-view/{id}")
     public String viewProduct(@PathVariable Long id, Model model){
-        model.addAttribute("quickViewProduct", service.findOne(id).get());
+        model.addAttribute("quickViewProduct", productService.findOne(id).get());
+        model.addAttribute("findAllCategories", categoryService.findALl());
+
         return "back-end/product/product-view"; //sua duong dan
     }
 

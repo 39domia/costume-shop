@@ -43,7 +43,6 @@ public class ProductServiceImpl implements IBaseService<Product> {
     @Override
     public void update(Product product) {
         repository.save(product);
-
     }
 
     @Override
@@ -57,6 +56,10 @@ public class ProductServiceImpl implements IBaseService<Product> {
 
     public List<Product> findTop4ByOrderByIdDesc(){
         return repository.findTop4ByOrderByIdDesc();
+    }
+
+    public List<Product> findTop4ByOrderByRatingDesc() {
+        return repository.findTop4ByOrderByRatingDesc();
     }
 
 
