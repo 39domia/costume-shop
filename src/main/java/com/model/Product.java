@@ -51,5 +51,22 @@ public class Product implements Serializable{
     @ManyToMany(mappedBy = "productListTag", fetch = FetchType.EAGER)        //ok
     private List<Tag> tags = new ArrayList<>();
 
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", nameProduct='" + nameProduct + '\'' +
+                ", price=" + price +
+                ", rating=" + rating +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", status='" + status + '\'' +
+                ", size='" + size + '\'' +
+                ", color='" + color + '\'' +
+                ", length='" + length + '\'' +
+                ", fabric='" + fabric + '\'' +
+                ", warranty='" + warranty + '\'' +
+                '}';
+    }
 }
