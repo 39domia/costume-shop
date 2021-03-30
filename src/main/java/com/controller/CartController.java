@@ -1,2 +1,8 @@
-package com.controller;public class CartController {
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CartController {
+
 }
