@@ -43,12 +43,12 @@ public class UserController {
     @PostMapping("/user/create")
     public String add(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
 //        new User().validate(user, bindingResult);
-//        if (bindingResult.hasFieldErrors()) {
-//            return "back-end/user/user-add";
-//        } else {
-        service.add(user);
-        return "redirect:/user";
-//        }
+        if (bindingResult.hasFieldErrors()) {
+            return "back-end/user/user-add";
+        } else {
+            service.add(user);
+            return "redirect:/user";
+        }
     }
 
     @GetMapping("/user/update/{id}")
@@ -60,12 +60,12 @@ public class UserController {
     @PostMapping("/user/update")
     public String update(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
 //        new User().validate(user, bindingResult);
-//        if (bindingResult.hasFieldErrors()) {
-//            return "back-end/user/user-edit";
-//        } else {
-        service.update(user);
-        return "redirect:/user";
-//        }
+        if (bindingResult.hasFieldErrors()) {
+            return "back-end/user/user-edit";
+        } else {
+            service.update(user);
+            return "redirect:/user";
+        }
     }
 
     @GetMapping("/user/delete/{id}")

@@ -3,7 +3,7 @@ package com.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Province implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Integer id;
-    @NotEmpty
+    @NotBlank(message = "Trường này không được để trống")
     @Column(name = "nameProvince", nullable = false)
     private String name;
 

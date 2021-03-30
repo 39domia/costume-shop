@@ -9,6 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,7 +40,7 @@ public class CategoryController {
 
     @PostMapping("/category/create")
     public String add(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
-        new Category().validate(category, bindingResult);
+//        new Category().validate(category, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/category/category-add";
         } else {
@@ -55,8 +56,8 @@ public class CategoryController {
     }
 
     @PostMapping("/category/update")
-    public String update(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
-        new Category().validate(category, bindingResult);
+    public String update(@Validated @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
+//        new Category().validate(category, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/category/category-edit";
         } else {

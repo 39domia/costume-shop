@@ -58,8 +58,7 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name category" class="form-control"
                                                        th:field="*{name}">
-                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
-                                                <small class="form-text text-muted">Không được bỏ trống</small>
+                                                <small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -70,8 +69,7 @@
                                                 <input type="text" id="description-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{description}">
-                                                <small class="help-block form-text">Please enter your
-                                                    Description</small>
+                                                <small class="form-text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
