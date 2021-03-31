@@ -19,7 +19,7 @@ public class Product implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message = "Trường này không được để trống")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1000)
     private String nameProduct;
 
     @Column(nullable = false)
@@ -27,14 +27,18 @@ public class Product implements Serializable{
 
     @Column(nullable = false)
     private Long rating;
+
     @NotBlank(message = "Trường này không được để trống")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String shortDescription;
+
+    @Lob
     @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
     private String description;
+
     @NotBlank(message = "Trường này không được để trống")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String image;
     private String status;
     private String size;

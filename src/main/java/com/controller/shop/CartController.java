@@ -1,4 +1,4 @@
-package com.controller;
+package com.controller.shop;
 
 import com.model.OrderDetail;
 import com.model.Product;
