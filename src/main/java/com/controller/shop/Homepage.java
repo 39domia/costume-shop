@@ -2,6 +2,7 @@ package com.controller.shop;
 
 import com.model.Category;
 import com.model.Product;
+import com.repository.ProductRepository;
 import com.service.CategoryServiceImpl;
 
 import com.service.ProductServiceImpl;
@@ -23,6 +24,9 @@ public class Homepage {
     ProductServiceImpl productService;
 
     @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
     CategoryServiceImpl categoryService;
 
     @ModelAttribute("findTop4ByOrderByIdDesc")
@@ -39,6 +43,7 @@ public class Homepage {
     public List<Category> findAllCategories() {
         return categoryService.findALl();
     }
+
 
     @GetMapping("/index")
     public String index(@PageableDefault(size = 12) Pageable pageable, Model model) {

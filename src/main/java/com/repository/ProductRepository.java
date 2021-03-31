@@ -1,5 +1,6 @@
 package com.repository;
 
+import com.model.Category;
 import com.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findTop5ByOrderByIdDesc();
 
     List<Product> findTop4ByOrderByRatingDesc();
+
+    List<Product> findAllByCategory(Category category);
+
+    List<Product> findAllByCategoryId(Long category_id);
+
+
 
 }
