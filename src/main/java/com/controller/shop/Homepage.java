@@ -49,12 +49,14 @@ public class Homepage {
 
     @GetMapping("/index/quick-view/{id}")
     public String indexQuickView(@PageableDefault(size = 12) Pageable pageable,@PathVariable Long id, Model model){
-//        model.addAttribute("findTop4ByOrderByIdDesc", productService.findTop4ByOrderByIdDesc());
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
-//        model.addAttribute("findTop4ByOrderByRatingDesc", productService.findTop4ByOrderByRatingDesc());
-//        model.addAttribute("findAllCategories", categoryService.findALl());
         model.addAttribute("quickViewProduct", productService.findOne(id).get());
         return "front-end/shop-single-left-sidebar";
 
+    }
+    @GetMapping("/shop")
+    public String shopView(@PageableDefault(size = 12) Pageable pageable, Model model){
+        model.addAttribute("selectAllPage12", productService.selectAll(pageable));
+        return "front-end/shop-3-left-sidebar";
     }
 }

@@ -2,13 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" dir="ltr">
 <head>
 
+    <title> Canvas</title>
     <th:block th:replace="front-end/layout/link::linkHeaders">
     </th:block>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Document Title
-    ============================================= -->
-    <title>Shop - 3 Columns Left Sidebar | Canvas</title>
 
 </head>
 
@@ -53,51 +49,103 @@
                     <!-- Shop
                     ============================================= -->
                     <div id="shop" class="shop product-3 clearfix">
-                        <th:block th:each="productAll">
-                        <div class="product clearfix">
-                            <div class="product-image">
-                                <a href="#"><img src="/assets/front-end/images/shop/pants/1-1.jpg" alt="Slim Fit Chinos"></a>
-                                <a href="#"><img src="/assets/front-end/images/shop/pants/1.jpg" alt="Slim Fit Chinos"></a>
-                                <div class="product-overlay">
-                                    <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-                                    <a href="include/ajax/shop-item.html" class="item-quick-view" data-lightbox="ajax"><i class="icon-zoom-in2"></i><span> Quick View</span></a>
+                        <th:block th:each="product12PageAll : ${selectAllPage12}">
+                            <div class="product clearfix">
+                                <div class="product-image">
+                                    <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}">
+                                        <div th:style="'background-image:url(' + ${product12PageAll.image} + '); height: 270px;background-position: center;background-size: contain;'"
+                                                      alt="Slim Fit Chinos">
+                                    </div></a>
+
+                                    <div class="product-overlay">
+                                        <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                        <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"
+                                        data-lightbox="ajax"><i
+                                                class="icon-zoom-in2"></i><span> Quick View</span></a>
+                                    </div>
+                                </div>
+                                <div class="product-desc center">
+                                    <div class="product-title"><h3><a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"
+                                   th:text="${product12PageAll.nameProduct}"></a></h3></div>
+                                    <div class="product-price" th:text="${product12PageAll.price}">$</div>
+                                    <div class="product-rating">
+                                            <th:block th:if="${product12PageAll.rating == 1}">
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                            </th:block>
+                                            <th:block th:if="${product12PageAll.rating == 2}">
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                            </th:block>
+                                            <th:block th:if="${product12PageAll.rating == 3}">
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star-empty"></i>
+                                                <i class="icon-star-empty"></i>
+                                            </th:block>
+                                            <th:block th:if="${product12PageAll.rating == 4}">
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star-empty"></i>
+                                            </th:block>
+                                            <th:block th:if="${product12PageAll.rating == 5}">
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                                <i class="icon-star3"></i>
+                                            </th:block>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="product-desc center">
-                                <div class="product-title"><h3><a href="#">Slim Fit Chinos</a></h3></div>
-                                <div class="product-price">$39.99</div>
-                                <div class="product-rating">
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star-half-full"></i>
-                                    <i class="icon-star-empty"></i>
-                                </div>
-                            </div>
-                        </div>
+                        </th:block>
+                        <nav aria-label="Search results pages">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" th:href="@{'/product'(page=${product12PageAll.number - 1})}"
+                                       th:if="${product12PageAll.hasPrevious()}">Previous</a>
+                                </li>
 
+                                <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,product12PageAll.totalPages -1)}">
+                                    <th:block th:if="${product12PageAll.number == pIndex}">
+                                        <a style="background-color: #0c5460"  class="page-link" th:href="@{'/product'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                    </th:block>
+                                    <th:block th:if="${product12PageAll.number != pIndex}">
+                                        <a class="page-link" th:href="@{'/product'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                    </th:block>
+                                </li>
 
-
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       th:href="@{'/product'(page=${product12PageAll.number + 1})}"
+                                       th:if="${product12PageAll.hasNext()}"
+                                    >Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div><!-- #shop end -->
 
                 </div><!-- .postcontent end -->
 
                 <!-- Sidebar
                 ============================================= -->
-                <div class="sidebar nobottommargin">
+                <div class="sidebar nobottommargin clearfix">
                     <div class="sidebar-widgets-wrap">
 
                         <div class="widget widget_links clearfix">
 
                             <h4>Shop Categories</h4>
-                            <ul>
-                                <li><a href="#">Shirts</a></li>
-                                <li><a href="#">Pants</a></li>
-                                <li><a href="#">Tshirts</a></li>
-                                <li><a href="#">Sunglasses</a></li>
-                                <li><a href="#">Shoes</a></li>
-                                <li><a href="#">Bags</a></li>
-                                <li><a href="#">Watches</a></li>
+                            <ul th:each="category :${findAllCategories}">
+                                <li><a href="#" th:text="${category.name}"></a></li>
                             </ul>
 
                         </div>
@@ -106,52 +154,68 @@
 
                             <h4>Recent Items</h4>
                             <div id="post-list-footer">
+                                <th:block th:each="product : ${findTop4ByOrderByRatingDesc}">
+                                    <div class="spost clearfix">
+                                        <div class="entry-image">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
+                                                <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
+                                                     alt="Slim Fit Chinos">
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/1.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Blue Round-Neck Tshirt</a></h4>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$29.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
+                                                       th:text="${product.nameProduct}">
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/6.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Checked Short Dress</a></h4>
+                                                </a>
+                                                </h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li class="color" th:text="${product.price}">$</li>
+                                                <li>
+
+                                                    <th:block th:if="${product.rating == 1}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 2}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 3}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 4}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 5}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                    </th:block>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$23.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
                                     </div>
-                                </div>
-
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/7.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Light Blue Denim Dress</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$19.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
+                                </th:block>
                             </div>
 
                         </div>
@@ -160,50 +224,71 @@
 
                             <h4>Last Viewed Items</h4>
                             <div class="widget-last-view">
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/3.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Round-Neck Tshirt</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$15</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/10.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Green Trousers</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$19</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <th:block th:each="product : ${findTop4ByOrderByIdDesc}">
+                                    <div class="spost clearfix">
+                                        <div class="entry-image">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
+                                                <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
+                                                     alt="Slim Fit Chinos">
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/11.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Silver Chrome Watch</a></h4>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$34.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
+                                                       th:text="${product.nameProduct}">
+
+                                                </a>
+                                                </h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li class="color" th:text="${product.price}">$</li>
+                                                <li>
+
+                                                    <th:block th:if="${product.rating == 1}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 2}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 3}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 4}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 5}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                    </th:block>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                </th:block>
+
+
                             </div>
 
                         </div>
@@ -212,90 +297,80 @@
 
                             <h4>Popular Items</h4>
                             <div id="Popular-item">
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/8.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Pink Printed Dress</a></h4>
-                                        </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$21</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <th:block th:each="product : ${findTop4ByOrderByRatingDesc}">
+                                    <div class="spost clearfix">
+                                        <div class="entry-image">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
+                                                <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
+                                                     alt="Slim Fit Chinos">
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/5.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Blue Round-Neck Tshirt</a></h4>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$19.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
+                                                       th:text="${product.nameProduct}">
 
-                                <div class="spost clearfix">
-                                    <div class="entry-image">
-                                        <a href="#"><img src="/assets/front-end/images/shop/small/12.jpg" alt="Image"></a>
-                                    </div>
-                                    <div class="entry-c">
-                                        <div class="entry-title">
-                                            <h4><a href="#">Men Aviator Sunglasses</a></h4>
+                                                </a>
+                                                </h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li class="color" th:text="${product.price}">$</li>
+                                                <li>
+
+                                                    <th:block th:if="${product.rating == 1}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 2}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 3}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 4}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star-empty"></i>
+                                                    </th:block>
+                                                    <th:block th:if="${product.rating == 5}">
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                        <i class="icon-star3"></i>
+                                                    </th:block>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <ul class="entry-meta">
-                                            <li class="color">$14.99</li>
-                                            <li><i class="icon-star3"></i> <i class="icon-star3"></i> <i class="icon-star-half-full"></i> <i class="icon-star-empty"></i> <i class="icon-star-empty"></i></li>
-                                        </ul>
                                     </div>
-                                </div>
+                                </th:block>
                             </div>
 
                         </div>
 
                         <div class="widget clearfix">
-                            <iframe src="/assets/front-end///www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FEnvato&amp;width=240&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=499481203443583" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:290px;" allowTransparency="true"></iframe>
+                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FEnvato&amp;width=240&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=499481203443583"
+                                    scrolling="no" frameborder="0"
+                                    style="border:none; overflow:hidden; width:240px; height:290px;"
+                                    allowTransparency="true"></iframe>
                         </div>
-
-                        <div class="widget subscribe-widget clearfix">
-
-                            <h4>Subscribe For Latest Offers</h4>
-                            <h5>Subscribe to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
-                            <form action="#" role="form" class="notopmargin nobottommargin">
-                                <div class="input-group divcenter">
-                                    <input type="text" class="form-control" placeholder="Enter your Email" required="">
-                                    <span class="input-group-btn">
-											<button class="btn btn-success" type="submit"><i class="icon-email2"></i></button>
-										</span>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="widget clearfix">
-
-                            <div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget" data-items="1" data-margin="10" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false">
-
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/1.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/2.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/3.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/4.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/5.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/6.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/7.png" alt="Clients"></a></div>
-                                <div class="oc-item"><a href="#"><img src="/assets/front-end/images/clients/8.png" alt="Clients"></a></div>
-
-                            </div>
-
-                        </div>
-
                     </div>
+
                 </div><!-- .sidebar end -->
 
             </div>
@@ -322,9 +397,10 @@
 
                             <img src="/assets/front-end/images/footer-widget-logo.png" alt="" class="footer-logo">
 
-                            <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
+                            <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp;
+                                <strong>Flexible</strong> Design Standards.</p>
 
-                            <div style="background: url('images/world-map.png') no-repeat center center; background-size: 100%;">
+                            <div style="background: url('/assets/front-end/images/world-map.png') no-repeat center center; background-size: 100%;">
                                 <address>
                                     <strong>Headquarters:</strong><br>
                                     795 Folsom Ave, Suite 600<br>
@@ -364,7 +440,7 @@
                         <div class="widget clearfix">
                             <h4>Recent Posts</h4>
 
-                            <div id="post-list-footer">
+                            <div id="post-list-footer1">
                                 <div class="spost clearfix">
                                     <div class="entry-c">
                                         <div class="entry-title">
@@ -411,12 +487,16 @@
                         <div class="row">
 
                             <div class="col-md-6 bottommargin-sm">
-                                <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
+                                <div class="counter counter-small"><span data-from="50" data-to="15065421"
+                                                                         data-refresh-interval="80" data-speed="3000"
+                                                                         data-comma="true"></span></div>
                                 <h5 class="nobottommargin">Total Downloads</h5>
                             </div>
 
                             <div class="col-md-6 bottommargin-sm">
-                                <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
+                                <div class="counter counter-small"><span data-from="100" data-to="18465"
+                                                                         data-refresh-interval="50" data-speed="2000"
+                                                                         data-comma="true"></span></div>
                                 <h5 class="nobottommargin">Clients</h5>
                             </div>
 
@@ -425,12 +505,15 @@
                     </div>
 
                     <div class="widget subscribe-widget clearfix">
-                        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+                        <h5><strong>Subscribe</strong> to Our Newsletter to get Important News, Amazing Offers &amp;
+                            Inside Scoops:</h5>
                         <div class="widget-subscribe-form-result"></div>
-                        <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
+                        <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post"
+                              class="nobottommargin">
                             <div class="input-group divcenter">
                                 <span class="input-group-addon"><i class="icon-email2"></i></span>
-                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+                                <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email"
+                                       class="form-control required email" placeholder="Enter your Email">
                                 <span class="input-group-btn">
 										<button class="btn btn-success" type="submit">Subscribe</button>
 									</span>
@@ -443,18 +526,23 @@
                         <div class="row">
 
                             <div class="col-md-6 clearfix bottommargin-sm">
-                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
+                                <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin"
+                                   style="margin-right: 10px;">
                                     <i class="icon-facebook"></i>
                                     <i class="icon-facebook"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on
+                                    Facebook</small></a>
                             </div>
                             <div class="col-md-6 clearfix">
-                                <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
+                                <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin"
+                                   style="margin-right: 10px;">
                                     <i class="icon-rss"></i>
                                     <i class="icon-rss"></i>
                                 </a>
-                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
+                                <a href="#"><small
+                                        style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS
+                                    Feeds</small></a>
                             </div>
 
                         </div>
@@ -523,7 +611,9 @@
 
                     <div class="clear"></div>
 
-                    <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i class="icon-skype2"></i> CanvasOnSkype
+                    <i class="icon-envelope2"></i> info@canvas.com <span class="middot">&middot;</span> <i
+                        class="icon-headphones"></i> +91-11-6541-6369 <span class="middot">&middot;</span> <i
+                        class="icon-skype2"></i> CanvasOnSkype
                 </div>
 
             </div>
@@ -538,8 +628,80 @@
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
+<!-- External JavaScripts
+============================================= -->
 <th:block th:replace="front-end/layout/link::scripts">
 </th:block>
+<script type="text/javascript">
+
+    var tpj = jQuery;
+    tpj.noConflict();
+
+    tpj(document).ready(function () {
+
+        var apiRevoSlider = tpj('.tp-banner').show().revolution(
+            {
+                sliderType: "standard",
+                jsFileLocation: "include/rs-plugin/js/",
+                sliderLayout: "fullwidth",
+                dottedOverlay: "none",
+                delay: 9000,
+                navigation: {},
+                responsiveLevels: [1200, 992, 768, 480, 320],
+                gridwidth: 1140,
+                gridheight: 500,
+                lazyType: "none",
+                shadow: 0,
+                spinner: "off",
+                autoHeight: "off",
+                disableProgressBar: "on",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    disableFocusListener: false,
+                },
+                navigation: {
+                    keyboardNavigation: "off",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "ares",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: false,
+                        tmp: '<div class="tp-title-wrap">	<span class="tp-arr-titleholder">{{title}}</span> </div>',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    }
+                }
+            });
+        apiRevoSlider.bind("revolution.slide.onloaded", function (e) {
+            SEMICOLON.slider.sliderParallaxDimensions();
+        });
+    }); //ready
+</script>
 
 </body>
 </html>
