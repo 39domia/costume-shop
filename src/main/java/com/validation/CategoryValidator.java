@@ -14,12 +14,12 @@ public class CategoryValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-//        Category category = (Category) target;
-//        String nameCate = category.getName();
-//        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
-//        if (nameCate.length() > 250 || nameCate.length() < 2) {
-//            errors.rejectValue("name", "name.length");
-//        }
+        Category category = (Category) target;
+        String nameCate = category.getName();
+        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
+        if (nameCate.length() > 250 || nameCate.length() < 2) {
+            errors.rejectValue("name", "name.length");
+        }
     }
 }
 
