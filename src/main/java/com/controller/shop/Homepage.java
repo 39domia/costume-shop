@@ -23,10 +23,9 @@ public class Homepage {
     CategoryServiceImpl categoryService;
 
 
-    @GetMapping("/index")
 
+    @GetMapping("/index")
     public String index(@PageableDefault(size = 12) Pageable pageable, Model model){
-//        Pageable pageable1 =
         model.addAttribute("findTop4ByOrderByIdDesc", productService.findTop4ByOrderByIdDesc());
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         model.addAttribute("findTop4ByOrderByRatingDesc", productService.findTop4ByOrderByRatingDesc());
@@ -34,21 +33,13 @@ public class Homepage {
 //        model.addAttribute("product", productService.findOne(id).get());
         return "front-end/index";
     }
-
-//<<<<<<< HEAD
-//    @GetMapping("/product/quick-view/{id}")
-//    public String viewProduct(@PathVariable Long id, Model model){
-//        model.addAttribute("quickViewProduct", productService.findOne(id).get());
-//        model.addAttribute("findAllCategories", categoryService.findALl());
-//
-//        return "back-end/product/product-view"; //sua duong dan
-//=======
     @GetMapping("/index/quick-view/{id}")
-    public String indexQuickView(@PathVariable Long id, Model model){
+    public String indexQuickView(@PageableDefault(size = 12) Pageable pageable,@PathVariable Long id, Model model){
+        model.addAttribute("findTop4ByOrderByIdDesc", productService.findTop4ByOrderByIdDesc());
+        model.addAttribute("selectAllPage12", productService.selectAll(pageable));
+        model.addAttribute("findTop4ByOrderByRatingDesc", productService.findTop4ByOrderByRatingDesc());
+        model.addAttribute("findAllCategories", categoryService.findALl());
         model.addAttribute("quickViewProduct", productService.findOne(id).get());
-        return "front-end/shop-single-left-sidebar"; //sua duong dan
-
+        return "front-end/shop-single-left-sidebar";
     }
-
-
 }
