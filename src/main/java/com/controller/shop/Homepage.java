@@ -67,12 +67,13 @@ public class Homepage {
 
     @GetMapping("/show-product")
     public String showProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
-
         return "front-end/layout/nav-bar";
     }
+
     @GetMapping("/shop/category/{id}")
-    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
-        
+    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model,@PathVariable Long id){
+        model.addAttribute("showCategoryProduct",productRepository.findAllByCategoryId(id));
+        return "front-end/shop-category";
     }
 
 }
