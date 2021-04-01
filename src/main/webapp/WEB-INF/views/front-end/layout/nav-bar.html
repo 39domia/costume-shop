@@ -24,7 +24,7 @@
                 ============================================= -->
                 <nav id="primary-menu">
                     <ul>
-                        <li class="current"><a th:href="@{/home}">
+                        <li class="current"><a th:href="@{/index}">
                             <div>Home</div>
                             <span>Lets Start</span></a>
                         </li>
@@ -32,21 +32,34 @@
                         ============================================= -->
                         <li><a th:href="@{/shop}">
                             <div>Women</div>
-                            <span>Awesome Works</span></a></li>
+                            <span>Awesome Works</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
+                                        <ul>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li>
                             <a href="#">
                                 <div>Men</div>
                                 <span>Out of the Box</span></a>
-                            <div class="mega-menu-content style-2 clearfix">
-                                <ul class="mega-menu-column col-md-6">
-                                    <li class="mega-menu-title"><a href="#">
-                                        <div>Footwear</div>
-                                    </a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
                                         <ul>
-                                            <li><a href="#">
-                                                <div>Casual Shoes</div>
-                                            </a></li>
-
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
                                         </ul>
                                     </li>
                                 </ul>
@@ -55,8 +68,8 @@
                         <li><a href="#">
                             <div>Category</div>
                             <span>Out of the Box</span></a>
-                            <div class="mega-menu-content style-1 clearfix">
-                                <ul class="mega-menu-column col-md-6">
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
                                     <li class="mega-menu-title">
                                         <ul>
                                             <th:block th:each="cate : ${findAllCategories}">

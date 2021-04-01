@@ -2,6 +2,7 @@ package com.controller;
 
 
 import com.model.Order;
+import com.service.OrderDetailServiceImpl;
 import com.service.OrderServiceImpl;
 import com.service.ProvinceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,20 +22,24 @@ import javax.validation.Valid;
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl service;
+    private OrderServiceImpl orderService;
 
     @Autowired
     private ProvinceServiceImpl provinceService;
 
+
+    @Autowired
+    private OrderDetailServiceImpl orderDetailService;
+
     @GetMapping("/order")
     public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
-        model.addAttribute("orders", service.selectAll(pageable));
+        model.addAttribute("orders", orderService.selectAll(pageable));
         return "back-end/order/order-list";
     }
 
     @GetMapping("/order/view/{id}")
     public String viewCategory(@PathVariable Long id, Model model) {
-        model.addAttribute("viewOrder", service.findOne(id).get());
+        model.addAttribute("viewOrder", orderService.findOne(id).get());
         return "back-end/order/order-view";
     }
 
@@ -51,14 +56,14 @@ public class OrderController {
         if (bindingResult.hasFieldErrors()) {
             return "back-end/order/order-add";
         } else {
-            service.add(order);
+            orderService.add(order);
             return "redirect:/order";
         }
     }
 
     @GetMapping("/order/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("order", service.findOne(id).get());
+        model.addAttribute("order", orderService.findOne(id).get());
         model.addAttribute("provinces", provinceService.findALl());
         return "back-end/order/order-edit";
     }
@@ -69,14 +74,14 @@ public class OrderController {
         if (bindingResult.hasFieldErrors()) {
             return "back-end/order/order-edit";
         } else {
-            service.update(order);
+            orderService.update(order);
             return "redirect:/order";
         }
     }
 
     @GetMapping("/order/delete/{id}")
     public String delete(@PathVariable Long id) {
-        service.delete(id);
+        orderService.delete(id);
         return "redirect:/order";
     }
 
