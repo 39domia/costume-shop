@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl service;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/user")
     public String showAll(Model model, @PageableDefault(size = 5) Pageable pageable) {
@@ -43,6 +47,7 @@ public class UserController {
         if (bindingResult.hasFieldErrors()) {
             return "back-end/user/user-add";
         } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             service.add(user);
             return "redirect:/user";
         }
