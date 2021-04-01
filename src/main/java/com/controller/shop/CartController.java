@@ -22,7 +22,7 @@ public class CartController {
     @Autowired
     ProductServiceImpl productService;
 
-    @PostMapping("/cart/add/{id}")
+    @GetMapping("/cart/add/{id}")
     public String add(@PathVariable(value = "id") Long id,
                       @RequestParam Integer quantity,
                       HttpServletRequest request,

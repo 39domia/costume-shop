@@ -22,7 +22,11 @@ public class Province implements Serializable {
     @OneToMany(mappedBy = "province", fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
-
-
-
+    @Override
+    public String toString() {
+        return "Province{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

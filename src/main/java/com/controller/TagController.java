@@ -42,7 +42,7 @@ public class TagController {
 
     @PostMapping("/tag/create")
     public String addTag(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model) {
-        new Tag().validate(tag, bindingResult);
+//        new Tag().validate(tag, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/tag/tag-add";
         } else {
@@ -59,7 +59,7 @@ public class TagController {
 
     @PostMapping("/tag/update")
     public String update(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model) {
-        new Tag().validate(tag, bindingResult);
+//        new Tag().validate(tag, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/tag/tag-edit";
         } else {

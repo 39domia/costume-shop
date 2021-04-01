@@ -122,17 +122,18 @@
 
                                     <!-- Product Single - Quantity & Cart Button
                                     ============================================= -->
-                                    <form class="cart nobottommargin clearfix" th:action="@{cart/add/{id}(id = ${quickViewProduct.id})}" method="get">
-<!--                                        <input type="hidden" th:field="${quickViewProduct.id}">-->
+                                    <form class="cart nobottommargin clearfix" th:action="@{/cart/add/{id}(id = ${quickViewProduct.id})}" method="get">
+<!--                                        <input id="idProduct" type="hidden" th:value="${quickViewProduct.id}">-->
                                         <div class="quantity clearfix">
                                             <input id="quantity-left-minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" type="button" value="-" class="minus">
-                                            <input id="quantity" type="number" step="1" min="1" name="quantity" value="1" title="Qty"
+                                            <input id="num-product" type="number" step="1" min="1" th:name="quantity" value="1" title="Qty"
                                                    class="qty" size="4"/>
                                             <input id="quantity-right-plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" type="button" value="+" class="plus">
                                         </div>
 <!--                                        cong tru-->
-                                        <button type="submit" class="add-to-cart button nomargin">Add to cart</button>
-                                    </form><!-- Product Single - Quantity & Cart Button End -->
+                                        <button id="add-cart" type="submit" class="add-to-cart button nomargin">Add to cart</button>
+                                    </form>
+                                    <!-- Product Single - Quantity & Cart Button End -->
 
                                     <div class="clear"></div>
                                     <div class="line"></div>
@@ -958,8 +959,8 @@
         });
     }); //ready
 
-    $('.add-cart').on('click', function () {
-        let quantity = $('.num-product').val();
+    $('#add-cart').on('click', function () {
+        let quantity = $('#num-product').val();
         let id = $('#idProduct').val();
         window.location = "/shop-me/addOrder/" + id + "/" + quantity;
     });
