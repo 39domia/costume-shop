@@ -60,13 +60,14 @@ public class Order implements Serializable {
     private String phone;
     private String note;//
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "province_id", referencedColumnName = "id")      //category - product (n - 1) ok
     private Province province;
 
+    private double totalPrice;
 
 //    validation
 

@@ -5,6 +5,7 @@ import com.model.Product;
 import com.repository.ProductRepository;
 import com.service.CategoryServiceImpl;
 
+import com.service.OrderServiceImpl;
 import com.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,8 @@ public class Homepage {
 
     @Autowired
     CategoryServiceImpl categoryService;
+    @Autowired
+    OrderServiceImpl orderService;
 
     @ModelAttribute("findTop4ByOrderByIdDesc")
     public List<Product> findTop4ByOrderByIdDesc() {
@@ -54,12 +57,31 @@ public class Homepage {
 
     @GetMapping("/index/quick-view/{id}")
     public String indexQuickView(@PageableDefault(size = 12) Pageable pageable,@PathVariable Long id, Model model){
-//        model.addAttribute("findTop4ByOrderByIdDesc", productService.findTop4ByOrderByIdDesc());
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
-//        model.addAttribute("findTop4ByOrderByRatingDesc", productService.findTop4ByOrderByRatingDesc());
-//        model.addAttribute("findAllCategories", categoryService.findALl());
         model.addAttribute("quickViewProduct", productService.findOne(id).get());
         return "front-end/shop-single-left-sidebar";
 
+    }
+    @GetMapping("/shop")
+    public String shopView(@PageableDefault(size = 12) Pageable pageable, Model model){
+        model.addAttribute("selectAllPage12", productService.selectAll(pageable));
+        return "front-end/shop-3-left-sidebar";
+    }
+
+    @GetMapping("/show-product")
+    public String showProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
+        return "front-end/layout/nav-bar";
+    }
+
+    @GetMapping("/shop/category/{id}")
+    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model,@PathVariable Long id){
+        model.addAttribute("showCategoryProduct",productRepository.findAllByCategoryId(id,pageable));
+        return "front-end/shop-category";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(Pageable pageable, Model model,@PathVariable Long id){
+        model.addAttribute("viewOrder", orderService.findOne(id).get());
+        return "front-end/checkout";
     }
 }

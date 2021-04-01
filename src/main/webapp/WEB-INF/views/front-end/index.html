@@ -305,7 +305,7 @@
                                 <th:block th:each="product :${findTop4ByOrderByIdDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
-                                            <a href="#">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                                 <div th:style="'background-image:url(' + ${product.image} + '); height: 270px;background-position: center;background-size: contain;'"
                                                              alt="Slim Fit Chinos">
                                                 </div>
@@ -366,10 +366,10 @@
 
                         <div class="tab-content clearfix" id="tabs-10">
                             <div id="shop" class="shop clearfix">
-                                <th:block th:each="product :${findTop4ByOrderByIdDesc}">
+                                <th:block th:each="product :${findTop4ByOrderByRatingDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
-                                            <a href="#">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                                 <div th:style="'background-image:url(' + ${product.image} + '); height: 270px;background-position: center;background-size: contain;'"
                                                      alt="Slim Fit Chinos">
                                                 </div>
@@ -433,7 +433,7 @@
                                 <th:block th:each="product :${findTop4ByOrderByIdDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
-                                            <a href="#">
+                                            <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"4>
                                                 <div th:style="'background-image:url(' + ${product.image} + '); height: 270px;background-position: center;background-size: contain;'"
                                                      alt="Slim Fit Chinos">
                                                 </div>

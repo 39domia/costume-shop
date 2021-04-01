@@ -59,8 +59,8 @@
                                                     <div class="slide" th:data-thumb="${quickViewProduct.image}"><a
                                                             th:href="${quickViewProduct.image}"
                                                             title="Pink Printed Dress - Front View"
-                                                            data-lightbox="gallery-item"><img
-                                                            th:src="${quickViewProduct.image}" alt="Pink Printed Dress"></a>
+                                                            data-lightbox="gallery-item">
+                                                        <img th:src="${quickViewProduct.image}" alt="Pink Printed Dress"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,14 +122,15 @@
 
                                     <!-- Product Single - Quantity & Cart Button
                                     ============================================= -->
-                                    <form class="cart nobottommargin clearfix" method="post"
-                                          enctype='multipart/form-data'>
+                                    <form class="cart nobottommargin clearfix" th:action="@{cart/add/{id}(id = ${quickViewProduct.id})}" method="get">
+<!--                                        <input type="hidden" th:field="${quickViewProduct.id}">-->
                                         <div class="quantity clearfix">
-                                            <input type="button" value="-" class="minus">
-                                            <input type="text" step="1" min="1" name="quantity" value="1" title="Qty"
+                                            <input id="quantity-left-minus" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" type="button" value="-" class="minus">
+                                            <input id="quantity" type="number" step="1" min="1" name="quantity" value="1" title="Qty"
                                                    class="qty" size="4"/>
-                                            <input type="button" value="+" class="plus">
+                                            <input id="quantity-right-plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" type="button" value="+" class="plus">
                                         </div>
+<!--                                        cong tru-->
                                         <button type="submit" class="add-to-cart button nomargin">Add to cart</button>
                                     </form><!-- Product Single - Quantity & Cart Button End -->
 
@@ -400,7 +401,7 @@
 
                                 <h4>Shop Categories</h4>
                                 <ul th:each="category :${findAllCategories}">
-                                    <li><a href="#" th:text="${category.name}"></a></li>
+                                    <li><a th:href="@{/shop/category/{id}(id = ${category.id})}" th:text="${category.name}"></a></li>
                                 </ul>
 
                             </div>
@@ -413,7 +414,7 @@
                                         <div class="spost clearfix">
                                             <div class="entry-image">
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
-                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: contain;'"
+                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
                                                          alt="Slim Fit Chinos">
 
                                                     </div>
@@ -433,31 +434,31 @@
 
                                                         <th:block th:if="${product.rating == 1}">
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 2}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 3}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 4}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 5}">
                                                             <i class="icon-star3"></i>
@@ -484,7 +485,7 @@
                                         <div class="spost clearfix">
                                             <div class="entry-image">
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
-                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: contain;'"
+                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
                                                          alt="Slim Fit Chinos">
 
                                                     </div>
@@ -504,31 +505,31 @@
 
                                                         <th:block th:if="${product.rating == 1}">
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 2}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 3}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 4}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 5}">
                                                             <i class="icon-star3"></i>
@@ -556,7 +557,7 @@
                                         <div class="spost clearfix">
                                             <div class="entry-image">
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
-                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: contain;'"
+                                                    <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
                                                          alt="Slim Fit Chinos">
 
                                                     </div>
@@ -576,31 +577,31 @@
 
                                                         <th:block th:if="${product.rating == 1}">
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 2}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 3}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 4}">
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
                                                             <i class="icon-star3"></i>
-                                                            <i class="icon-star-half-full"></i>
+                                                            <i class="icon-star-empty"></i>
                                                         </th:block>
                                                         <th:block th:if="${product.rating == 5}">
                                                             <i class="icon-star3"></i>
@@ -627,8 +628,6 @@
                         </div>
 
                     </div>
-
-
                 </div>
 
 
@@ -958,6 +957,46 @@
             SEMICOLON.slider.sliderParallaxDimensions();
         });
     }); //ready
+
+    $('.add-cart').on('click', function () {
+        let quantity = $('.num-product').val();
+        let id = $('#idProduct').val();
+        window.location = "/shop-me/addOrder/" + id + "/" + quantity;
+    });
+
+    // $(document).ready(function(){
+    //     var quantitiy=1;
+    //     $('.quantity-right-plus').click(function(e){
+    //
+    //         // Stop acting like a button
+    //         e.preventDefault();
+    //         // Get the field name
+    //         var quantity = parseInt($('#quantity').val());
+    //
+    //         // If is not undefined
+    //
+    //         $('#quantity').val(quantity + 1);
+    //
+    //
+    //         // Increment
+    //
+    //     });
+    //
+    //     $('.quantity-left-minus').click(function(e){
+    //         // Stop acting like a button
+    //         e.preventDefault();
+    //         // Get the field name
+    //         var quantity = parseInt($('#quantity').val());
+    //
+    //         // If is not undefined
+    //
+    //         // Increment
+    //         if(quantity>0){
+    //             $('#quantity').val(quantity - 1);
+    //         }
+    //     });
+    //
+    // });
 </script>
 
 </body>

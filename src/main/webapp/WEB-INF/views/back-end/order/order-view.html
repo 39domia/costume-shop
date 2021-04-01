@@ -168,14 +168,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="tr-shadow" th:each="orderdt : ${orderDetails}">
-                                    <th:block th:if="${orderdt.order.id == viewOrder.id }">
-                                        <td th:text="${orderdt.id}"></td>
-                                        <td th:text="${orderdt.product.nameProduct}"></td>
-                                        <td th:text="${orderdt.product.price}"></td>
-                                        <td th:text="${orderdt.quantity}"></td>
-                                        <td th:text="${orderdt.product.price * orderdt.quantity}"></td>
-                                    </th:block>
+                                <tr class="tr-shadow" th:each="orderdt : ${viewOrder.getOrderDetails()}">
+                                    <td th:text="${orderdt.id}"></td>
+                                    <td th:text="${orderdt.product.nameProduct}"></td>
+                                    <td th:text="${orderdt.product.price}"></td>
+                                    <td th:text="${orderdt.quantity}"></td>
+                                    <td th:text="${orderdt.product.price * orderdt.quantity}"></td>
                                 </tr>
                                 </tbody>
                             </table>

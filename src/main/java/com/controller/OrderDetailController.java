@@ -26,11 +26,11 @@ public class OrderDetailController {
         return "back-end/order/order-view";
     }
 
-    @GetMapping("/order-detail/view/{id}")
-    public String view(@PathVariable Long id, Model model) {
-        model.addAttribute("orderDetail", service.findOne(id).get());
-        return "back-end/order-detail/order-detail-view";
-    }
+//    @GetMapping("/order-detail/view/{id}")
+//    public String view(@PathVariable Long id, Model model) {
+//        model.addAttribute("orderDetail", service.findOne(id).get());
+//        return "back-end/order-detail/order-detail-view";
+//    }
 
     @GetMapping("/order-detail/create")
     public String showAddForm(Model model) {

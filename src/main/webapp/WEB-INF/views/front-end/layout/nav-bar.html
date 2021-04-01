@@ -24,141 +24,42 @@
                 ============================================= -->
                 <nav id="primary-menu">
                     <ul>
-                        <li class="current"><a href="#">
+                        <li class="current"><a th:href="@{/index}">
                             <div>Home</div>
                             <span>Lets Start</span></a>
                         </li>
                         <!-- Mega Menu
                         ============================================= -->
                         <li><a th:href="@{/shop}">
-                            <div>New</div>
-                            <span>Awesome Works</span></a></li>
-                        <li>
-                            <a href="#">
-                                <div>Men</div>
-                                <span>Out of the Box</span></a>
-                            <div class="mega-menu-content style-2 clearfix">
-                                <ul class="mega-menu-column col-md-6">
-                                    <li class="mega-menu-title"><a href="#">
-                                        <div>Footwear</div>
-                                    </a>
+                            <div>Women</div>
+                            <span>Awesome Works</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
                                         <ul>
-                                            <li><a href="#">
-                                                <div>Casual Shoes</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Formal Shoes</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sports shoes</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Flip Flops</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Slippers</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sports Sandals</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Party Shoes</div>
-                                            </a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <ul class="mega-menu-column col-md-6">
-                                    <li class="mega-menu-title"><a href="#">
-                                        <div>Clothing</div>
-                                    </a>
-                                        <ul>
-                                            <li><a href="#">
-                                                <div>Casual Shirts</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>T-Shirts</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Collared Tees</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Pants / Trousers</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Ethnic Wear</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Jeans</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sweamwear</div>
-                                            </a></li>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
-                        </li><!-- .mega-menu end -->
+                        </li>
                         <li>
                             <a href="#">
-                                <div>Women</div>
+                                <div>Men</div>
                                 <span>Out of the Box</span></a>
-                            <div class="mega-menu-content style-2 clearfix">
-                                <ul class="mega-menu-column col-md-6">
-                                    <li class="mega-menu-title"><a href="#">
-                                        <div>Footwear</div>
-                                    </a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
                                         <ul>
-                                            <li><a href="#">
-                                                <div>Casual Shoes</div>
-                                            </a>
-                                            </li>
-                                            <li><a href="#">
-                                                <div>Formal Shoes</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sports shoes</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Flip Flops</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Slippers</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sports Sandals</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Party Shoes</div>
-                                            </a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <ul class="mega-menu-column col-md-6">
-                                    <li class="mega-menu-title"><a href="#">
-                                        <div>Clothing</div>
-                                    </a>
-                                        <ul>
-                                            <li><a href="#">
-                                                <div>Casual Shirts</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>T-Shirts</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Collared Tees</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Pants / Trousers</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Ethnic Wear</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Jeans</div>
-                                            </a></li>
-                                            <li><a href="#">
-                                                <div>Sweamwear</div>
-                                            </a></li>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
                                         </ul>
                                     </li>
                                 </ul>
@@ -166,10 +67,21 @@
                         </li><!-- .mega-menu end -->
                         <li><a href="#">
                             <div>Category</div>
-                            <span>Get In Touch</span></a></li>
-                        <li><a href="#">
-                            <div>Contact</div>
-                            <span>Get In Touch</span></a></li>
+                            <span>Out of the Box</span></a>
+                            <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
+                                <ul class="mega-menu-column col-md-12">
+                                    <li class="mega-menu-title">
+                                        <ul>
+                                            <th:block th:each="cate : ${findAllCategories}">
+                                                <li><a th:href="@{/shop/category/{id}(id = ${cate.id})}">
+                                                    <div th:text="${cate.name}"></div>
+                                                </a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li><!-- .mega-menu end -->
                     </ul>
                     <!-- Top Cart
                     ============================================= -->
