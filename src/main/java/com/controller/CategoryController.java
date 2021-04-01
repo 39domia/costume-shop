@@ -70,13 +70,13 @@ public class CategoryController {
         Category categoryTemp = categoryRepository.findByName(category.getName());
         if (categoryTemp != null) {
             if (category.getName().equals(categoryTemp.getName()) && categoryTemp.getId() != category.getId()) {
-                attributes.addFlashAttribute("mess", "Tên ĐÃ TỒN TẠI");
+                attributes.addFlashAttribute("mess", "Tên đã tồn tại");
                 return "redirect:/category";
             }
         }
-            categoryService.update(category);
+        categoryService.update(category);
         attributes.addFlashAttribute("mess", "Thay đổi thành công");
-            return "redirect:/category";
+        return "redirect:/category";
     }
 
     @GetMapping("/category/delete/{id}")

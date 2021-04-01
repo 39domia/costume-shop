@@ -15,8 +15,10 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="/assets/front-end/images/logo.png" alt="Canvas Logo"></a>
-                    <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="/assets/front-end/images/logo@2x.png" alt="Canvas Logo"></a>
+                    <a th:href="@{/index}" class="standard-logo" data-dark-logo="images/logo-dark.png"><img
+                            src="/assets/front-end/images/logo.png" alt="Canvas Logo"></a>
+                    <a th:href="@{/index}" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img
+                            src="/assets/front-end/images/logo@2x.png" alt="Canvas Logo"></a>
                 </div><!-- #logo end -->
                 <!-- Primary Navigation
                 ============================================= -->
@@ -28,11 +30,15 @@
                         </li>
                         <!-- Mega Menu
                         ============================================= -->
-                        <li class="mega-menu"><a href="#">
-                            <div>Men</div>
-                            <span>Out of the Box</span></a>
+                        <li><a th:href="@{/shop}">
+                            <div>New</div>
+                            <span>Awesome Works</span></a></li>
+                        <li>
+                            <a href="#">
+                                <div>Men</div>
+                                <span>Out of the Box</span></a>
                             <div class="mega-menu-content style-2 clearfix">
-                                <ul class="mega-menu-column col-md-3">
+                                <ul class="mega-menu-column col-md-6">
                                     <li class="mega-menu-title"><a href="#">
                                         <div>Footwear</div>
                                     </a>
@@ -61,7 +67,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                                <ul class="mega-menu-column col-md-3">
+                                <ul class="mega-menu-column col-md-6">
                                     <li class="mega-menu-title"><a href="#">
                                         <div>Clothing</div>
                                     </a>
@@ -113,12 +119,8 @@
                         </li><!-- .mega-menu end -->
 
                         <li><a href="#">
-                            <div>New</div>
-                            <span>Awesome Works</span></a></li>
-                        <li><a href="#">
                             <div>Contact</div>
                             <span>Get In Touch</span></a></li>
-
                     </ul>
                     <!-- Top Cart
                     ============================================= -->
@@ -130,22 +132,18 @@
                             </div>
                         </div>
                     </div><!-- #top-cart end -->
-
                     <!-- Top Search
                     ============================================= -->
                     <div id="top-search">
                         <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                         <form action="search.html" method="get">
-                            <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                            <input type="text" name="q" class="form-control" value=""
+                                   placeholder="Type &amp; Hit Enter..">
                         </form>
                     </div><!-- #top-search end -->
-
                 </nav><!-- #primary-menu end -->
-
             </div>
-
         </div>
-
     </header><!-- #header end -->
 </th:block>
 </body>

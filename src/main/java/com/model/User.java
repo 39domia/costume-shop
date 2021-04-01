@@ -32,8 +32,11 @@ public class User implements Serializable {
     @Column(nullable = false)
     private boolean role;
 
+    @Column(length = 5000)
     private String image;
+    @Column(length = 5000)
     private String description;
+    @Column(length = 5000)
     private String about;
 
 

@@ -48,7 +48,7 @@ public class Order implements Serializable {
     private String companyName;//
 
     @NotBlank(message = "Trường này không được để trống")
-    @Column(nullable = false)
+    @Column(nullable = false, length = 5000)
     private String address1;
     private String address2;//
 
