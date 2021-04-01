@@ -59,4 +59,15 @@ public class Homepage {
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         return "front-end/shop-3-left-sidebar";
     }
+
+    @GetMapping("/show-product")
+    public String showProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
+
+        return "front-end/layout/nav-bar";
+    }
+    @GetMapping("/shop/category/{id}")
+    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
+        
+    }
+
 }

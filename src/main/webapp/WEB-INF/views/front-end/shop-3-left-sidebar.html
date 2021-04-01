@@ -16,7 +16,7 @@
 
     <!-- Header
     ============================================= -->
-    <th:block th:replace="front-end/layout/link::scripts">
+    <th:block th:replace="front-end/layout/nav-bar :: nav-bar">
     </th:block><!-- #header end -->
 
     <!-- Page Title
@@ -53,81 +53,86 @@
                             <div class="product clearfix">
                                 <div class="product-image">
                                     <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}">
-                                        <div th:style="'background-image:url(' + ${product12PageAll.image} + '); height: 270px;background-position: center;background-size: contain;'"
-                                                      alt="Slim Fit Chinos">
-                                    </div></a>
+                                        <div th:style="'background-image:url(' + ${product12PageAll.image} + '); height: 270px;background-position: center;background-size: cover;'"
+                                             alt="Slim Fit Chinos">
+                                        </div>
+                                    </a>
 
                                     <div class="product-overlay">
                                         <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-                                        <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"
-                                        data-lightbox="ajax"><i
+                                        <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"><i
                                                 class="icon-zoom-in2"></i><span> Quick View</span></a>
                                     </div>
                                 </div>
                                 <div class="product-desc center">
-                                    <div class="product-title"><h3><a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"
-                                   th:text="${product12PageAll.nameProduct}"></a></h3></div>
+                                    <div class="product-title"><h3><a
+                                            th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"
+                                            th:text="${product12PageAll.nameProduct}"></a></h3></div>
                                     <div class="product-price" th:text="${product12PageAll.price}">$</div>
                                     <div class="product-rating">
-                                            <th:block th:if="${product12PageAll.rating == 1}">
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                            </th:block>
-                                            <th:block th:if="${product12PageAll.rating == 2}">
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                            </th:block>
-                                            <th:block th:if="${product12PageAll.rating == 3}">
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star-empty"></i>
-                                                <i class="icon-star-empty"></i>
-                                            </th:block>
-                                            <th:block th:if="${product12PageAll.rating == 4}">
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star-empty"></i>
-                                            </th:block>
-                                            <th:block th:if="${product12PageAll.rating == 5}">
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                                <i class="icon-star3"></i>
-                                            </th:block>
+                                        <th:block th:if="${product12PageAll.rating == 1}">
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                        </th:block>
+                                        <th:block th:if="${product12PageAll.rating == 2}">
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                        </th:block>
+                                        <th:block th:if="${product12PageAll.rating == 3}">
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star-empty"></i>
+                                            <i class="icon-star-empty"></i>
+                                        </th:block>
+                                        <th:block th:if="${product12PageAll.rating == 4}">
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star-empty"></i>
+                                        </th:block>
+                                        <th:block th:if="${product12PageAll.rating == 5}">
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                            <i class="icon-star3"></i>
+                                        </th:block>
                                     </div>
                                 </div>
                             </div>
                         </th:block>
+
                         <nav aria-label="Search results pages">
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a class="page-link" th:href="@{'/product'(page=${product12PageAll.number - 1})}"
-                                       th:if="${product12PageAll.hasPrevious()}">Previous</a>
+                                    <a class="page-link" th:href="@{'/shop'(page=${selectAllPage12.number - 1})}"
+                                       th:if="${selectAllPage12.hasPrevious()}">Previous</a>
                                 </li>
 
-                                <li class="page-item " th:each="pIndex : ${#numbers.sequence(0,product12PageAll.totalPages -1)}">
-                                    <th:block th:if="${product12PageAll.number == pIndex}">
-                                        <a style="background-color: #0c5460"  class="page-link" th:href="@{'/product'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                <li class="page-item "
+                                    th:each="pIndex : ${#numbers.sequence(0,selectAllPage12.totalPages -1)}">
+                                    <th:block th:if="${selectAllPage12.number == pIndex}">
+                                        <a style="background-color: #0c5460" class="page-link"
+                                           th:href="@{'/shop'(page=${pIndex})}" th:text="${pIndex +1}"></a>
                                     </th:block>
-                                    <th:block th:if="${product12PageAll.number != pIndex}">
-                                        <a class="page-link" th:href="@{'/product'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                    <th:block th:if="${selectAllPage12.number != pIndex}">
+                                        <a class="page-link" th:href="@{'/shop'(page=${pIndex})}"
+                                           th:text="${pIndex +1}"></a>
                                     </th:block>
                                 </li>
 
                                 <li class="page-item">
                                     <a class="page-link"
-                                       th:href="@{'/product'(page=${product12PageAll.number + 1})}"
-                                       th:if="${product12PageAll.hasNext()}"
+                                       th:href="@{'/shop'(page=${selectAllPage12.number + 1})}"
+                                       th:if="${selectAllPage12.hasNext()}"
                                     >Next</a>
                                 </li>
                             </ul>
