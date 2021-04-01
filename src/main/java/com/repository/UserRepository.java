@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findByFullNameContaining(String fullName, Pageable pageable);
 
+    User findByEmail(String email);
+
 }

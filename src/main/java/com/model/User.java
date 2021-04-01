@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String fullName;
 
     @Column(nullable = false)
-    private boolean role;
+    private String role;
 
     @Column(length = 5000)
     private String image;
