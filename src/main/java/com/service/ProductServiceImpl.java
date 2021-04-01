@@ -1,6 +1,5 @@
 package com.service;
 
-import com.model.Category;
 import com.model.Product;
 import com.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +18,11 @@ public class ProductServiceImpl implements IBaseService<Product> {
     @Override
     public Page<Product> selectAll(Pageable pageable) {
         return repository.findAll(pageable);
-
     }
 
     @Override
     public List<Product> findALl() {
         return repository.findAll();
-
     }
 
     @Override

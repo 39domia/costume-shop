@@ -70,19 +70,6 @@ public class Order implements Serializable {
 
 //    validation
 
-    public boolean supports(Class<?> clazz) {
-        return Order.class.isAssignableFrom(clazz);
-    }
-
-
-    public void validate(Object target, Errors errors) {
-        Order tag = (Order) target;
-        String nameTag = tag.getAddress1();
-        ValidationUtils.rejectIfEmpty(errors, "address1", "name.empty");
-        if (nameTag.length() > 250 || nameTag.length() < 2) {
-            errors.rejectValue("name", "name.length");
-        }
-    }
 
     @Override
     public String toString() {
