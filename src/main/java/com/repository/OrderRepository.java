@@ -1,6 +1,5 @@
 package com.repository;
 
-import com.model.Category;
 import com.model.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
