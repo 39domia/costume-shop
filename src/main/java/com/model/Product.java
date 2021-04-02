@@ -3,6 +3,7 @@ package com.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 
 import javax.persistence.*;
@@ -47,7 +48,8 @@ public class Product implements Serializable {
     private String length;
     private String fabric; //chất liệu vải
     private String warranty;
-    private Boolean isDelete;
+    @Where(clause = "delete = false")
+    private boolean isDelete =false;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderDetail> orderDetail;

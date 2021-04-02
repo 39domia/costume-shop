@@ -1,5 +1,6 @@
 package com.service;
 
+import com.model.Category;
 import com.model.Product;
 import com.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,41 @@ public class ProductServiceImpl implements ProductService {
 
     public List<Product> findTop5ByOrderByIdDesc() {
         return repository.findTop5ByOrderByIdDesc();
+    }
+
+    @Override
+    public Page<Product> findByNameProductAndIsDeleteContaining(String nameProduct, Pageable pageable) {
+        return repository.findByNameProductAndIsDeleteContaining(nameProduct, pageable);
+    }
+
+    @Override
+    public List<Product> findTop4ByIsDeleteIsFalseOrderByIdDesc() {
+        return repository.findTop4ByIsDeleteIsFalseOrderByIdDesc();
+    }
+
+    @Override
+    public List<Product> findTop3ByIsDeleteIsFalseOrderByIdDesc() {
+        return repository.findTop3ByIsDeleteIsFalseOrderByIdDesc();
+    }
+
+    @Override
+    public List<Product> findTop5ByIsDeleteIsFalseOrderByIdDesc() {
+        return repository.findTop5ByIsDeleteIsFalseOrderByIdDesc();
+    }
+
+    @Override
+    public List<Product> findTop4ByIsDeleteIsFalseOrderByRatingDesc() {
+        return repository.findTop4ByIsDeleteIsFalseOrderByRatingDesc();
+    }
+
+    @Override
+    public List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category) {
+        return repository.findAllByCategoryAndIsDeleteIsFalse(category);
+    }
+
+    @Override
+    public Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable) {
+        return repository.findAllByCategoryAndIdIsDeleteIsFalse(category_id, pageable);
     }
 
 

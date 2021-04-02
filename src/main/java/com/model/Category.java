@@ -4,6 +4,7 @@ import com.validation.CategoryValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 import org.springframework.validation.Validator;
 
 import javax.persistence.*;
@@ -30,7 +31,8 @@ public class Category extends CategoryValidator implements Serializable, Validat
     @NotBlank(message = "Trường này không được để trống")
     private String description;
     private String image;
-    private Boolean isDelete;
+    @Where(clause = "delete = false")
+    private boolean isDelete =false;
     
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //product - category (1 - n)

@@ -1,6 +1,7 @@
 package com.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Where;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -59,7 +60,9 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String phone;
     private String note;//
-    private Boolean isDelete;
+
+    @Where(clause = "delete = false")
+    private boolean isDelete = false;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<OrderDetail> orderDetails = new ArrayList<>();

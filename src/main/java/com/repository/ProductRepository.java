@@ -25,6 +25,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findAllByCategoryId(Long category_id, Pageable pageable);
 
+    Page<Product> findByNameProductAndIsDeleteContaining(String nameProduct, Pageable pageable); // note check
 
+    List<Product> findTop4ByIsDeleteIsFalseOrderByIdDesc();
 
+    List<Product> findTop3ByIsDeleteIsFalseOrderByIdDesc();
+
+    List<Product> findTop5ByIsDeleteIsFalseOrderByIdDesc();
+
+    List<Product> findTop4ByIsDeleteIsFalseOrderByRatingDesc();
+
+    List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category);
+
+    Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable);
 }
