@@ -20,8 +20,5 @@ public interface IBaseService<T> {
 
     void update(T t);
 
-    void delete(Long id);
-
-
 
 }

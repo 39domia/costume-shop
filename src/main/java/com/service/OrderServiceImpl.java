@@ -1,8 +1,6 @@
 package com.service;
 
-import com.model.Category;
 import com.model.Order;
-import com.model.OrderDetail;
 import com.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,12 +42,18 @@ public class OrderServiceImpl implements OrderService {
         repository.save(order);
     }
 
-    @Override
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public void deleteTrue(Long id) {
+        //repository.deleteById(id);
+        Order found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        repository.delete(found);
+    }
+
+    public void softDelete(Long id) {
+        Order found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        found.setDelete(true);
     }
 
     public Page<Order> findByEmailContaining(String email, Pageable pageable) {
-        return repository.findByEmailContaining(email, pageable);
+        return repository.findByEmailAndDeleteIsFalseContaining(email, pageable);
     }
 }

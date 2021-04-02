@@ -45,11 +45,16 @@ public class ProductServiceImpl implements ProductService {
         repository.save(product);
     }
 
-    @Override
-    public void delete(Long id) {
+
+    public void deleteTrue(Long id) {
         //repository.deleteById(id);
         Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         repository.delete(found);
+    }
+
+    public void softDelete(Long id) {
+        Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        found.setDelete(true);
     }
 
     public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {

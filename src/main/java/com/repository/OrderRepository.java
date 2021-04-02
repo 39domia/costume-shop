@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    Page<Order> findByEmailContaining(String email, Pageable pageable);
+    Page<Order> findByEmailAndDeleteIsFalseContaining(String email, Pageable pageable);
+
+
 
 }

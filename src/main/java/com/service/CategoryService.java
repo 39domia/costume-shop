@@ -6,4 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface CategoryService extends IBaseService<Category> {
     Page<Category> findByNameContaining(String name, Pageable pageable);
+
+     void delete(Long id);
 }

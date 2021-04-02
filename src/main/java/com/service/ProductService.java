@@ -32,4 +32,8 @@ public interface ProductService extends IBaseService<Product>{
 
     Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable);
 
+    void deleteTrue(Long id);
+
+    void softDelete(Long id);
+
 }

@@ -81,7 +81,7 @@ public class ProductController {
 
     @GetMapping("delete/{id}")
     public String delete(@PathVariable Long id) {
-        productService.delete(id);
+        productService.softDelete(id);
         return "redirect:/product";
     }
 
