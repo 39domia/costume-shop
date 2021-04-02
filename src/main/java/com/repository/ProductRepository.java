@@ -36,6 +36,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findTop4ByDeletedIsFalseOrderByRatingDesc();
 
+    // soft delete: false
+
     List<Product> findAllByCategoryAndDeletedIsFalse(Category category);
 
     Page<Product> findAllByCategoryIdAndDeletedIsFalse(Long categoryId, Pageable pageable);
@@ -45,4 +47,28 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findAllByDeletedIsFalse(Pageable pageable);
 
     Optional<Product> findByIdAndDeletedIsFalse(Long id);
+
+//    Page<Product> findByNameProductAndDeletedIsFalseContaining(String nameProduct, Pageable pageable);
+
+    // soft delete: true
+
+    List<Product> findTop4ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop3ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop5ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop4ByDeletedIsTrueOrderByRatingDesc();
+
+    List<Product> findAllByCategoryIdAndDeletedIsTrue(Long categoryId);
+
+    Page<Product> findAllByCategoryIdAndDeletedIsTrue(Long categoryId, Pageable pageable);
+
+    Optional<Product> findByIdAndDeletedIsTrue(Long id);
+
+    Page<Product> findAllByDeletedIsTrue(Pageable pageable);
+
+    Page<Product> findByDeletedIsTrueAndNameProductContaining(String nameProduct, Pageable pageable); // note check
+
+
 }
