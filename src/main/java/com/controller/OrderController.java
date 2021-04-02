@@ -44,7 +44,7 @@ public class OrderController {
     @GetMapping("/order/create")
     public String showOrderAddForm(Model model) {
         model.addAttribute("order", new Order());
-        model.addAttribute("provinces", provinceService.findALl());
+        model.addAttribute("provinces", provinceService.findAll());
         return "back-end/order/order-add";
     }
 
@@ -62,7 +62,7 @@ public class OrderController {
     @GetMapping("/order/update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("order", orderService.findOne(id).get());
-        model.addAttribute("provinces", provinceService.findALl());
+        model.addAttribute("provinces", provinceService.findAll());
         return "back-end/order/order-edit";
     }
 
@@ -79,7 +79,7 @@ public class OrderController {
 
     @GetMapping("/order/delete/{id}")
     public String delete(@PathVariable Long id) {
-        orderService.delete(id);
+        orderService.softDelete(id);
         return "redirect:/order";
     }
 

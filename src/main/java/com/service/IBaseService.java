@@ -12,16 +12,13 @@ import java.util.Optional;
 public interface IBaseService<T> {
     Page<T> selectAll(Pageable pageable);
 
-    List<T> findALl();
+    List<T> findAll();
 
     Optional<T> findOne(Long id);
 
     void add(T t);
 
     void update(T t);
-
-    void delete(Long id);
-
 
 
 }
