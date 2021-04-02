@@ -79,7 +79,7 @@ public class OrderController {
 
     @GetMapping("/order/delete/{id}")
     public String delete(@PathVariable Long id) {
-        orderService.softDelete(id);
+        orderService.delete(id);
         return "redirect:/order";
     }
 

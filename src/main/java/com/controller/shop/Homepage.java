@@ -77,9 +77,4 @@ public class Homepage {
         return "front-end/shop-category";
     }
 
-    @GetMapping("/checkout")
-    public String checkout(Pageable pageable, Model model,@PathVariable Long id){
-        model.addAttribute("viewOrder", orderService.findOne(id).get());
-        return "front-end/checkout";
-    }
 }
