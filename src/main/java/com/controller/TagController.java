@@ -69,10 +69,6 @@ public class TagController {
         }
     }
 
-    @GetMapping("/tag/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        service.delete(id);
-        return "redirect:/tag";
-    }
+
 
 }
