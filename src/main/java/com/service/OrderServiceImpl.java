@@ -19,12 +19,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<Order> selectAll(Pageable pageable) {
-        return repository.findAllByDeleteIsFalse(pageable);
+        return repository.findAll(pageable);
     }
 
     @Override
     public List<Order> findAll() {
-        return repository.findAllByDeleteIsFalse();
+        return repository.findAll();
     }
 
     @Override
@@ -42,18 +42,11 @@ public class OrderServiceImpl implements OrderService {
         repository.save(order);
     }
 
-    public void deleteTrue(Long id) {
-        //repository.deleteById(id);
-        Order found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
-        repository.delete(found);
-    }
-
-    public void softDelete(Long id) {
-        Order found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
-        found.setDelete(true);
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
     public Page<Order> findByEmailContaining(String email, Pageable pageable) {
-        return repository.findByEmailAndDeleteIsFalseContaining(email, pageable);
+        return repository.findByEmailContaining(email, pageable);
     }
 }

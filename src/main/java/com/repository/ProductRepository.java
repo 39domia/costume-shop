@@ -26,23 +26,23 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findAllByCategoryId(Long category_id, Pageable pageable);
 
-    Page<Product> findByNameProductAndIsDeleteContaining(String nameProduct, Pageable pageable); // note check
+    Page<Product> findByDeletedIsFalseAndNameProductContaining(String nameProduct, Pageable pageable); // note check
 
-    List<Product> findTop4ByIsDeleteIsFalseOrderByIdDesc();
+    List<Product> findTop4ByDeletedIsFalseOrderByIdDesc();
 
-    List<Product> findTop3ByIsDeleteIsFalseOrderByIdDesc();
+    List<Product> findTop3ByDeletedIsFalseOrderByIdDesc();
 
-    List<Product> findTop5ByIsDeleteIsFalseOrderByIdDesc();
+    List<Product> findTop5ByDeletedIsFalseOrderByIdDesc();
 
-    List<Product> findTop4ByIsDeleteIsFalseOrderByRatingDesc();
+    List<Product> findTop4ByDeletedIsFalseOrderByRatingDesc();
 
-    List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category);
+    List<Product> findAllByCategoryAndDeletedIsFalse(Category category);
 
-    Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable);
+    Page<Product> findAllByCategoryIdAndDeletedIsFalse(Long categoryId, Pageable pageable);
 
-    List<Product> findAllByIsDeleteIsFalse();
+    List<Product> findAllByDeletedIsFalse();
 
-    Page<Product> findAllByIsDeleteIsFalse(Pageable pageable);
+    Page<Product> findAllByDeletedIsFalse(Pageable pageable);
 
-    Optional<Product> findByIdAndIsDeleteIsFalse(Long id);
+    Optional<Product> findByIdAndDeletedIsFalse(Long id);
 }

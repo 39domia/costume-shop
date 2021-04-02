@@ -31,8 +31,8 @@ public class Category extends CategoryValidator implements Serializable, Validat
     @NotBlank(message = "Trường này không được để trống")
     private String description;
     private String image;
-    @Where(clause = "delete = false")
-    private boolean isDelete =false;
+//    @Where(clause = "delete = false")
+//    private boolean isDelete =false;
     
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //product - category (1 - n)

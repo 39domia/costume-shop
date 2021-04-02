@@ -48,10 +48,10 @@ public class Product implements Serializable {
     private String length;
     private String fabric; //chất liệu vải
     private String warranty;
-    @Where(clause = "delete = false")
-    private boolean isDelete =false;
+    @Where(clause = "deleted = false")
+    private boolean deleted = false;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetail;
 
 

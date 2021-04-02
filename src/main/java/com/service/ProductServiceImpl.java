@@ -20,17 +20,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> selectAll(Pageable pageable) {
-        return repository.findAllByIsDeleteIsFalse(pageable);
+        return repository.findAllByDeletedIsFalse(pageable);
     }
 
     @Override
     public List<Product> findAll() {
-        return repository.findAllByIsDeleteIsFalse();
+        return repository.findAllByDeletedIsFalse();
     }
 
     @Override
     public Optional<Product> findOne(Long id) {
-        return repository.findByIdAndIsDeleteIsFalse(id);
+        return repository.findByIdAndDeletedIsFalse(id);
 
     }
 
@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
 
     public void softDelete(Long id) {
         Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
-        found.setDelete(true);
+        found.setDeleted(true);
     }
 
     public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {
@@ -79,36 +79,36 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> findByNameProductAndIsDeleteContaining(String nameProduct, Pageable pageable) {
-        return repository.findByNameProductAndIsDeleteContaining(nameProduct, pageable);
+        return repository.findByDeletedIsFalseAndNameProductContaining(nameProduct, pageable);
     }
 
     @Override
     public List<Product> findTop4ByIsDeleteIsFalseOrderByIdDesc() {
-        return repository.findTop4ByIsDeleteIsFalseOrderByIdDesc();
+        return repository.findTop4ByDeletedIsFalseOrderByIdDesc();
     }
 
     @Override
     public List<Product> findTop3ByIsDeleteIsFalseOrderByIdDesc() {
-        return repository.findTop3ByIsDeleteIsFalseOrderByIdDesc();
+        return repository.findTop3ByDeletedIsFalseOrderByIdDesc();
     }
 
     @Override
     public List<Product> findTop5ByIsDeleteIsFalseOrderByIdDesc() {
-        return repository.findTop5ByIsDeleteIsFalseOrderByIdDesc();
+        return repository.findTop5ByDeletedIsFalseOrderByIdDesc();
     }
 
     @Override
     public List<Product> findTop4ByIsDeleteIsFalseOrderByRatingDesc() {
-        return repository.findTop4ByIsDeleteIsFalseOrderByRatingDesc();
+        return repository.findTop4ByDeletedIsFalseOrderByRatingDesc();
     }
 
     @Override
     public List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category) {
-        return repository.findAllByCategoryAndIsDeleteIsFalse(category);
+        return repository.findAllByCategoryAndDeletedIsFalse(category);
     }
 
     @Override
     public Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable) {
-        return repository.findAllByCategoryAndIdIsDeleteIsFalse(category_id, pageable);
+        return repository.findAllByCategoryIdAndDeletedIsFalse(category_id, pageable);
     }
 }

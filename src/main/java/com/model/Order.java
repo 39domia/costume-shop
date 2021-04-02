@@ -61,8 +61,6 @@ public class Order implements Serializable {
     private String phone;
     private String note;//
 
-    @Where(clause = "delete = false")
-    private boolean isDelete = false;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<OrderDetail> orderDetails = new ArrayList<>();
