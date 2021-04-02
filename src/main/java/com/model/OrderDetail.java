@@ -21,7 +21,10 @@ public class OrderDetail implements Serializable {
     @JoinColumn(name="order_id")
     private Order order;
 
-    private Long quantity;
+    private Integer quantity;
+
+    private double priceOder;
+
 
 
 

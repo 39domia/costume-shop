@@ -36,4 +36,13 @@ public class Category extends CategoryValidator implements Serializable, Validat
     private List<Product> products = new ArrayList<>();
 
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }

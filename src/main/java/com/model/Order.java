@@ -67,6 +67,7 @@ public class Order implements Serializable {
     @JoinColumn(name = "province_id", referencedColumnName = "id")      //category - product (n - 1) ok
     private Province province;
 
+    private double totalPrice;
 
 //    validation
 

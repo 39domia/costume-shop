@@ -14,7 +14,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Tag implements Serializable, Validator {
+public class Tag implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,20 +35,29 @@ public class Tag implements Serializable, Validator {
 
 
     //validation
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return Tag.class.isAssignableFrom(clazz);
-    }
+//    @Override
+//    public boolean supports(Class<?> clazz) {
+//        return Tag.class.isAssignableFrom(clazz);
+//    }
+//
+//
+//    @Override
+//    public void validate(Object target, Errors errors) {
+//        Tag tag = (Tag) target;
+//        String nameTag = tag.getName();
+//        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
+//        if (nameTag.length() > 250 || nameTag.length() < 2) {
+//            errors.rejectValue("name", "name.length");
+//        }
+//    }
 
 
     @Override
-    public void validate(Object target, Errors errors) {
-        Tag tag = (Tag) target;
-        String nameTag = tag.getName();
-        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
-        if (nameTag.length() > 250 || nameTag.length() < 2) {
-            errors.rejectValue("name", "name.length");
-        }
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
 

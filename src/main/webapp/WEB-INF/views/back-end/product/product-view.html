@@ -32,118 +32,141 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/product}">Back
+                            <a class="btn btn-primary" th:href="@{/product}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <div class="row"    >
-                                <!-- FORM ADD-->
-                                <div class="col-12 col-md-12">
+                            <div class="card">
+                                <form th:object="${product}"
+                                      class="form-horizontal">
                                     <div class="card-header">
-                                        <strong th:text="${product.id}"></strong>
+                                        <strong>View</strong> Product
                                     </div>
-                                    <form>
-                                        <div class="card-body card-block">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">name :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.nameProduct}"></p>
-                                                </div>
+                                    <div class="card-body card-block">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">ID</label>
                                             </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">price :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.price}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">rating :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.rating}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Description :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.description}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">image :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <img th:src="${product.image}" style="max-width: 500px;max-height: 350px">
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">status :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.status}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">size :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.size}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">color :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.color}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">length :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.length}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">fabric :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.fabric}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">warranty :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.warranty}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">category :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="${product.category.name}"></p>
-                                                </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="id-input"
+                                                     th:text="*{id}"></div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Name product</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{nameProduct}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">price</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{price}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">rating</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{rating}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+
+                                                <label class=" form-control-label">shortDescription</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea th:text="*{shortDescription}" rows="3"
+                                                          class="form-control bg-light" disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label
+                                                        class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea th:text="*{description}" rows="7"
+                                                          class="form-control bg-light" disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">image</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <img th:src="*{image}">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">status</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{status}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">size</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{size}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">color</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{color}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">length</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{rating}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">fabric</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{fabric}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">warranty</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{warranty}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Category</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{category.name}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary" th:href="@{/product}">Back
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
                             <!--                            </div>-->
                             <!-- END DATA TABLE -->

@@ -32,22 +32,19 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/tag}">Back
+                            <a type="reset" class="btn btn-primary" th:href="@{/tag}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
                             <!--                            <div class="col-lg-6">-->
                             <div class="card">
-                                <div class="card-header">
-                                    <strong>Edit Form</strong> tag
-                                </div>
-                                <div class="card-body card-block">
-                                    <!--<div th:if="${mess}">-->
-                                    <!--    <h3 th:text="${mess}"></h3>-->
-                                    <!--</div>-->
-                                    <form th:action="@{/tag/update}" th:object="${tag}" method="post"
-                                          class="form-horizontal">
+                                <form th:action="@{/tag/update}" th:object="${tag}" method="post"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>Edit </strong> tag
+                                    </div>
+                                    <div class="card-body card-block">
                                         <input type="hidden" th:field="*{id}">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -58,20 +55,15 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name tag" class="form-control"
                                                        th:field="*{name}">
-<!--                                                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</span>-->
-                                                <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary btn-sm" value="Submit">
-                                                <i class="fa fa-dot-circle-o"></i> Submit
-                                            </button>
-                                            <!--                                        <button type="reset" class="btn btn-danger btn-sm">-->
-                                            <!--                                            <i class="fa fa-ban"></i> Reset-->
-                                            <!--                                        </button>-->
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <!-- END DATA TABLE -->
                         </div>

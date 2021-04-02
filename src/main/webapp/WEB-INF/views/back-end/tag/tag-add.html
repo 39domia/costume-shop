@@ -32,19 +32,19 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/tag}">Back
+                            <a type="reset" class="btn btn-primary" th:href="@{/tag}">Back
                             </a>
                         </div>
+
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <!--                            <div class="col-lg-6">-->
                             <div class="card">
-                                <div class="card-header">
-                                    <strong>Add Form</strong> product
-                                </div>
-                                <div class="card-body card-block">
-                                    <form th:action="@{/tag/create}" th:object="${tag}" method="post"
-                                          class="form-horizontal">
+                                <form th:action="@{/tag/create}" th:object="${tag}" method="post"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>Add Form</strong> product
+                                    </div>
+                                    <div class="card-body card-block">
                                         <input type="hidden" th:field="*{id}">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -54,37 +54,21 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name product" class="form-control"
                                                        th:field="*{name}">
-<!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>-->
-                                                <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
 
-                                        <div style=" display: flex; justify-content: space-between">
-                                            <div class="card-footer" style=" display: flex">
-                                                <input type="submit" class="btn btn-primary btn-sm" value="Submit" style="margin: 10px">
-
-                                                </input>
-                                                <input type="reset" class="btn btn-danger btn-sm" href="#" style="margin: 10px">
-
-                                                </input>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <!--                            </div>-->
                             <!-- END DATA TABLE -->
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2018 Colorlib. All rights reserved. Template
-                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
