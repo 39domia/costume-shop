@@ -57,6 +57,36 @@ public class ProductServiceImpl implements ProductService {
         found.setDeleted(true);
     }
 
+    @Override
+    public Page<Product> findByNameProductAndDeletedIsFalseContaining(String nameProduct, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<Product> findTop4ByDeletedIsTrueOrderByIdDesc() {
+        return null;
+    }
+
+    @Override
+    public List<Product> findTop3ByDeletedIsTrueOrderByIdDesc() {
+        return null;
+    }
+
+    @Override
+    public List<Product> findTop5ByDeletedIsTrueOrderByIdDesc() {
+        return null;
+    }
+
+    @Override
+    public List<Product> findTop4ByDeletedIsTrueOrderByRatingDesc() {
+        return null;
+    }
+
+    @Override
+    public List<Product> findAllByCategoryAndDeletedIsTrue(Category category) {
+        return null;
+    }
+
     public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {
         return repository.findByNameProductContaining(nameProduct, pageable);
     }
@@ -110,5 +140,25 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable) {
         return repository.findAllByCategoryIdAndDeletedIsFalse(category_id, pageable);
+    }
+
+    @Override
+    public Page<Product> findAllByCategoryAndIdDeletedIsTrue(Long category_id, Pageable pageable) {
+        return repository.findAllByCategoryIdAndDeletedIsTrue(category_id, pageable);
+    }
+
+    @Override
+    public Optional<Product> findByIdAndDeletedIsTrue(Long id) {
+        return repository.findByIdAndDeletedIsTrue(id);
+    }
+
+    @Override
+    public Page<Product> findAllByDeletedIsTrue(Pageable pageable) {
+        return repository.findAllByDeletedIsTrue(pageable);
+    }
+
+    @Override
+    public Page<Product> findByDeletedIsTrueAndNameProductContaining(String nameProduct, Pageable pageable) {
+        return repository.findByDeletedIsTrueAndNameProductContaining(nameProduct, pageable);
     }
 }

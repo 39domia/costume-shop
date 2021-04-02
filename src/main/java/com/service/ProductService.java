@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService extends IBaseService<Product>{
     Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable);
@@ -35,5 +36,27 @@ public interface ProductService extends IBaseService<Product>{
     void deleteTrue(Long id);
 
     void softDelete(Long id);
+
+    Page<Product> findByNameProductAndDeletedIsFalseContaining(String nameProduct, Pageable pageable); // note check
+
+    List<Product> findTop4ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop3ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop5ByDeletedIsTrueOrderByIdDesc();
+
+    List<Product> findTop4ByDeletedIsTrueOrderByRatingDesc();
+
+    List<Product> findAllByCategoryAndDeletedIsTrue(Category category);
+
+    Page<Product> findAllByCategoryAndIdDeletedIsTrue(Long category_id, Pageable pageable);
+
+    Optional<Product> findByIdAndDeletedIsTrue(Long id);
+
+    Page<Product> findAllByDeletedIsTrue(Pageable pageable);
+
+    Page<Product> findByDeletedIsTrueAndNameProductContaining(String nameProduct, Pageable pageable); // note check
+
+
 
 }

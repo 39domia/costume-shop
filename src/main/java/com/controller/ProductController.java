@@ -85,7 +85,7 @@ public class ProductController {
 
     @GetMapping("search")
     public String search(@RequestParam(defaultValue = "") String keyword, Model model, @PageableDefault(size = 20) Pageable pageable) {
-        Page<Product> products = productService.findByNameProductContaining(keyword, pageable);
+        Page<Product> products = productService.findByNameProductAndIsDeleteContaining(keyword, pageable);
         model.addAttribute("products", products);
         if (!products.hasContent())
             model.addAttribute("searchMess", "Not found");
