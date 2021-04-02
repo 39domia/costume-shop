@@ -42,7 +42,7 @@ public class ProvinceServiceImpl implements ProvinceService {
         repository.save(category);
     }
 
-    @Override
+
     public void delete(Long id) {
         repository.deleteById(id);
     }

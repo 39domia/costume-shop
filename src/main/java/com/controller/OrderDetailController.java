@@ -67,10 +67,6 @@ public class OrderDetailController {
 //        }
     }
 
-    @GetMapping("/order-detail/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        service.delete(id);
-        return "redirect:/order-detail";
-    }
+
 }
 
