@@ -1,8 +1,10 @@
 package com.controller.shop;
 
+import com.model.Category;
 import com.model.Order;
 import com.model.OrderDetail;
 import com.model.Product;
+import com.service.CategoryService;
 import com.service.ProductService;
 import com.service.ProductServiceImpl;
 import org.hibernate.Session;
@@ -23,6 +25,14 @@ import java.util.Optional;
 public class CartController {
     @Autowired
     ProductService productService;
+
+    @Autowired
+    CategoryService categoryService;
+
+    @ModelAttribute("findAllCategories")
+    public List<Category> findAllCategories() {
+        return categoryService.findAll();
+    }
 
     @GetMapping("/cart/add/{id}/{quantity}")
     public String add(@PathVariable(value = "id") Long id,

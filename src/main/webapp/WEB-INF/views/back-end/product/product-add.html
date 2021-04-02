@@ -82,22 +82,22 @@
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label
-                                                        class=" form-control-label">Short des</label>
+                                                        class=" form-control-label">Description</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <textarea th:field="*{shortDescription}" id="textarea-input" rows="3"
+                                                <textarea th:field="*{description}" id="textarea-input" rows="3"
                                                           placeholder="Content..." class="form-control"></textarea>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="description-input"
-                                                       class=" form-control-label">Description</label>
+                                                       class=" form-control-label">Short des </label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="description-input"
                                                        placeholder="description" class="form-control"
-                                                       th:field="*{description}">
+                                                       th:field=" *{shortDescription}">
                                                 <!--                                                <small class="help-block form-text">Please enter a description</small>-->
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
                                                 <label for="size-input" class=" form-control-label">size</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="number" id="size-input"
+                                                <input type="text" id="size-input"
                                                        placeholder="size" class="form-control"
                                                        th:field="*{size}">
                                                 <!--                                                <small class="help-block form-text">Please enter a size</small>-->
