@@ -1,7 +1,9 @@
-package com.service;
+package com.service.impl;
 
-import com.model.Order;
-import com.repository.OrderRepository;
+import com.model.Category;
+import com.model.Tag;
+import com.repository.TagRepository;
+import com.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,40 +15,42 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class OrderServiceImpl implements OrderService {
+public class TagServiceImpl implements TagService {
+
     @Autowired
-    private OrderRepository repository;
+    TagRepository repository;
 
     @Override
-    public Page<Order> selectAll(Pageable pageable) {
+    public Page<Tag> selectAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public List<Order> findAll() {
+    public List<Tag> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Order> findOne(Long id) {
+    public Optional<Tag> findOne(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public void add(Order order) {
-        repository.save(order);
+    public void add(Tag tag) {
+        repository.save(tag);
     }
 
     @Override
-    public void update(Order order) {
-        repository.save(order);
+    public void update(Tag tag) {
+        repository.save(tag);
     }
+
 
     public void delete(Long id) {
         repository.deleteById(id);
     }
 
-    public Page<Order> findByEmailContaining(String email, Pageable pageable) {
-        return repository.findByEmailContaining(email, pageable);
+    public Page<Tag> findByNameContaining(String name, Pageable pageable) {
+        return repository.findByNameContaining(name, pageable);
     }
 }

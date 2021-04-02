@@ -3,7 +3,6 @@ package com.controller;
 import com.model.Category;
 import com.repository.CategoryRepository;
 import com.service.CategoryService;
-import com.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

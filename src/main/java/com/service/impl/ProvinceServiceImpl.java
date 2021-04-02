@@ -1,8 +1,9 @@
-package com.service;
+package com.service.impl;
 
 import com.model.Category;
 import com.model.Province;
 import com.repository.ProvinceRepository;
+import com.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

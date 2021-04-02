@@ -6,11 +6,8 @@ import com.model.OrderDetail;
 import com.model.Product;
 import com.service.CategoryService;
 import com.service.ProductService;
-import com.service.ProductServiceImpl;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

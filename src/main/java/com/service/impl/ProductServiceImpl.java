@@ -1,8 +1,9 @@
-package com.service;
+package com.service.impl;
 
 import com.model.Category;
 import com.model.Product;
 import com.repository.ProductRepository;
+import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

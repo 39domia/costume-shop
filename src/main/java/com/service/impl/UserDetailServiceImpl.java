@@ -1,4 +1,4 @@
-package com.service;
+package com.service.impl;
 
 import com.model.User;
 import com.repository.UserRepository;

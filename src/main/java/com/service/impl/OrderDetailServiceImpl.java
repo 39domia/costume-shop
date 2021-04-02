@@ -1,9 +1,10 @@
-package com.service;
+package com.service.impl;
 
 import com.model.Category;
 import com.model.OrderDetail;
 import com.model.Product;
 import com.repository.OrderDetailRepository;
+import com.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

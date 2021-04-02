@@ -1,8 +1,10 @@
-package com.service;
+package com.service.impl;
+
 
 import com.model.Category;
-import com.model.Tag;
-import com.repository.TagRepository;
+import com.model.User;
+import com.repository.UserRepository;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,34 +16,33 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class TagServiceImpl implements TagService {
-
+public class UserServiceImpl implements UserService {
     @Autowired
-    TagRepository repository;
+    private UserRepository repository;
 
     @Override
-    public Page<Tag> selectAll(Pageable pageable) {
+    public Page<User> selectAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public List<Tag> findAll() {
+    public List<User> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Tag> findOne(Long id) {
+    public Optional<User> findOne(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public void add(Tag tag) {
-        repository.save(tag);
+    public void add(User user) {
+        repository.save(user);
     }
 
     @Override
-    public void update(Tag tag) {
-        repository.save(tag);
+    public void update(User user) {
+        repository.save(user);
     }
 
 
@@ -49,7 +50,7 @@ public class TagServiceImpl implements TagService {
         repository.deleteById(id);
     }
 
-    public Page<Tag> findByNameContaining(String name, Pageable pageable) {
-        return repository.findByNameContaining(name, pageable);
+    public Page<User> findByFullNameContaining(String name, Pageable pageable) {
+        return repository.findByFullNameContaining(name, pageable);
     }
 }

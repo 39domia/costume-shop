@@ -2,7 +2,6 @@ package com.controller;
 
 import com.model.OrderDetail;
 import com.service.OrderDetailService;
-import com.service.OrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,7 +1,8 @@
-package com.service;
+package com.service.impl;
 
-import com.model.Category;
-import com.repository.CategoryRepository;
+import com.model.Order;
+import com.repository.OrderRepository;
+import com.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,42 +14,40 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class CategoryServiceImpl implements CategoryService {
-
+public class OrderServiceImpl implements OrderService {
     @Autowired
-    CategoryRepository repository;
+    private OrderRepository repository;
 
     @Override
-    public Page<Category> selectAll(Pageable pageable) {
+    public Page<Order> selectAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<Order> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Category> findOne(Long id) {
+    public Optional<Order> findOne(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public void add(Category category) {
-        repository.save(category);
+    public void add(Order order) {
+        repository.save(order);
     }
 
     @Override
-    public void update(Category category) {
-        repository.save(category);
+    public void update(Order order) {
+        repository.save(order);
     }
 
     public void delete(Long id) {
         repository.deleteById(id);
     }
 
-    public Page<Category> findByNameContaining(String name, Pageable pageable) {
-        return repository.findByNameContaining(name, pageable);
+    public Page<Order> findByEmailContaining(String email, Pageable pageable) {
+        return repository.findByEmailContaining(email, pageable);
     }
-
 }
