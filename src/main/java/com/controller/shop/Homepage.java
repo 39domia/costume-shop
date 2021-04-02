@@ -57,13 +57,13 @@ public class Homepage {
     public String indexQuickView(@PageableDefault(size = 12) Pageable pageable,@PathVariable Long id, Model model){
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         model.addAttribute("quickViewProduct", productService.findOne(id).get());
-        return "front-end/shop-single-left-sidebar";
+        return "front-end/quick-view";
 
     }
     @GetMapping("/shop")
     public String shopView(@PageableDefault(size = 12) Pageable pageable, Model model){
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
-        return "front-end/shop-3-left-sidebar";
+        return "front-end/shop";
     }
 
     @GetMapping("/show-product")
