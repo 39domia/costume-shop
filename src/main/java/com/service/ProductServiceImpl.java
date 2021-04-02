@@ -20,17 +20,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> selectAll(Pageable pageable) {
-        return repository.findAll(pageable);
+        return repository.findAllByIsDeleteIsFalse(pageable);
     }
 
     @Override
     public List<Product> findALl() {
-        return repository.findAll();
+        return repository.findAllByIsDeleteIsFalse();
     }
 
     @Override
     public Optional<Product> findOne(Long id) {
-        return repository.findById(id);
+        return repository.findByIdAndIsDeleteIsFalse(id);
 
     }
 
@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(Long id) {
         //repository.deleteById(id);
-        Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Khong tim thay"));
+        Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         repository.delete(found);
     }
 
@@ -106,6 +106,4 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable) {
         return repository.findAllByCategoryAndIdIsDeleteIsFalse(category_id, pageable);
     }
-
-
 }

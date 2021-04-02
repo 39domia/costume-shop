@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    Page<Category> findByNameContaining(String name, Pageable pageable);
+    Page<Category> findByNameAndIsDeleteIsFalseContaining(String name, Pageable pageable);
 
-    Category findByName(String name);
+    Category findByNameAndIsDeleteIsFalse(String name);
 }
