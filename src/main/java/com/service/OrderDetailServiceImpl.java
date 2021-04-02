@@ -25,7 +25,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
-    public List<OrderDetail> findALl() {
+    public List<OrderDetail> findAll() {
         return repository.findAll();
     }
 

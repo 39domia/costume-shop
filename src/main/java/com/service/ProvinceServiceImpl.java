@@ -23,7 +23,7 @@ public class ProvinceServiceImpl implements ProvinceService {
     }
 
     @Override
-    public List<Province> findALl() {
+    public List<Province> findAll() {
         return repository.findAll();
     }
 

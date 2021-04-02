@@ -2,9 +2,7 @@ package com.controller;
 
 import com.model.Product;
 import com.service.CategoryService;
-import com.service.CategoryServiceImpl;
 import com.service.ProductService;
-import com.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +41,7 @@ public class ProductController {
     @GetMapping("create")
     public String showProductAddForm(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("categories", categoryService.findALl());
+        model.addAttribute("categories", categoryService.findAll());
         return "back-end/product/product-add";
     }
 
@@ -51,7 +49,7 @@ public class ProductController {
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
 //        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
-            model.addAttribute("categories", categoryService.findALl());
+            model.addAttribute("categories", categoryService.findAll());
             return "back-end/product/product-add";
         } else {
             productService.add(product);
@@ -62,7 +60,7 @@ public class ProductController {
     @GetMapping("update/{id}")
     public String showUpdate(@PathVariable Long id, Model model) {
         model.addAttribute("product", productService.findOne(id).get());
-        model.addAttribute("categories", categoryService.findALl());
+        model.addAttribute("categories", categoryService.findAll());
 
         return "back-end/product/product-edit";
     }
@@ -71,7 +69,7 @@ public class ProductController {
     public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
 //        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
-            model.addAttribute("categories", categoryService.findALl());
+            model.addAttribute("categories", categoryService.findAll());
             return "back-end/product/product-edit";
         } else {
             productService.update(product);

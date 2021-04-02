@@ -19,12 +19,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<Order> selectAll(Pageable pageable) {
-        return repository.findAll(pageable);
+        return repository.findAllByDeleteIsFalse(pageable);
     }
 
     @Override
-    public List<Order> findALl() {
-        return repository.findAll();
+    public List<Order> findAll() {
+        return repository.findAllByDeleteIsFalse();
     }
 
     @Override

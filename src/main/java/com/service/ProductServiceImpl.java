@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findALl() {
+    public List<Product> findAll() {
         return repository.findAllByIsDeleteIsFalse();
     }
 
