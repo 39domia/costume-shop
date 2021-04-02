@@ -40,13 +40,9 @@
     <!-- Content
     ============================================= -->
     <section id="content">
-
         <div class="content-wrap">
-
             <div class="container clearfix">
-
                 <div class="table-responsive bottommargin">
-
                     <table class="table cart">
                         <thead>
                         <tr>
@@ -62,29 +58,25 @@
                         <th:block th:if="${session.order!=null}">
                             <tr class="cart_item" th:each="cart: ${session.order.orderDetails}">
                                 <td class="cart-product-remove">
-                                    <a href="#" class="remove" title="Remove this item"><i class="icon-trash2"></i></a>
+                                    <a th:href="@{/cart/showCart/deleteProduct/{idProduct}(idProduct = ${cart.product.id})}" class="remove" title="Remove this item"><i class="icon-trash2"></i></a>
                                 </td>
-
                                 <td class="cart-product-thumbnail">
-                                    <a href="#"><img width="64" height="64" src="images/shop/thumbs/small/dress-3.jpg"
+                                    <a href="#"><img width="64" th:src="${cart.product.image}"
                                                      alt="Pink Printed Dress"></a>
                                 </td>
-
                                 <td class="cart-product-name">
                                     <a href="#" th:text="${cart.product.nameProduct}"></a>
                                 </td>
-
                                 <td class="cart-product-price">
                                     <span class="amount" th:text="${cart.product.price}"></span>
                                 </td>
-
                                 <td class="cart-product-quantity">
                                     <div class="quantity clearfix">
                                         <input id="quantity-left-minus"
                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                type="button" value="-" class="minus">
                                         <input id="quantity" type="number" step="1" min="1" name="quantity"
-                                               th:text="${cart.quantity}" title="Qty"
+                                               th:value="${cart.quantity}" title="Qty"
                                                class="qty" size="4"/>
                                         <input id="quantity-right-plus"
                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
@@ -95,14 +87,28 @@
                                     <span class="amount" th:text="${cart.priceOder}"></span>
                                 </td>
                             </tr>
+                            <tr class="cart_item">
+                                <td colspan="6">
+                                    <div class="row clearfix">
+                                        <div class="col-md-4 col-xs-4 nopadding">
+                                            <div class="col-md-8 col-xs-7 nopadding">
+                                                <input type="text" value="" class="sm-form-control" placeholder="Enter Coupon Code.." />
+                                            </div>
+                                            <div class="col-md-4 col-xs-5">
+<!--                                                <a href="#" class="button button-3d button-black nomargin">Apply Coupon</a>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-xs-8 nopadding">
+                                            <a href="#" class="button button-3d nomargin fright">Update Cart</a>
+                                            <a th:href="@{/checkout}" class="button button-3d notopmargin fright">Proceed to Checkout</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </th:block>
-
                         </tbody>
-
                     </table>
-
                 </div>
-
                 <div class="row clearfix">
                     <div class="col-md-6 clearfix">
                         <h4>Calculate Shipping</h4>
