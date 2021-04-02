@@ -81,12 +81,16 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li><!-- .mega-menu end -->
+                        </li>
+                        <li>
+                            <a th:href="@{/cart/showCart}">Cart</a>
+                        </li>
+                        <!-- .mega-menu end -->
                     </ul>
                     <!-- Top Cart
                     ============================================= -->
                     <div id="top-cart">
-                        <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
+                        <a th:href="@{/cart/showCart}" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
                         <div class="top-cart-content">
                             <div class="top-cart-title">
                                 <h4>Shopping Cart</h4>
