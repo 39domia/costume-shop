@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -23,9 +24,9 @@ public class CartController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/cart/add/{id}")
+    @GetMapping("/cart/add/{id}/{quantity}")
     public String add(@PathVariable(value = "id") Long id,
-                      @RequestParam Integer quantity,
+                      @PathVariable Integer quantity,
                       HttpServletRequest request,
                       HttpSession session) throws SQLException {
         Optional<Product> optionalProduct = productService.findOne(id);
@@ -74,4 +75,39 @@ public class CartController {
     public String showListCart(HttpServletRequest request, HttpSession session) throws SQLException {
         return "front-end/cart";
     }
+
+    @GetMapping("/cart/showCart/deleteProduct/{idProduct}")
+    public String deleteProductInCart(@PathVariable(name = "idProduct") Long idProduct, HttpSession session, HttpServletRequest request) throws SQLException {
+        Order order = (Order) session.getAttribute("order");
+
+        if (order == null)
+            throw new RuntimeException("Invalid request");
+
+        List<OrderDetail> details = order.getOrderDetails();
+        if (details.size() == 1) {
+            session.setAttribute("order", null);
+            return "redirect:" + request.getHeader("Referer");
+        }
+
+//        list co nhieu sp
+        OrderDetail removing = null;
+        for (OrderDetail detail : details) {
+            if (detail.getId().equals(idProduct)) {
+                removing = detail;
+                break;
+            }
+        }
+        if (removing == null)
+            throw new RuntimeException("Invalid request");
+
+        details.remove(removing);
+
+        double total = 0;
+        for (OrderDetail detail : details) {
+            total += detail.getProduct().getPrice() * detail.getQuantity();
+        }
+        order.setTotalPrice(total);
+        return "redirect:" + request.getHeader("Referer");
+    }
+
 }
