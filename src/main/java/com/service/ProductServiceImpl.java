@@ -7,11 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductServiceImpl implements IBaseService<Product> {
+@Transactional
+public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository repository;
 
@@ -44,7 +46,9 @@ public class ProductServiceImpl implements IBaseService<Product> {
 
     @Override
     public void delete(Long id) {
-        repository.deleteById(id);
+        //repository.deleteById(id);
+        Product found = repository.findById(id).orElseThrow(() -> new RuntimeException("Khong tim thay"));
+        repository.delete(found);
     }
 
     public Page<Product> findByNameProductContaining(String nameProduct, Pageable pageable) {

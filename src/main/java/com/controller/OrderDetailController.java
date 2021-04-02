@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.model.OrderDetail;
+import com.service.OrderDetailService;
 import com.service.OrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class OrderDetailController {
 
 
     @Autowired
-    private OrderDetailServiceImpl service;
+    private OrderDetailService service;
 
     @GetMapping("/order-detail")
     public String showAll(Model model) {

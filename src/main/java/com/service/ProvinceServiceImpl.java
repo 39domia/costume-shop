@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProvinceServiceImpl implements IBaseService<Province> {
+public class ProvinceServiceImpl implements ProvinceService {
 
     @Autowired
     ProvinceRepository repository;

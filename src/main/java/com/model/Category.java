@@ -30,7 +30,8 @@ public class Category extends CategoryValidator implements Serializable, Validat
     @NotBlank(message = "Trường này không được để trống")
     private String description;
     private String image;
-
+    private Boolean isDelete;
+    
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //product - category (1 - n)
     private List<Product> products = new ArrayList<>();

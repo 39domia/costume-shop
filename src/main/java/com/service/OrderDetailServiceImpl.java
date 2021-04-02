@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderDetailServiceImpl implements IBaseService<OrderDetail> {
+public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
     OrderDetailRepository repository;

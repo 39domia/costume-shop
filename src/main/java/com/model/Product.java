@@ -1,4 +1,5 @@
 package com.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product implements Serializable{
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,13 +47,17 @@ public class Product implements Serializable{
     private String length;
     private String fabric; //chất liệu vải
     private String warranty;
+    private Boolean isDelete;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<OrderDetail> orderDetail;
 
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")      //category - product (n - 1) ok
     private Category category;
 
-    @ManyToMany(mappedBy = "productListTag", fetch = FetchType.EAGER)        //ok
+    @ManyToMany(mappedBy = "productListTag", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)        //ok
     private List<Tag> tags = new ArrayList<>();
 
     @Override

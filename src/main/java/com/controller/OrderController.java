@@ -2,9 +2,7 @@ package com.controller;
 
 
 import com.model.Order;
-import com.service.OrderDetailServiceImpl;
-import com.service.OrderServiceImpl;
-import com.service.ProvinceServiceImpl;
+import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -22,10 +20,10 @@ import javax.validation.Valid;
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private OrderService orderService;
 
     @Autowired
-    private ProvinceServiceImpl provinceService;
+    private ProvinceService provinceService;
 
 
     @Autowired

@@ -3,10 +3,8 @@ package com.controller.shop;
 import com.model.Category;
 import com.model.Product;
 import com.repository.ProductRepository;
-import com.service.CategoryServiceImpl;
+import com.service.*;
 
-import com.service.OrderServiceImpl;
-import com.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -22,15 +20,16 @@ import java.util.List;
 @Controller
 public class Homepage {
     @Autowired
-    ProductServiceImpl productService;
+    ProductService productService;
 
     @Autowired
     ProductRepository productRepository;
 
     @Autowired
-    CategoryServiceImpl categoryService;
+    CategoryService categoryService;
+
     @Autowired
-    OrderServiceImpl orderService;
+    OrderService orderService;
 
     @ModelAttribute("findTop4ByOrderByIdDesc")
     public List<Product> findTop4ByOrderByIdDesc() {

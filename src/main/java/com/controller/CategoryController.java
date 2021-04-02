@@ -2,6 +2,7 @@ package com.controller;
 
 import com.model.Category;
 import com.repository.CategoryRepository;
+import com.service.CategoryService;
 import com.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 public class CategoryController {
 
     @Autowired
-    private CategoryServiceImpl categoryService;
+    private CategoryService categoryService;
 
     @Autowired
     private CategoryRepository categoryRepository;

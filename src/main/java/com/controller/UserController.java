@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.model.User;
-import com.service.UserServiceImpl;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl service;
+    private UserService service;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

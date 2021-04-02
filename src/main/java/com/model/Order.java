@@ -59,8 +59,9 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String phone;
     private String note;//
+    private Boolean isDelete;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
     @ManyToOne

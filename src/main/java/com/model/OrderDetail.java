@@ -13,7 +13,8 @@ public class OrderDetail implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 

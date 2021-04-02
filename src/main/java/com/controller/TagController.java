@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.model.Tag;
+import com.service.TagService;
 import com.service.TagServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 public class TagController {
 
     @Autowired
-    private TagServiceImpl service;
+    private TagService service;
 
     @GetMapping("/tag")
     public String showAll(Model model, @PageableDefault(size = 5) Pageable pageable) {

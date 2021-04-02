@@ -3,6 +3,7 @@ package com.controller.shop;
 import com.model.Order;
 import com.model.OrderDetail;
 import com.model.Product;
+import com.service.ProductService;
 import com.service.ProductServiceImpl;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.Optional;
 //@RequestMapping(value = "/cart")
 public class CartController {
     @Autowired
-    ProductServiceImpl productService;
+    ProductService productService;
 
     @GetMapping("/cart/add/{id}")
     public String add(@PathVariable(value = "id") Long id,
