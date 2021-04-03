@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>order Table</title>
+    <title>view product</title>
     <th:block th:replace="back-end/layout/link::linkHeader">
     </th:block>
 </head>
@@ -32,13 +32,13 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a class="btn btn-primary" th:href="@{/product}">Back
+                            <a class="btn btn-primary" th:href="@{/recycle/product}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
                             <div class="card">
-                                <form th:object="${viewOrder}"
+                                <form th:object="${product}"
                                       class="form-horizontal">
                                     <div class="card-header">
                                         <strong>View</strong> Product
@@ -55,26 +55,53 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">createDate</label>
+                                                <label class=" form-control-label">Name product</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{createDate}"></div>
+                                                <div th:text="*{nameProduct}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">doneTime</label>
+                                                <label class=" form-control-label">price</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{doneTime}"></div>
+                                                <div th:text="*{price}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">paymentMethod</label>
+                                                <label class=" form-control-label">rating</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{paymentMethod}"></div>
+                                                <div th:text="*{rating}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">shortDescription</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea th:text="*{shortDescription}" rows="3"
+                                                          class="form-control bg-light" disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label
+                                                        class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <textarea th:text="*{description}" rows="7"
+                                                          class="form-control bg-light" disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">image</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <img th:src="*{image}">
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -87,111 +114,72 @@
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">fullName</label>
+                                                <label class=" form-control-label">size</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{fullName}"></div>
+                                                <div th:text="*{size}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">companyName</label>
+                                                <label class=" form-control-label">color</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{companyName}"></div>
+                                                <div th:text="*{color}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">address1</label>
+                                                <label class=" form-control-label">length</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{address1}"></div>
+                                                <div th:text="*{rating}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">address2</label>
+                                                <label class=" form-control-label">fabric</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{address2}"></div>
+                                                <div th:text="*{fabric}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">email</label>
+                                                <label class=" form-control-label">warranty</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{email}"></div>
+                                                <div th:text="*{warranty}"></div>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label class=" form-control-label">phone</label>
+                                                <label class=" form-control-label">Category</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <div th:text="*{phone}"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label">province</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <div th:text="*{province.name}"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label class=" form-control-label">totalPrice</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <div th:text="*{totalPrice}"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label
-                                                        class=" form-control-label">note</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <textarea th:text="*{note}" rows="7"
-                                                          class="form-control bg-light" disabled></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row form-group">
-                                            <h3 class="title-5 m-b-35">list order product</h3>
-                                            <div class="table-responsive table-responsive-data2">
-                                                <table class="table table-data2">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Product</th>
-                                                        <th>Quantity</th>
-                                                        <th>Price</th>
-                                                        <th>Total</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr class="tr-shadow" th:each="orderdt : ${viewOrder.getOrderDetails()}">
-                                                        <td th:text="${orderdt.id}"></td>
-                                                        <td th:text="${orderdt.product.nameProduct}"></td>
-                                                        <td th:text="${orderdt.quantity}"></td>
-                                                        <td th:text="${orderdt.product.price}"></td>
-                                                        <td th:text="${orderdt.product.price * orderdt.quantity}"></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div th:text="*{category.name}"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <a class="btn btn-primary" th:href="@{/order}">Back
+                                        <a class="btn btn-primary" th:href="@{/recycle/product}">Back
                                         </a>
                                     </div>
                                 </form>
                             </div>
+                            <!--                            </div>-->
                             <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>
+                                    Copyright © 2018 Colorlib. All rights reserved. Template
+                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

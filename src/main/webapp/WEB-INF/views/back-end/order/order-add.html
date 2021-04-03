@@ -36,12 +36,12 @@
                             <!-- DATA TABLE -->
                             <!--                            <div class="col-lg-6">-->
                             <div class="card">
-                                <div class="card-header">
-                                    <strong>Add Form</strong> order
-                                </div>
-                                <div class="card-body card-block">
-                                    <form th:action="@{/order/create}" th:object="${order}" method="post"
-                                          class="form-horizontal">
+                                <form th:action="@{/order/create}" th:object="${order}" method="post"
+                                      class="form-horizontal">
+                                    <div class="card-header">
+                                        <strong>Add Form</strong> order
+                                    </div>
+                                    <div class="card-body card-block">
                                         <input type="hidden" th:field="*{id}">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
@@ -52,7 +52,6 @@
                                                        placeholder="address1" class="form-control"
                                                        th:field="*{address1}">
                                                 <span th:if="${#fields.hasErrors('address1')}" th:errors="*{address1}">Name Error</span>
-                                                <small class="form-text text-muted">Không được bỏ trống</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -63,8 +62,6 @@
                                                 <input type="text" id="address2"
                                                        placeholder="address2" class="form-control"
                                                        th:field="*{address2}">
-                                                <small class="help-block form-text">Please enter your
-                                                    address2</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -73,7 +70,8 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <select th:field="*{province.id}" id="city">
-                                                    <option th:each="pro: ${provinces}" th:value="${pro.id}" th:text="${pro.name}"></option>
+                                                    <option th:each="pro: ${provinces}" th:value="${pro.id}"
+                                                            th:text="${pro.name}"></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -86,7 +84,6 @@
                                                 <input type="text" id="companyName"
                                                        placeholder="city" class="form-control"
                                                        th:field="*{companyName}">
-                                                <small class="help-block form-text">Please enter a companyName</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -97,31 +94,19 @@
                                                 <input type="email" id="email"
                                                        placeholder="email" class="form-control"
                                                        th:field="*{email}">
-                                                <small class="help-block form-text">Please enter a email</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="firstName" class=" form-control-label">First Name</label>
+                                                <label for="firstName" class=" form-control-label">Full Name</label>
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" id="firstName"
                                                        placeholder="firstName" class="form-control"
-                                                       th:field="*{firstName}">
-                                                <small class="help-block form-text">Please enter a firstName</small>
+                                                       th:field="*{fullName}">
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="lastName" class=" form-control-label">Last Name</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="text" id="lastName"
-                                                       placeholder="lastName" class="form-control"
-                                                       th:field="*{lastName}">
-                                                <small class="help-block form-text">Please enter a lastName</small>
-                                            </div>
-                                        </div>
+
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="note" class=" form-control-label">Note</label>
@@ -130,7 +115,6 @@
                                                 <textarea id="note" class="form-control"
                                                           th:field="*{note}">
                                                 </textarea>
-                                                <small class="help-block form-text">Please enter a note</small>
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -140,9 +124,9 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <select th:field="${order.paymentMethod}" id="paymentMethod">
-                                                    <option th:value="1">COD</option>
-                                                    <option th:value="2">bank</option>
-                                                    <option th:value="3">paypal</option>
+                                                    <option th:value="'Cash on delivery'" th:text="'Cash on delivery'"></option>
+                                                    <option th:value="'Internet Banking'" th:text="'Internet Banking'"></option>
+                                                    <option th:value="'Debit Card/Credit Card'" th:text="'Debit Card/Credit Card'"></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -154,50 +138,23 @@
                                                 <input type="number" id="phone"
                                                        placeholder="phone" class="form-control"
                                                        th:field="*{phone}">
-                                                <small class="help-block form-text">Please enter a phone</small>
                                             </div>
                                         </div>
-                                        <div class="row form-group">
-                                            <div class="col col-md-3">
-                                                <label for="status" class=" form-control-label">status</label>
-                                            </div>
-                                            <div class="col-12 col-md-9">
-                                                <input type="number" id="status"
-                                                       placeholder="status" class="form-control"
-                                                       th:field="*{status}">
-                                                <small class="help-block form-text">Please enter a status</small>
-                                            </div>
-                                        </div>
-                                        <div style=" display: flex; justify-content: space-between">
-                                            <div class="card-footer" style=" display: flex">
-                                                <input type="submit" class="btn btn-primary btn-sm" value="Submit" style="margin: 10px">
-
-                                                </input>
-                                                <input type="reset" class="btn btn-danger btn-sm" href="#" style="margin: 10px">
-
-                                                </input>
-                                            </div>
-
-                                        </div>
-
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <!--                            </div>-->
                             <!-- END DATA TABLE -->
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2018 Colorlib. All rights reserved. Template
-                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

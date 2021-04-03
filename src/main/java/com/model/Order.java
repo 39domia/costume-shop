@@ -1,14 +1,9 @@
 package com.model;
 
 import lombok.Data;
-import org.hibernate.annotations.Where;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,26 +21,23 @@ public class Order implements Serializable {
     private Date doneTime;
 
     @Column(nullable = false)
-    private Long paymentMethod;
+    private String paymentMethod;
+
+
+    @Column(nullable = false)
+    private Integer status = 1;
 //    order status: 1 - Đã đặt, đang chờ xác nhận
 //				2 - xác nhận thành công, chờ nhận hàng
 //				3 - đã hủy
 //				4 - giao hàng thành công
-
-
-    @Column(nullable = false)
-    private Long status;
 
     //customer
 
 
     @NotBlank(message = "Trường này không được để trống")
     @Column(nullable = false)
-    private String firstName;
+    private String fullName;
 
-    @NotBlank(message = "Trường này không được để trống")
-    @Column(nullable = false)
-    private String lastName;
     private String companyName;//
 
     @NotBlank(message = "Trường này không được để trống")
@@ -71,7 +63,6 @@ public class Order implements Serializable {
 
     private double totalPrice;
 
-//    validation
 
 
     @Override
@@ -80,16 +71,17 @@ public class Order implements Serializable {
                 "id=" + id +
                 ", createDate=" + createDate +
                 ", doneTime=" + doneTime +
-                ", paymentMethod='" + paymentMethod + '\'' +
+                ", paymentMethod=" + paymentMethod +
                 ", status=" + status +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", fullName='" + fullName + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", address2='" + address2 + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", note='" + note + '\'' +
+                ", province=" + province +
+                ", totalPrice=" + totalPrice +
                 '}';
     }
 }

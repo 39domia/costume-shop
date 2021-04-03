@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-xs-8 nopadding">
-                                            <a href="#" class="button button-3d nomargin fright">Update Cart</a>
+                                            <a th:href="${/cart/update}" class="button button-3d nomargin fright">Update Cart</a>
                                             <a th:href="@{/checkout}" class="button button-3d notopmargin fright">Proceed
                                                 to Checkout</a>
                                         </div>
@@ -388,7 +388,7 @@
                                     </td>
 
                                     <td class="cart-product-name">
-                                        <span class="amount">$106.94</span>
+                                        <span class="amount" th:text="${session.order.totalPrice}"></span>
                                     </td>
                                 </tr>
                                 <tr class="cart_item">
@@ -406,7 +406,7 @@
                                     </td>
 
                                     <td class="cart-product-name">
-                                        <span class="amount color lead"><strong>$106.94</strong></span>
+                                        <span class="amount color lead"><strong th:text="${session.order.totalPrice}"></strong></span>
                                     </td>
                                 </tr>
                                 </tbody>

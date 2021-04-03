@@ -31,9 +31,15 @@
                     <a th:href="@{/user}">
                         <i class="fas fa-table"></i>User</a>
                 </li>
-                <li>
-                    <a th:href="@{/recycle}">
-                        <i class="fas fa-table"></i>Recycle Bin</a>
+                <li class="has-sub">
+                    <a class="js-arrow open" href="#">
+                        <i class="fa fa-trash-o"></i>Recycle Bin</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: block;">
+                        <li>
+                            <a th:href="@{/recycle/product}">
+                                <i class="fas fa-table"></i>Product</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

@@ -32,12 +32,12 @@ public class Homepage {
 
     @ModelAttribute("findTop4ByOrderByIdDesc")
     public List<Product> findTop4ByOrderByIdDesc() {
-        return productService.findTop4ByOrderByIdDesc();
+        return productService.findTop4ByIsDeleteIsFalseOrderByIdDesc();
     }
 
     @ModelAttribute("findTop4ByOrderByRatingDesc")
     public List<Product> findTop4ByOrderByRatingDesc() {
-        return productService.findTop4ByOrderByRatingDesc();
+        return productService.findTop4ByIsDeleteIsFalseOrderByRatingDesc();
     }
 
     @ModelAttribute("findAllCategories")
@@ -54,26 +54,26 @@ public class Homepage {
     }
 
     @GetMapping("/index/quick-view/{id}")
-    public String indexQuickView(@PageableDefault(size = 12) Pageable pageable,@PathVariable Long id, Model model){
+    public String indexQuickView(@PageableDefault(size = 12) Pageable pageable, @PathVariable Long id, Model model) {
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         model.addAttribute("quickViewProduct", productService.findOne(id).get());
         return "front-end/quick-view";
-
     }
+
     @GetMapping("/shop")
-    public String shopView(@PageableDefault(size = 12) Pageable pageable, Model model){
+    public String shopView(@PageableDefault(size = 12) Pageable pageable, Model model) {
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         return "front-end/shop";
     }
 
     @GetMapping("/show-product")
-    public String showProduct(@PageableDefault(size = 12) Pageable pageable, Model model){
+    public String showProduct(@PageableDefault(size = 12) Pageable pageable, Model model) {
         return "front-end/layout/nav-bar";
     }
 
     @GetMapping("/shop/category/{id}")
-    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model,@PathVariable Long id){
-        model.addAttribute("showCategoryProduct",productRepository.findAllByCategoryId(id,pageable));
+    public String showCategoryProduct(@PageableDefault(size = 12) Pageable pageable, Model model, @PathVariable Long id) {
+        model.addAttribute("showCategoryProduct", productRepository.findAllByCategoryIdAndDeletedIsFalse(id, pageable));
         return "front-end/shop-category";
     }
 

@@ -39,7 +39,6 @@ public class CartController {
         Optional<Product> optionalProduct = productService.findOne(id);
         if (optionalProduct.isEmpty())
             return "redirect:/shop";
-        Product product = optionalProduct.get();
 
         Order order = (Order) session.getAttribute("order");
         if (order == null) {
@@ -48,9 +47,10 @@ public class CartController {
         }
         // order cờ
         boolean exists = false;
-        // co san trong order
+        // sản phẩm đã có trong order và thêm số lượng
         double total = 0;
 
+        Product product = optionalProduct.get();
         for (OrderDetail orderDetail : order.getOrderDetails()) {
             if (orderDetail.getProduct().getId().equals(product.getId())) {
                 Integer quantity1 = orderDetail.getQuantity();
@@ -81,6 +81,15 @@ public class CartController {
     @GetMapping("/cart/showCart")
     public String showListCart(HttpServletRequest request, HttpSession session) throws SQLException {
         return "front-end/cart";
+    }
+
+    @GetMapping("/cart/update")
+    public String updateCart(HttpServletRequest request, HttpSession session) {
+        Order order = (Order) session.getAttribute("order");
+//        for (OrderDetail orderDetail : order.getOrderDetails()) {
+//            orderDetail.setQuantity();
+//        }
+        return "redirect:" + request.getHeader("Referer");
     }
 
     @GetMapping("/cart/showCart/deleteProduct/{idProduct}")
