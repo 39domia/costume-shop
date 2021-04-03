@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class Checkout {
+public class CheckoutController {
     @Autowired
     ProvinceRepository provinceRepository;
 
