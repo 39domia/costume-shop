@@ -6,6 +6,7 @@ import com.repository.ProductRepository;
 import com.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -76,5 +78,12 @@ public class HomepageController {
         model.addAttribute("showCategoryProduct", productRepository.findAllByCategoryIdAndDeletedIsFalse(id, pageable));
         return "front-end/shop-category";
     }
-
+    @GetMapping("/index/search")
+    public String search(@RequestParam(defaultValue = "") String keyword, Model model, @PageableDefault(size = 20) Pageable pageable) {
+        Page<Product> products = productService.findByNameProductAndIsDeleteContaining(keyword, pageable);
+        model.addAttribute("selectAllPage12", products);
+        if (!products.hasContent())
+            model.addAttribute("searchMess", "Not found");
+        return "front-end/shop";
+    }
 }
