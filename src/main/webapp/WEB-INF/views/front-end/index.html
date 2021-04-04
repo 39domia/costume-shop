@@ -289,7 +289,7 @@
                                 <th:block th:each="product :${findTop4ByOrderByIdDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
-                                            <input type="hidden" class="id-product" th:value="${product.id}">
+                                            <input type="hidden" id="idProduct" th:value="${product.id}">
                                             <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                                 <div th:style="'background-image:url(' + ${product.image} + '); height: 270px;background-position: center;background-size: cover;'"
                                                      alt="Slim Fit Chinos">
@@ -299,8 +299,7 @@
                                                 <a href="#" id="add-cart" type="submit" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
-                                                        class="icon-zoom-in2"></i><span> Quick View</span>
-                                                </a>
+                                                        class="icon-zoom-in2"></i><span> Quick View</span></a>
                                             </div>
                                         </div>
                                         <div class="product-desc">
@@ -1025,14 +1024,13 @@
     }); //ready
 
     let addCart = document.getElementsByClassName('add-to-cart');
-    let idProduct = document.getElementsByClassName('id-product').value;
     for (let i = 0; i < addCart.length; i++) {
         addCart[i].addEventListener("click", add);
     }
 
-    function add(i) {
-        // let id = document.getElementById('idProduct').value;
-        window.location = "/cart/add/" + i + "/1";
+    function add() {
+        let id = document.getElementById('idProduct').value;
+        window.location = "/cart/add/" + id + "/1";
     }
 
 </script>
