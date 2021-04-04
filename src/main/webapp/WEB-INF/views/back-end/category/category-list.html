@@ -116,7 +116,7 @@
                                         <li class="page-item "
                                             th:each="pIndex : ${#numbers.sequence(0,categories.totalPages -1)}">
                                             <th:block th:if="${categories.number == pIndex}">
-                                                <a class="page-link"
+                                                <a style="background-color: #c6c8ca" class="page-link"
                                                    th:href="@{'/category'(page=${pIndex})}"
                                                    th:text="${pIndex +1}"></a>
                                             </th:block>

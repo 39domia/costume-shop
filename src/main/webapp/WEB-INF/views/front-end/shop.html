@@ -116,7 +116,7 @@
                             <li class="page-item "
                                 th:each="pIndex : ${#numbers.sequence(0,selectAllPage12.totalPages -1)}">
                                 <th:block th:if="${selectAllPage12.number == pIndex}">
-                                    <a style="background-color: #0c5460" class="page-link"
+                                    <a style="background-color: #c6c8ca" class="page-link"
                                        th:href="@{'/shop'(page=${pIndex})}" th:text="${pIndex +1}"></a>
                                 </th:block>
                                 <th:block th:if="${selectAllPage12.number != pIndex}">
