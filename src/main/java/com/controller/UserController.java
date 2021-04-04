@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.*;
@@ -44,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/user/create")
-    public String add(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
+    public String add(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model, HttpServletRequest request, RedirectAttributes attributes) throws IOException {
 //        new User().validate(user, bindingResult);
         if (bindingResult.hasFieldErrors())
             return "back-end/user/user-add";
@@ -78,6 +80,7 @@ public class UserController {
         }
         if (user != null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            attributes.addFlashAttribute("mess", "Add success");
             service.add(user);
 
             model.addAttribute("message", "Add success");
@@ -103,7 +106,7 @@ public class UserController {
     }
 
     @PostMapping("/user/update")
-    public String update(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model, HttpServletRequest request) throws IOException {
+    public String update(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model, HttpServletRequest request, RedirectAttributes attributes) throws IOException {
 //        new User().validate(user, bindingResult);
 //        System.out.println(user.toString());
         if (bindingResult.hasFieldErrors())
@@ -138,6 +141,7 @@ public class UserController {
         }
         if (user != null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            attributes.addFlashAttribute("mess", "Update success");
             service.update(user);
 
             model.addAttribute("message", "Edit success");
