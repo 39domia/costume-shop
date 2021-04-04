@@ -37,6 +37,16 @@ public class CheckoutController {
 
     @Autowired
     ProductService productService;
+    
+    @ModelAttribute("findTop4ByOrderByIdDesc")
+    public List<Product> findTop4ByOrderByIdDesc() {
+        return productService.findTop4ByIsDeleteIsFalseOrderByIdDesc();
+    }
+
+    @ModelAttribute("findTop4ByOrderByRatingDesc")
+    public List<Product> findTop4ByOrderByRatingDesc() {
+        return productService.findTop4ByIsDeleteIsFalseOrderByRatingDesc();
+    }
 
     @ModelAttribute("findAllCategories")
     public List<Category> findAllCategories() {
