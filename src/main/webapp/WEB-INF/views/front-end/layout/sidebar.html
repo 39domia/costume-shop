@@ -12,7 +12,8 @@
             <div class="widget widget_links clearfix">
                 <h4>Shop Categories</h4>
                 <ul th:each="category :${findAllCategories}">
-                    <li><a href="#" th:text="${category.name}"></a></li>
+                    <li><a th:href="@{/shop/category/{id}(id = ${category.id})}"
+                           th:text="${category.name}"></a></li>
                 </ul>
             </div>
             <div class="widget clearfix">
