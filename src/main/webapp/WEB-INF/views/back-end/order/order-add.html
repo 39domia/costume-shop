@@ -69,9 +69,10 @@
                                                 <label for="city" class=" form-control-label">city</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <select th:field="*{province.id}" id="city">
+                                                <select th:field="*{province.id}" id="city" class="form-control">
                                                     <option th:each="pro: ${provinces}" th:value="${pro.id}"
-                                                            th:text="${pro.name}"></option>
+                                                            th:text="${pro.name}">
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -123,7 +124,7 @@
                                                     Method</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <select th:field="${order.paymentMethod}" id="paymentMethod">
+                                                <select th:field="${order.paymentMethod}" id="paymentMethod" class="form-control">
                                                     <option th:value="'Cash on delivery'" th:text="'Cash on delivery'"></option>
                                                     <option th:value="'Internet Banking'" th:text="'Internet Banking'"></option>
                                                     <option th:value="'Debit Card/Credit Card'" th:text="'Debit Card/Credit Card'"></option>

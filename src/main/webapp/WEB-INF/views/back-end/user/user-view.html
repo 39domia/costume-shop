@@ -32,88 +32,83 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/user}">Back
+                            <a class="btn btn-primary" th:href="@{/user}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <!--                            <div class="col-lg-6">-->
-
-                            <div class="row">
-                                <!-- FORM ADD-->
-                                <div class="col-12 col-md-12">
-                                    <div class="card-header">
-                                        <strong th:text="${user.id}"></strong>
-                                    </div>
-                                    <form th:object="${user}">
-                                        <div class="card-body card-block">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">email :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="*{email}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">full name :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="*{fullName}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">role :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="*{role}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Image :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <img th:src="*{image}" alt="user img">
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">description :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="*{description}"></p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">about :</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p th:text="*{about}"></p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </form>
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>View</strong> User
                                 </div>
+                                <form th:object="${user}" class="form-horizontal">
+                                    <div class="card-body card-block">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">ID</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="id-input"
+                                                     th:text="*{id}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">email :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{email}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">full name :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{fullName}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">role :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{role}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Image :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <img th:src="@{/upload/__${user.imageUrl}__}" alt="user img" style="max-height: 200px">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">description :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{description}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">about :</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div th:text="*{about}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary" th:href="@{/user}">Back
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
-                            <!--                            </div>-->
-                            <!-- END DATA TABLE -->
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2018 Colorlib. All rights reserved. Template
-                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                                </p>
-                            </div>
-                        </div>
+                        <!-- END DATA TABLE -->
                     </div>
                 </div>
             </div>

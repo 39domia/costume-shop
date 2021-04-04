@@ -9,18 +9,13 @@
 <th:block th:fragment="sidebar">
     <div class="sidebar nobottommargin clearfix">
         <div class="sidebar-widgets-wrap">
-
             <div class="widget widget_links clearfix">
-
                 <h4>Shop Categories</h4>
                 <ul th:each="category :${findAllCategories}">
                     <li><a href="#" th:text="${category.name}"></a></li>
                 </ul>
-
             </div>
-
             <div class="widget clearfix">
-
                 <h4>Recent Items</h4>
                 <div id="post-list-footer">
                     <th:block th:each="product : ${findTop4ByOrderByRatingDesc}">
@@ -29,7 +24,6 @@
                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                     <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
                                          alt="Slim Fit Chinos">
-
                                     </div>
                                 </a>
                             </div>
@@ -37,14 +31,12 @@
                                 <div class="entry-title">
                                     <h4><a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                            th:text="${product.nameProduct}">
-
                                     </a>
                                     </h4>
                                 </div>
                                 <ul class="entry-meta">
                                     <li class="color" th:text="${product.price}">$</li>
                                     <li>
-
                                         <th:block th:if="${product.rating == 1}">
                                             <i class="icon-star3"></i>
                                             <i class="icon-star-empty"></i>
@@ -86,21 +78,16 @@
                         </div>
                     </th:block>
                 </div>
-
             </div>
-
             <div class="widget clearfix">
-
                 <h4>Last Viewed Items</h4>
                 <div class="widget-last-view">
-
                     <th:block th:each="product : ${findTop4ByOrderByIdDesc}">
                         <div class="spost clearfix">
                             <div class="entry-image">
                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                     <div th:style="'background-image:url(' + ${product.image} + '); height: 38px;background-position: center;background-size: cover;'"
                                          alt="Slim Fit Chinos">
-
                                     </div>
                                 </a>
                             </div>
@@ -108,14 +95,12 @@
                                 <div class="entry-title">
                                     <h4><a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                            th:text="${product.nameProduct}">
-
                                     </a>
                                     </h4>
                                 </div>
                                 <ul class="entry-meta">
                                     <li class="color" th:text="${product.price}">$</li>
                                     <li>
-
                                         <th:block th:if="${product.rating == 1}">
                                             <i class="icon-star3"></i>
                                             <i class="icon-star-empty"></i>
@@ -156,14 +141,9 @@
                             </div>
                         </div>
                     </th:block>
-
-
                 </div>
-
             </div>
-
             <div class="widget clearfix">
-
                 <h4>Popular Items</h4>
                 <div id="Popular-item">
                     <th:block th:each="product : ${findTop4ByOrderByRatingDesc}">

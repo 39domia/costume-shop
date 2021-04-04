@@ -174,14 +174,14 @@
                                     </table>
                                 </div>
                                 <div class="accordion clearfix">
-
-                                    <input id="payMethod1" type="radio" th:field="*{paymentMethod}"
-                                           th:value="'Cash on delivery'">
-                                    <input id="payMethod2" type="radio" th:field="*{paymentMethod}"
-                                           th:value="'Internet Banking'">
-                                    <input id="payMethod3" type="radio" th:field="*{paymentMethod}"
-                                           th:value="'Debit Card/Credit Card'">
-
+                                    <div style="display: none">
+                                        <input id="payMethod1" type="radio" th:field="*{paymentMethod}"
+                                               th:value="'Cash on delivery'">
+                                        <input id="payMethod2" type="radio" th:field="*{paymentMethod}"
+                                               th:value="'Internet Banking'">
+                                        <input id="payMethod3" type="radio" th:field="*{paymentMethod}"
+                                               th:value="'Debit Card/Credit Card'">
+                                    </div>
                                     <div id="payMethod1div" class="acctitle"><i
                                             class="acc-closed icon-ok-circle"></i><i
                                             class="acc-open icon-remove-circle"></i>Cash on delivery
@@ -213,7 +213,7 @@
                                         non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.
                                     </div>
                                 </div>
-                                <button type="submit" class="button button-3d fright" value="Place Order"></button>
+                                <button type="submit" class="button button-3d fright">Place Order</button>
                             </div>
                         </th:block>
                     </form>

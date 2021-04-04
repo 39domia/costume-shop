@@ -48,7 +48,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#">
+                            <a th:href="@{/shop}">
                                 <div>Men</div>
                                 <span>Out of the Box</span></a>
                             <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
@@ -65,7 +65,7 @@
                                 </ul>
                             </div>
                         </li><!-- .mega-menu end -->
-                        <li><a href="#">
+                        <li><a th:href="@{/shop}">
                             <div>Category</div>
                             <span>Out of the Box</span></a>
                             <div class="mega-menu-content style-2 clearfix" style="max-width: 200px">
@@ -90,13 +90,43 @@
                     <!-- Top Cart
                     ============================================= -->
                     <div id="top-cart">
-                        <a th:href="@{/cart/showCart}" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
-                        <div class="top-cart-content">
-                            <div class="top-cart-title">
-                                <h4>Shopping Cart</h4>
+                        <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i>
+
+                            <th:block th:if="${session.order}">
+                                <span th:text="${session.order.orderDetails.size()}"></span>
+                            </th:block>
+                            <th:block th:unless="${session.order}">
+                                <span th:text="'0'"></span>
+                            </th:block>
+                        </a>
+                        <th:block th:if="${session.order!=null}">
+                            <div class="top-cart-content">
+                                <div class="top-cart-title">
+                                    <h4>Shopping Cart</h4>
+                                </div>
+                                <div class="top-cart-items">
+                                    <div class="top-cart-item clearfix" th:each="cart: ${session.order.orderDetails}">
+                                        <div class="top-cart-item-image">
+                                            <a href="#"><img th:src="${cart.product.image}"
+                                                             th:alt="${cart.product.nameProduct}"/></a>
+                                        </div>
+                                        <div class="top-cart-item-desc">
+                                            <a href="#" th:text="${cart.product.nameProduct}"></a>
+                                            <span class="top-cart-item-price" th:text="${cart.product.price}"></span>
+                                            <span class="top-cart-item-quantity"
+                                                  th:text="'x '+ ${cart.quantity}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-cart-action clearfix">
+                                    <span class="fleft top-checkout-price" th:text="${session.order.totalPrice}"></span>
+                                    <a th:href="@{/cart/showCart}"
+                                       class="button button-3d button-small nomargin fright">View Cart</a>
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- #top-cart end -->
+                        </th:block>
+                    </div>
+                    <!-- #top-cart end -->
                     <!-- Top Search
                     ============================================= -->
                     <div id="top-search">

@@ -42,7 +42,7 @@
                                     <strong>Edit Form</strong> User
                                 </div>
                                 <div class="card-body card-block">
-                                    <form th:action="@{/user/update}" th:object="${user}" method="post"
+                                    <form th:action="@{/user/update}" enctype="multipart/form-data" th:object="${user}" method="post"
                                           class="form-horizontal">
                                         <input type="hidden" th:field="*{id}">
 
@@ -55,9 +55,9 @@
                                                 <input type="email" id="email-input"
                                                        placeholder="Email" class="form-control"
                                                        th:field="*{email}">
-                                                <small class="form-text text-danger"
-                                                       th:if="${#fields.hasErrors('email')}"
-                                                       th:errors="*{email}"></small>
+<!--                                                <small class="form-text text-danger"-->
+<!--                                                       th:if="${#fields.hasErrors('email')}"-->
+<!--                                                       th:errors="*{email}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -69,9 +69,9 @@
                                                 <input type="password" id="pass-input"
                                                        placeholder="insert new password" class="form-control"
                                                        th:field="*{password}">
-                                                <small class="form-text text-danger"
-                                                       th:if="${#fields.hasErrors('password')}"
-                                                       th:errors="*{password}"></small>
+<!--                                                <small class="form-text text-danger"-->
+<!--                                                       th:if="${#fields.hasErrors('password')}"-->
+<!--                                                       th:errors="*{password}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -83,9 +83,9 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name user" class="form-control"
                                                        th:field="*{fullName}">
-                                                <small class="form-text text-danger"
-                                                       th:if="${#fields.hasErrors('fullName')}"
-                                                       th:errors="*{fullName}"></small>
+<!--                                                <small class="form-text text-danger"-->
+<!--                                                       th:if="${#fields.hasErrors('fullName')}"-->
+<!--                                                       th:errors="*{fullName}"></small>-->
                                             </div>
                                         </div>
 
@@ -98,8 +98,8 @@
                                                 <select type="text" id="role-input"
                                                         class="form-control"
                                                         th:field="*{role}">
-                                                    <option th:value="true">Admin</option>
-                                                    <option th:value="false">User</option>
+                                                    <option th:value="admin">Admin</option>
+                                                    <option th:value="user">User</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -107,13 +107,15 @@
 
                                         <div class="row form-group">
                                             <div class="col col-md-3">
-                                                <label for="password-input" class=" form-control-label">image</label>
+                                                <label class=" form-control-label">image</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <input type="text" id="password-input"
-                                                       placeholder="image link" class="form-control"
-                                                       th:field="*{image}">
-                                                <!--                                                <small class="help-block form-text">Please enter a image</small>-->
+                                                <input type="hidden" th:field="*{imageUrl}"
+                                                       placeholder="Name"
+                                                       class="form-control">
+                                                <input type="file" th:field="*{image}"
+                                                       placeholder="Name"
+                                                       class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -125,9 +127,9 @@
                                                 <input type="text" id="description-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{description}">
-                                                <small class="form-text text-danger"
-                                                       th:if="${#fields.hasErrors('description')}"
-                                                       th:errors="*{description}"></small>
+<!--                                                <small class="form-text text-danger"-->
+<!--                                                       th:if="${#fields.hasErrors('description')}"-->
+<!--                                                       th:errors="*{description}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -139,9 +141,9 @@
                                                 <input type="text" id="about-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{about}">
-                                                <small class="form-text text-danger"
-                                                       th:if="${#fields.hasErrors('about')}"
-                                                       th:errors="*{about}"></small>
+<!--                                                <small class="form-text text-danger"-->
+<!--                                                       th:if="${#fields.hasErrors('about')}"-->
+<!--                                                       th:errors="*{about}"></small>-->
                                             </div>
                                         </div>
                                         <div style=" display: flex; justify-content: space-between">
@@ -155,25 +157,12 @@
 
                                                 </input>
                                             </div>
-
                                         </div>
 
                                     </form>
                                 </div>
                             </div>
-                            <!--                            </div>-->
                             <!-- END DATA TABLE -->
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>
-                                    Copyright © 2018 Colorlib. All rights reserved. Template
-                                    by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>

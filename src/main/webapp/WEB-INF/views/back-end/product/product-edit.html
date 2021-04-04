@@ -31,12 +31,13 @@
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <div class="row">
-                        <a type="reset" class="btn btn-primary btn-sm" th:href="@{/product}">Back
-                        </a>
+                        <div class="ml-3 mb-4">
+                            <a class="btn btn-primary" th:href="@{/product}">Back
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <!-- DATA TABLE -->
-                        <!--                            <div class="col-lg-6">-->
                         <div class="card">
                             <form th:action="@{/product/update}" th:object="${product}" method="post"
                                   class="form-horizontal">
@@ -57,7 +58,6 @@
                                                    placeholder="Name product" class="form-control"
                                                    th:field="*{nameProduct}">
                                             <!--                                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{nameProduct}">Name Error</span>-->
-                                            <small class="form-text text-muted">Không được bỏ trống</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -68,8 +68,6 @@
                                             <input type="number" id="email-input"
                                                    placeholder="Enter desciption" class="form-control"
                                                    th:field="*{price}">
-                                            <small class="help-block form-text">Please enter your
-                                                price</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -80,7 +78,6 @@
                                             <input type="number" id="rating"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{rating}">
-                                            <small class="help-block form-text">Please enter a rating</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -92,7 +89,6 @@
                                             <input type="text" id="shortDescription-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{shortDescription}">
-                                            <small class="help-block form-text">Please enter a description</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -104,7 +100,6 @@
                                             <input type="text" id="description-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{description}">
-                                            <small class="help-block form-text">Please enter a description</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -115,7 +110,6 @@
                                             <input type="text" id="image-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{image}">
-                                            <small class="help-block form-text">Please enter a image</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -127,7 +121,6 @@
                                                    placeholder="image link" class="form-control" s
                                                    th:field="*{status}">
 
-                                            <small class="help-block form-text">Please enter a status</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -138,7 +131,6 @@
                                             <input type="number" id="size-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{size}">
-                                            <small class="help-block form-text">Please enter a size</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -149,7 +141,6 @@
                                             <input type="text" id="color-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{color}">
-                                            <small class="help-block form-text">Please enter a color</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -160,7 +151,6 @@
                                             <input type="text" id="length-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{rating}">
-                                            <small class="help-block form-text">Please enter a length</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -171,7 +161,6 @@
                                             <input type="text" id="fabric-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{fabric}">
-                                            <small class="help-block form-text">Please enter a fabric</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -182,7 +171,6 @@
                                             <input type="text" id="warranty-input"
                                                    placeholder="image link" class="form-control"
                                                    th:field="*{warranty}">
-                                            <small class="help-block form-text">Please enter a warranty</small>
                                         </div>
                                     </div>
                                     <div class="row form-group">

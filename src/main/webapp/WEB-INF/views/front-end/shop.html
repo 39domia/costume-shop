@@ -105,34 +105,34 @@
                             </div>
                         </th:block>
 
-                        <nav aria-label="Search results pages">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" th:href="@{'/shop'(page=${selectAllPage12.number - 1})}"
-                                       th:if="${selectAllPage12.hasPrevious()}">Previous</a>
-                                </li>
-
-                                <li class="page-item "
-                                    th:each="pIndex : ${#numbers.sequence(0,selectAllPage12.totalPages -1)}">
-                                    <th:block th:if="${selectAllPage12.number == pIndex}">
-                                        <a style="background-color: #0c5460" class="page-link"
-                                           th:href="@{'/shop'(page=${pIndex})}" th:text="${pIndex +1}"></a>
-                                    </th:block>
-                                    <th:block th:if="${selectAllPage12.number != pIndex}">
-                                        <a class="page-link" th:href="@{'/shop'(page=${pIndex})}"
-                                           th:text="${pIndex +1}"></a>
-                                    </th:block>
-                                </li>
-
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       th:href="@{'/shop'(page=${selectAllPage12.number + 1})}"
-                                       th:if="${selectAllPage12.hasNext()}"
-                                    >Next</a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div><!-- #shop end -->
+                    <nav aria-label="Search results pages">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{'/shop'(page=${selectAllPage12.number - 1})}"
+                                   th:if="${selectAllPage12.hasPrevious()}">Previous</a>
+                            </li>
+
+                            <li class="page-item "
+                                th:each="pIndex : ${#numbers.sequence(0,selectAllPage12.totalPages -1)}">
+                                <th:block th:if="${selectAllPage12.number == pIndex}">
+                                    <a style="background-color: #0c5460" class="page-link"
+                                       th:href="@{'/shop'(page=${pIndex})}" th:text="${pIndex +1}"></a>
+                                </th:block>
+                                <th:block th:if="${selectAllPage12.number != pIndex}">
+                                    <a class="page-link" th:href="@{'/shop'(page=${pIndex})}"
+                                       th:text="${pIndex +1}"></a>
+                                </th:block>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/shop'(page=${selectAllPage12.number + 1})}"
+                                   th:if="${selectAllPage12.hasNext()}"
+                                >Next</a>
+                            </li>
+                        </ul>
+                    </nav>
 
                 </div><!-- .postcontent end -->
 

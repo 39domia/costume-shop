@@ -285,25 +285,26 @@
                     </ul>
                     <div class="tab-container">
                         <div class="tab-content clearfix" id="tabs-9">
-                            <div id="shop" class="shop clearfix">
+                            <div class="shop clearfix">
                                 <th:block th:each="product :${findTop4ByOrderByIdDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
+                                            <input type="hidden" id="idProduct" th:value="${product.id}">
                                             <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
                                                 <div th:style="'background-image:url(' + ${product.image} + '); height: 270px;background-position: center;background-size: cover;'"
                                                      alt="Slim Fit Chinos">
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a href="#" id="add-cart" type="submit" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
-                                                        class="icon-zoom-in2"></i><span> Quick View</span></a>
+                                                        class="icon-zoom-in2"></i><span> Quick View</span>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="product-desc">
-                                            <div class="product-title"><h3><a href="#"
-                                                                              th:text="${product.nameProduct}"></a></h3>
+                                            <div class="product-title"><h3><a href="#" th:text="${product.nameProduct}"></a></h3>
                                             </div>
                                             <div class="product-price"><p th:text="${product.price} + ' $'"></p></div>
                                             <div class="product-rating">
@@ -349,7 +350,7 @@
                             </div>
                         </div>
                         <div class="tab-content clearfix" id="tabs-10">
-                            <div id="shop" class="shop clearfix">
+                            <div class="shop clearfix">
                                 <th:block th:each="product :${findTop4ByOrderByRatingDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
@@ -413,7 +414,7 @@
                             </div>
                         </div>
                         <div class="tab-content clearfix" id="tabs-11">
-                            <div id="shop" class="shop clearfix">
+                            <div class="shop clearfix">
                                 <th:block th:each="product :${findTop4ByOrderByIdDesc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
@@ -1022,6 +1023,16 @@
             SEMICOLON.slider.sliderParallaxDimensions();
         });
     }); //ready
+
+    let addCart = document.getElementsByClassName('add-to-cart');
+    for (let i = 0; i < addCart.length; i++) {
+        addCart[i].addEventListener("click", add);
+    }
+
+    function add() {
+        let id = document.getElementById('idProduct').value;
+        window.location = "/cart/add/" + id + "/1";
+    }
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Category Table</title>
+    <title>User Table</title>
     <th:block th:replace="back-end/layout/link::linkHeader">
     </th:block>
 </head>
@@ -33,31 +33,23 @@
                     <div class="row">
                         <div class="col-md-12">
                             <!-- DATA TABLE -->
-                            <h3 class="title-5 m-b-35">data table</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
-                                    <form th:action="@{/user/search}">
-                                        <input type="text" name="keyword">
-                                        <input type="submit" value="search">
-                                    </form>
                                 </div>
-                                <div class="table-data__tool-right">
-                                    <a
-                                            class="au-btn au-btn-icon au-btn--green au-btn--small"
-                                            th:href="@{/user/create}"
-                                    >
+                                <div class="table-data__tool-left col-4">
+                                    <a class="au-btn au-btn-icon au-btn--green"
+                                       th:href="@{/user/create}">
                                         <i class="zmdi zmdi-plus"></i>add item
                                     </a>
-                                    <div
-                                            class="rs-select2--dark rs-select2--sm rs-select2--dark2"
-                                    >
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
+                                </div>
+                                <div class="table-data__tool-right col-8">
+                                    <form class="form-header" th:action="@{/user/search}">
+                                        <input class="au-input au-input--xl" type="text" name="keyword"
+                                               placeholder="Search for name category...">
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">
@@ -76,8 +68,8 @@
                                         <td th:text="${user.id}"></td>
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.fullName}"></td>
-                                        <td th:if="${user.role == true}" th:text="Admin"></td>
-                                        <td th:if="${user.role == false}" th:text="User"></td>
+                                        <td th:if="${user.role == 'admin'}" th:text="Admin"></td>
+                                        <td th:if="${user.role == 'user'}" th:text="User"></td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a
@@ -104,26 +96,23 @@
                                                    data-placement="top"
                                                    title="Delete">
                                                     <i class="zmdi zmdi-delete"></i></a>
-
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
-
-                                <nav aria-label="Search results pages">
+                                <nav class="mt-3" aria-label="Search results pages">
                                     <ul class="pagination">
                                         <li class="page-item">
                                             <a class="page-link"
                                                th:href="@{'/user'(page=${users.number - 1})}"
                                                th:if="${users.hasPrevious()}">Previous</a>
                                         </li>
-
                                         <li class="page-item "
                                             th:each="pIndex : ${#numbers.sequence(0,users.totalPages -1)}">
                                             <th:block th:if="${users.number == pIndex}">
-                                                <a style="background-color: #0c5460" class="page-link"
+                                                <a class="page-link"
                                                    th:href="@{'/user'(page=${pIndex})}"
                                                    th:text="${pIndex +1}"></a>
                                             </th:block>
@@ -132,7 +121,6 @@
                                                    th:text="${pIndex +1}"></a>
                                             </th:block>
                                         </li>
-
                                         <li class="page-item">
                                             <a class="page-link"
                                                th:href="@{'/user'(page=${users.number + 1})}"
@@ -141,24 +129,9 @@
                                         </li>
                                     </ul>
                                 </nav>
-
                             </div>
-                            <th:block th:if="${searchMess!=null}">
-                                <h2 th:text="${searchMess}"></h2>
-                            </th:block>
                         </div>
                         <!-- END DATA TABLE -->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright">
-                            <p>
-                                Copyright © 2018 Colorlib. All rights reserved. Template
-                                by <a href="../bootstrap/https://colorlib.com">Colorlib</a>.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -175,7 +148,6 @@
         }
     }
 </script>
-</div>
 <th:block th:replace="back-end/layout/link::script">
 
 </th:block>

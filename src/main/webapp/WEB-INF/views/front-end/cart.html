@@ -78,6 +78,7 @@
                                                type="button" value="-" class="minus">
                                         <input id="quantity" type="number" step="1" min="1" name="quantity"
                                                th:value="${cart.quantity}" title="Qty"
+                                               th:data-id-product="${cart.product.id}"
                                                class="qty" size="4"/>
                                         <input id="quantity-right-plus"
                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
@@ -101,7 +102,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-xs-8 nopadding">
-                                            <a th:href="${/cart/update}" class="button button-3d nomargin fright">Update Cart</a>
+                                            <button onclick="handleUpdate()" class="button button-3d nomargin fright">
+                                                Update Cart
+                                            </button>
                                             <a th:href="@{/checkout}" class="button button-3d notopmargin fright">Proceed
                                                 to Checkout</a>
                                         </div>
@@ -368,34 +371,31 @@
                             <div class="col_half">
                                 <input type="text" class="sm-form-control" placeholder="State / Country"/>
                             </div>
-
                             <div class="col_half col_last">
                                 <input type="text" class="sm-form-control" placeholder="PostCode / Zip"/>
                             </div>
                             <a href="#" class="button button-3d nomargin button-black">Update Totals</a>
                         </form>
                     </div>
-
                     <div class="col-md-6 clearfix">
                         <div class="table-responsive">
                             <h4>Cart Totals</h4>
-
                             <table class="table cart">
                                 <tbody>
                                 <tr class="cart_item">
                                     <td class="cart-product-name">
                                         <strong>Cart Subtotal</strong>
                                     </td>
-
                                     <td class="cart-product-name">
-                                        <span class="amount" th:text="${session.order.totalPrice}"></span>
+                                        <th:block th:if="${session.order!=null}">
+                                            <span class="amount" th:text="${session.order.totalPrice}"></span>
+                                        </th:block>
                                     </td>
                                 </tr>
                                 <tr class="cart_item">
                                     <td class="cart-product-name">
                                         <strong>Shipping</strong>
                                     </td>
-
                                     <td class="cart-product-name">
                                         <span class="amount">Free Delivery</span>
                                     </td>
@@ -404,23 +404,20 @@
                                     <td class="cart-product-name">
                                         <strong>Total</strong>
                                     </td>
-
                                     <td class="cart-product-name">
-                                        <span class="amount color lead"><strong th:text="${session.order.totalPrice}"></strong></span>
+                                        <th:block th:if="${session.order!=null}">
+                                            <span class="amount color lead"><strong
+                                                    th:text="${session.order.totalPrice}"></strong></span>
+                                        </th:block>
                                     </td>
                                 </tr>
                                 </tbody>
-
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </section><!-- #content end -->
 
     <!-- Footer
@@ -674,5 +671,19 @@
 
 <th:block th:replace="front-end/layout/link::scripts">
 </th:block>
+
+<script>
+    //qty
+    function getCartValues() {
+        return Array.from(document.getElementsByClassName("qty"))
+            .map(item => item.getAttribute("data-id-product") + ":" + item.value)
+            .join("-");
+    }
+
+    function handleUpdate() {
+        window.location.href = "/cart/update/" + getCartValues();
+    }
+
+</script>
 </body>
 </html>

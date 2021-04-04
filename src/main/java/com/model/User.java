@@ -3,6 +3,7 @@ package com.model;
 import lombok.Data;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -32,8 +33,11 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String role;
 
-    @Column(length = 5000)
-    private String image;
+    @Transient
+    private CommonsMultipartFile[] image;
+
+    private String imageUrl;
+
     @Column(length = 5000)
     private String description;
     @Column(length = 5000)

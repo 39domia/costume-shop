@@ -32,7 +32,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/order}">Back
+                            <a class="btn btn-primary" th:href="@{/order}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -41,7 +41,7 @@
                                 <form th:action="@{/order/update}" th:object="${order}" method="post"
                                       class="form-horizontal">
                                     <div class="card-header">
-                                        <strong>Edit Form</strong> order
+                                        <strong>Edit</strong> order
                                     </div>
                                     <div class="card-body card-block">
                                         <!--<div th:if="${mess}">-->
@@ -126,7 +126,7 @@
                                                     Method</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <select th:field="${order.paymentMethod}" id="paymentMethod">
+                                                <select th:field="${order.paymentMethod}" id="paymentMethod" class="form-control">
                                                     <option th:value="'Cash on delivery'" th:text="'Cash on delivery'"></option>
                                                     <option th:value="'Internet Banking'" th:text="'Internet Banking'"></option>
                                                     <option th:value="'Debit Card/Credit Card'" th:text="'Debit Card/Credit Card'"></option>
@@ -148,7 +148,7 @@
                                                 <label class=" form-control-label">status</label>
                                             </div>
                                             <div class="col-12 col-md-9">
-                                                <select th:field="${order.status}">
+                                                <select th:field="${order.status}" class="form-control">
                                                     <option th:value="1">Đã đặt, đang chờ xác nhận</option>
                                                     <option th:value="2">Xác nhận thành công, chờ nhận hàng</option>
                                                     <option th:value="3">Đã hủy</option>
