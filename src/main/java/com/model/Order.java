@@ -23,7 +23,6 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private String paymentMethod;
 
-
     @Column(nullable = false)
     private Integer status = 1;
 //    order status: 1 - Đã đặt, đang chờ xác nhận

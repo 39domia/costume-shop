@@ -17,10 +17,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -63,11 +66,15 @@ public class CheckoutController {
     }
 
     @PostMapping("/checkout/addOrder")
-    public String addOrder(@ModelAttribute Order order,HttpServletRequest request,
+    public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, HttpServletRequest request,
                            @PageableDefault(size = 12) Pageable pageable,
-                           @RequestParam(defaultValue = "") String keyword
-                           ,HttpSession session, Model model) {
+                           @RequestParam(defaultValue = "") String keyword,
+                           HttpSession session, Model model) {
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("provinces", provinceRepository.findAll());
+            return "front-end/checkout";
 
+        }
         model.addAttribute("selectAllPage12", productService.selectAll(pageable));
         Page<Product> products = productService.findByNameProductAndIsDeleteContaining(keyword, pageable);
         model.addAttribute("selectAllPage12", products);
