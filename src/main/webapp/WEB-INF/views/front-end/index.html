@@ -420,7 +420,7 @@
                         </div>
                         <div class="tab-content clearfix" id="tabs-11">
                             <div class="shop clearfix">
-                                <th:block th:each="product :${findTop4ByOrderByIdDesc}">
+                                <th:block th:each="product :${findTop4ByDeletedIsFalseOrderByPriceAsc}">
                                     <div class="product clearfix">
                                         <div class="product-image">
                                             <a th:href="@{/index/quick-view/{id}(id = ${product.id})}" 4>
