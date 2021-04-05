@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
 <aside class="menu-sidebar d-none d-lg-block" th:fragment="sideBar">
     <div class="logo">
@@ -27,7 +27,7 @@
                     <a th:href="@{/order}">
                         <i class="fas fa-table"></i>Order</a>
                 </li>
-                <li>
+                <li  sec:authorize="hasAuthority('admin')">
                     <a th:href="@{/user}">
                         <i class="fas fa-table"></i>User</a>
                 </li>
@@ -44,7 +44,6 @@
             </ul>
         </nav>
     </div>
-
 </aside>
 </body>
 </html>

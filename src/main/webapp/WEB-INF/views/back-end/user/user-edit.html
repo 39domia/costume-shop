@@ -32,7 +32,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="ml-3 mb-4">
-                            <a type="reset" class="btn btn-primary btn-sm" th:href="@{/user}">Back
+                            <a type="reset" class="btn btn-primary" th:href="@{/user}">Back
                             </a>
                         </div>
                         <div class="col-md-12">
@@ -41,11 +41,11 @@
                                 <div class="card-header">
                                     <strong>Edit Form</strong> User
                                 </div>
-                                <div class="card-body card-block">
-                                    <form th:action="@{/user/update}" enctype="multipart/form-data" th:object="${user}" method="post"
-                                          class="form-horizontal">
+                                <form th:action="@{/user/update}" enctype="multipart/form-data" th:object="${user}"
+                                      method="post"
+                                      class="form-horizontal">
+                                    <div class="card-body card-block">
                                         <input type="hidden" th:field="*{id}">
-
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="email-input" class=" form-control-label">Email
@@ -55,9 +55,6 @@
                                                 <input type="email" id="email-input"
                                                        placeholder="Email" class="form-control"
                                                        th:field="*{email}">
-<!--                                                <small class="form-text text-danger"-->
-<!--                                                       th:if="${#fields.hasErrors('email')}"-->
-<!--                                                       th:errors="*{email}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -69,9 +66,6 @@
                                                 <input type="password" id="pass-input"
                                                        placeholder="insert new password" class="form-control"
                                                        th:field="*{password}">
-<!--                                                <small class="form-text text-danger"-->
-<!--                                                       th:if="${#fields.hasErrors('password')}"-->
-<!--                                                       th:errors="*{password}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -83,12 +77,8 @@
                                                 <input type="text" id="text-input"
                                                        placeholder="Name user" class="form-control"
                                                        th:field="*{fullName}">
-<!--                                                <small class="form-text text-danger"-->
-<!--                                                       th:if="${#fields.hasErrors('fullName')}"-->
-<!--                                                       th:errors="*{fullName}"></small>-->
                                             </div>
                                         </div>
-
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="role-input" class=" form-control-label">Role
@@ -103,8 +93,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
-
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label class=" form-control-label">image</label>
@@ -127,9 +115,6 @@
                                                 <input type="text" id="description-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{description}">
-<!--                                                <small class="form-text text-danger"-->
-<!--                                                       th:if="${#fields.hasErrors('description')}"-->
-<!--                                                       th:errors="*{description}"></small>-->
                                             </div>
                                         </div>
                                         <div class="row form-group">
@@ -141,26 +126,15 @@
                                                 <input type="text" id="about-input"
                                                        placeholder="Enter desciption" class="form-control"
                                                        th:field="*{about}">
-<!--                                                <small class="form-text text-danger"-->
-<!--                                                       th:if="${#fields.hasErrors('about')}"-->
-<!--                                                       th:errors="*{about}"></small>-->
                                             </div>
                                         </div>
-                                        <div style=" display: flex; justify-content: space-between">
-                                            <div class="card-footer" style=" display: flex">
-                                                <input type="submit" class="btn btn-primary btn-sm" value="Submit"
-                                                       style="margin: 10px">
-
-                                                </input>
-                                                <input type="reset" class="btn btn-danger btn-sm" href="#"
-                                                       style="margin: 10px">
-
-                                                </input>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm" value="Submit">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                             <!-- END DATA TABLE -->
                         </div>

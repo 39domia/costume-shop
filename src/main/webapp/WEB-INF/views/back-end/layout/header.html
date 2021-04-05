@@ -11,18 +11,16 @@
           <div class="account-wrap" style="">
             <div class="account-item clearfix js-item-menu">
               <div class="image">
-                <img src="/assets/back-end/images/icon/avatar-01.jpg" alt="John Doe"/>
+                <img th:src="@{'/upload/'+ ${session.user.imageUrl}}" alt="John Doe"/>
               </div>
               <div class="content">
-                <a class="js-acc-btn" href="#" sec:authentication="name"></a>
+                <a class="js-acc-btn" href="#" th:text="${session.user.fullName}"></a>
               </div>
               <div class="account-dropdown js-dropdown">
                 <div class="info clearfix">
                   <div class="image">
                     <a href="#">
-                      <img
-                              src="/assets/back-end/images/icon/avatar-01.jpg"
-                              alt="John Doe"
+                      <img th:src="@{'/upload/'+ ${session.user.imageUrl}}" alt="John Doe"
                       />
                     </a>
                   </div>
@@ -30,7 +28,7 @@
                     <h5 class="name">
                       <a href="#"></a>
                     </h5>
-<!--                    <span class="email" sec:authentication="email"></span>-->
+                    <span class="email" sec:authentication="name"></span>
                   </div>
                 </div>
                 <div class="account-dropdown__body">
@@ -42,11 +40,6 @@
                   <div class="account-dropdown__item">
                     <a href="#">
                       <i class="zmdi zmdi-settings"></i>Setting</a
-                    >
-                  </div>
-                  <div class="account-dropdown__item">
-                    <a href="#">
-                      <i class="zmdi zmdi-money-box"></i>Billing</a
                     >
                   </div>
                 </div>
