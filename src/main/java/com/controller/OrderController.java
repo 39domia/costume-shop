@@ -29,7 +29,7 @@ public class OrderController {
 
 
     @Autowired
-    private OrderDetailServiceImpl orderDetailService;
+    private OrderDetailService orderDetailService;
 
     @GetMapping("/order")
     public String showAllCategories(Model model, @PageableDefault(size = 10) Pageable pageable) {

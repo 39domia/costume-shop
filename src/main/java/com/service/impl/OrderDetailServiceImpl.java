@@ -11,10 +11,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.Order;
+import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class OrderDetailServiceImpl implements OrderDetailService {
 
     @Autowired
@@ -49,5 +52,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         repository.deleteById(id);
     }
 
-
+    @Override
+    public void saveAll(Collection<OrderDetail> orderDetails) {
+        repository.saveAll(orderDetails);
+    }
 }

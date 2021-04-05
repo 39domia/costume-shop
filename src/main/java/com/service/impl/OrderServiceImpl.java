@@ -1,7 +1,10 @@
 package com.service.impl;
 
 import com.model.Order;
+import com.model.OrderDetail;
+import com.repository.OrderDetailRepository;
 import com.repository.OrderRepository;
+import com.service.OrderDetailService;
 import com.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +20,8 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository repository;
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
     @Override
     public Page<Order> selectAll(Pageable pageable) {
@@ -45,6 +50,17 @@ public class OrderServiceImpl implements OrderService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public void saveCart(Order order, Order orderData) {
+        order.setTotalPrice(orderData.getTotalPrice());
+        order.setOrderDetails(orderData.getOrderDetails());
+        repository.save(order);
+        for (OrderDetail orderDetail1 : order.getOrderDetails()) {
+            orderDetail1.setOrder(order);
+        }
+        orderDetailRepository.saveAll(order.getOrderDetails());
     }
 
     public Page<Order> findByEmailContaining(String email, Pageable pageable) {
