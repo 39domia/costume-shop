@@ -4,11 +4,13 @@ import com.model.Category;
 import com.model.Order;
 import com.model.OrderDetail;
 import com.model.Product;
+import com.repository.OrderRepository;
 import com.repository.ProvinceRepository;
 import com.service.CategoryService;
 import com.service.OrderDetailService;
 import com.service.OrderService;
 import com.service.ProductService;
+import com.service.impl.OrderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -73,13 +75,17 @@ public class CheckoutController {
             model.addAttribute("searchMess", "Not found");
 
         Order orderSession = (Order) session.getAttribute("order");
-        order.setTotalPrice(orderSession.getTotalPrice());
-        order.setOrderDetails(orderSession.getOrderDetails());
-        orderService.add(order);
-        for (OrderDetail orderDetail1 : order.getOrderDetails()) {
-            orderDetail1.setOrder(order);
-            orderDetailService.add(orderDetail1);
-        }
+        orderService.saveCart(order, orderSession);
+//        order.setTotalPrice(orderSession.getTotalPrice());
+//        order.setOrderDetails(orderSession.getOrderDetails());
+//
+//        for (OrderDetail orderDetail1 : order.getOrderDetails()) {
+//            orderDetail1.setOrder(order);
+//        }
+//
+//        orderService.add(order);
+//        orderDetailService.saveAll(order.getOrderDetails());
+
         session.setAttribute("order", null);
         model.addAttribute("mess", "Order Success");
         return "front-end/checkout-result";

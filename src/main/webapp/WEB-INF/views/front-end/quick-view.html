@@ -342,7 +342,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" class="add-to-cart"><i
                                                         class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"
@@ -747,7 +747,6 @@
         let id = document.getElementById('idProduct').value;
         window.location = "/cart/add/" + id + "/" + quantity;
     }
-
 </script>
 
 </body>

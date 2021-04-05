@@ -296,7 +296,9 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" id="add-cart" type="submit" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" id="add-cart" type="submit" class="add-to-cart">
+                                                    <i class="icon-shopping-cart">
+                                                </i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
@@ -359,7 +361,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
@@ -423,7 +425,9 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" class="add-to-cart">
+                                                    <i class="icon-shopping-cart"></i><span> Add to Cart</span>
+                                                </a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
@@ -1023,15 +1027,17 @@
         });
     }); //ready
 
-    let addCart = document.getElementsByClassName('add-to-cart');
-    for (let i = 0; i < addCart.length; i++) {
-        addCart[i].addEventListener("click", add);
-    }
-
-    function add() {
-        let id = document.getElementById('idProduct').value;
-        window.location = "/cart/add/" + id + "/1";
-    }
+    // let addCart = document.getElementsByClassName('add-to-cart');
+    // for (let i = 0; i < addCart.length; i++) {
+    //
+    //     addCart[i].addEventListener("click", add);
+    //
+    // }
+    //
+    // function add() {
+    //     let id = document.getElementById('idProduct').value;
+    //     window.location = "/cart/add/" + id + "/1";
+    // }
 
 </script>
 </body>
