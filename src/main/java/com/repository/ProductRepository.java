@@ -30,6 +30,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findTop4ByDeletedIsFalseOrderByIdDesc();
 
+    List<Product> findTop4ByDeletedIsFalseOrderByPriceAsc();
+
+
     List<Product> findTop3ByDeletedIsFalseOrderByIdDesc();
 
     List<Product> findTop5ByDeletedIsFalseOrderByIdDesc();
