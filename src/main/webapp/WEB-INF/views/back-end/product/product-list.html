@@ -45,7 +45,8 @@
                                 </div>
                                 <div class="table-data__tool-right col-8">
                                     <form class="form-header" th:action="@{/product/search}">
-                                        <input class="au-input au-input--xl" type="text" name="keyword" placeholder="Search for name product...">
+                                        <input class="au-input au-input--xl" type="text" name="keyword"
+                                               placeholder="Search for name product...">
                                         <button class="au-btn--submit" type="submit">
                                             <i class="zmdi zmdi-search"></i>
                                         </button>
@@ -137,16 +138,16 @@
             </div>
         </div>
     </div>
-    <script>
-        function deleteNote(id) {
-            let showMessage = confirm("Do you want to delete ?");
-            if (showMessage) {
-                alert("Delete successfully!")
-                window.location = "/product/delete/" + id;
-            }
-        }
-    </script>
 </div>
+<script>
+    function deleteNote(id) {
+        let showMessage = confirm("Do you want to delete ?");
+        if (showMessage) {
+            alert("Delete successfully!")
+            window.location = "/product/delete/" + id;
+        }
+    }
+</script>
 <th:block th:replace="back-end/layout/link::script">
 
 </th:block>

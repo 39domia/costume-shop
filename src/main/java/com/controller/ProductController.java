@@ -26,7 +26,7 @@ public class ProductController {
     private CategoryService categoryService;
 
     @GetMapping
-    public String showAllCategories(Model model,@PageableDefault(size = 20) Pageable pageable) {
+    public String showAllCategories(Model model,@PageableDefault(size = 12) Pageable pageable) {
         model.addAttribute("products", productService.selectAll(pageable));
         return "back-end/product/product-list";
     }
