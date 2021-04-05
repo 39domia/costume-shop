@@ -1,6 +1,8 @@
 # costume-shop
 
 database.properties
+
+
 #JDBC
 jdbc.driverClassName = com.mysql.cj.jdbc.Driver
 jdbc.url = jdbc:mysql://localhost:3306/cusshop1
