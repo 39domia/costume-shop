@@ -134,6 +134,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> findTop4ByDeletedIsFalseOrderByPriceAsc() {
+        return repository.findTop4ByDeletedIsFalseOrderByPriceAsc();
+    }
+
+    @Override
     public List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category) {
         return repository.findAllByCategoryAndDeletedIsFalse(category);
     }

@@ -29,6 +29,9 @@ public interface ProductService extends IBaseService<Product>{
 
     List<Product> findTop4ByIsDeleteIsFalseOrderByRatingDesc();
 
+    List<Product> findTop4ByDeletedIsFalseOrderByPriceAsc();
+
+
     List<Product> findAllByCategoryAndIsDeleteIsFalse(Category category);
 
     Page<Product> findAllByCategoryAndIdIsDeleteIsFalse(Long category_id, Pageable pageable);

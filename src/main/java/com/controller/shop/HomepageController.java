@@ -42,6 +42,11 @@ public class HomepageController {
         return productService.findTop4ByIsDeleteIsFalseOrderByRatingDesc();
     }
 
+    @ModelAttribute("findTop4ByDeletedIsFalseOrderByPriceAsc")
+    public List<Product> findTop4ByDeletedIsFalseOrderByPriceAsc() {
+        return productService.findTop4ByDeletedIsFalseOrderByPriceAsc();
+    }
+
     @ModelAttribute("findAllCategories")
     public List<Category> findAllCategories() {
         return categoryService.findAll();

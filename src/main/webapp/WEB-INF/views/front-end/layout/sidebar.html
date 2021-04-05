@@ -147,7 +147,7 @@
             <div class="widget clearfix">
                 <h4>Popular Items</h4>
                 <div id="Popular-item">
-                    <th:block th:each="product : ${findTop4ByOrderByRatingDesc}">
+                    <th:block th:each="product : ${findTop4ByDeletedIsFalseOrderByPriceAsc}">
                         <div class="spost clearfix">
                             <div class="entry-image">
                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}">
