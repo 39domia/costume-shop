@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -44,13 +45,14 @@ public class ProductController {
     }
 
     @PostMapping("create")
-    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("categories", categoryService.findAll());
             return "back-end/product/product-add";
         } else {
             productService.add(product);
+            attributes.addFlashAttribute("mess", "Add success");
             return "redirect:/product";
         }
     }
@@ -64,13 +66,14 @@ public class ProductController {
     }
 
     @PostMapping("update")
-    public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model) {
+    public String update(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Product().validate(product, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("categories", categoryService.findAll());
             return "back-end/product/product-edit";
         } else {
             productService.update(product);
+            attributes.addFlashAttribute("mess", "Update success");
             return "redirect:/product";
         }
     }

@@ -44,12 +44,13 @@ public class CategoryController {
     }
 
     @PostMapping("/category/create")
-    public String add(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model) {
+    public String add(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Category().validate(category, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/category/category-add";
         } else {
             categoryService.add(category);
+            attributes.addFlashAttribute("mess", "Add success");
             return "redirect:/category";
         }
     }
@@ -70,12 +71,12 @@ public class CategoryController {
         Category categoryTemp = categoryRepository.findByName(category.getName());
         if (categoryTemp != null) {
             if (category.getName().equals(categoryTemp.getName()) && categoryTemp.getId() != category.getId()) {
-                attributes.addFlashAttribute("mess", "Tên đã tồn tại");
+                attributes.addFlashAttribute("mess", "Name already exists");
                 return "redirect:/category";
             }
         }
         categoryService.update(category);
-        attributes.addFlashAttribute("mess", "Thay đổi thành công");
+        attributes.addFlashAttribute("mess", "Update success");
         return "redirect:/category";
     }
 

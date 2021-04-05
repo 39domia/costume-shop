@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,11 +29,6 @@ public class TagController {
         return "back-end/tag/tag-list";
     }
 
-    @GetMapping("/tag/view/{id}")
-    public String view(@PathVariable Long id, Model model){
-        model.addAttribute("tag", service.findOne(id).get());
-        return "back-end/tag/tag-view";
-    }
 
     @GetMapping("/tag/create")
     public String showTagAddForm(Model model) {
@@ -41,12 +37,13 @@ public class TagController {
     }
 
     @PostMapping("/tag/create")
-    public String addTag(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model) {
+    public String addTag(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Tag().validate(tag, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/tag/tag-add";
         } else {
             service.add(tag);
+            attributes.addFlashAttribute("mess", "Add success");
             return "redirect:/tag";
         }
     }
@@ -58,14 +55,21 @@ public class TagController {
     }
 
     @PostMapping("/tag/update")
-    public String update(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model) {
+    public String update(@Valid @ModelAttribute("tag") Tag tag, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Tag().validate(tag, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/tag/tag-edit";
         } else {
             service.update(tag);
+            attributes.addFlashAttribute("mess", "Update success");
             return "redirect:/tag";
         }
+    }
+
+    @GetMapping("/tag/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        service.delete(id);
+        return "redirect:/tag";
     }
 
 

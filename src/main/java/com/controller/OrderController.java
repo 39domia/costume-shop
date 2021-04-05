@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -50,12 +51,13 @@ public class OrderController {
     }
 
     @PostMapping("/order/create")
-    public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model) {
+    public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Order().validate(order, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/order/order-add";
         } else {
             orderService.add(order);
+            attributes.addFlashAttribute("mess", "Add success");
             return "redirect:/order";
         }
     }
@@ -68,12 +70,13 @@ public class OrderController {
     }
 
     @PostMapping("/order/update")
-    public String update(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model) {
+    public String update(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Order().validate(order, bindingResult);
         if (bindingResult.hasFieldErrors()) {
             return "back-end/order/order-edit";
         } else {
             orderService.update(order);
+            attributes.addFlashAttribute("mess", "Update success");
             return "redirect:/order";
         }
     }
