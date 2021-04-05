@@ -26,10 +26,6 @@
         <div class="container clearfix">
             <h1 th:if="${mess}" th:text="${mess}" style="color: #1ABC9C"></h1>
             <span>We will contact you to confirm the order as quickly as possible, thank you</span>
-<!--            <ol class="breadcrumb">-->
-<!--                <li><a href="#">Home</a></li>-->
-<!--                <li class="active">Shop</li>-->
-<!--            </ol>-->
         </div>
 
     </section><!-- #page-title end -->
@@ -54,10 +50,8 @@
                                         </div>
                                     </a>
                                     <div class="product-overlay">
-
                                         <a th:href="@{/cart/add/{id}/1(id = ${product12PageAll.id})}"
                                            class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
-
                                         <a th:href="@{/index/quick-view/{id}(id = ${product12PageAll.id})}"><i
                                                 class="icon-zoom-in2"></i><span> Quick View</span></a>
                                     </div>

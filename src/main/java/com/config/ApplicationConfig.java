@@ -130,11 +130,6 @@ public class ApplicationConfig implements WebMvcConfigurer, ApplicationContextAw
         properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-        properties.setProperty("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics"));
-        properties.setProperty("hibernate.jdbc.batch_size", env.getProperty("hibernate.jdbc.batch_size"));
-        properties.setProperty("hibernate.order_inserts", env.getProperty("hibernate.order_inserts"));
-        properties.setProperty("hibernate.order_updates", env.getProperty("hibernate.order_updates"));
-
         return properties;
     }
 
