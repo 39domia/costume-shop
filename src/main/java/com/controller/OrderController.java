@@ -32,7 +32,7 @@ public class OrderController {
     private OrderDetailServiceImpl orderDetailService;
 
     @GetMapping("/order")
-    public String showAllCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
+    public String showAllCategories(Model model, @PageableDefault(size = 10) Pageable pageable) {
         model.addAttribute("orders", orderService.selectAll(pageable));
         return "back-end/order/order-list";
     }
@@ -54,6 +54,7 @@ public class OrderController {
     public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, Model model, RedirectAttributes attributes) {
 //        new Order().validate(order, bindingResult);
         if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("provinces", provinceService.findAll());
             return "back-end/order/order-add";
         } else {
             orderService.add(order);

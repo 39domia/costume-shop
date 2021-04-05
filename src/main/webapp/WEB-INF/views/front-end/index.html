@@ -296,7 +296,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" id="add-cart" type="submit" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" id="add-cart" type="submit" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
@@ -359,7 +359,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
@@ -423,7 +423,7 @@
                                                 </div>
                                             </a>
                                             <div class="product-overlay">
-                                                <a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+                                                <a th:href="@{/cart/add/{id}/1(id = ${product.id})}" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
                                                 <a th:href="@{/index/quick-view/{id}(id = ${product.id})}"
                                                    class="item-quick-view"><i
                                                         class="icon-zoom-in2"></i><span> Quick View</span></a>
