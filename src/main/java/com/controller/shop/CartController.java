@@ -8,6 +8,7 @@ import com.service.CategoryService;
 import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -88,6 +89,7 @@ public class CartController {
     public String updateCart(@PathVariable("data") String data,
                              HttpSession session,
                              RedirectAttributes attributes,
+                             Model model,
                              HttpServletRequest request) {
         Map<Long, Integer> quantityMap = new HashMap<>();
         try {
@@ -116,7 +118,8 @@ public class CartController {
         }
         order.setTotalPrice(total);
         session.setAttribute("order", order);
-        attributes.addFlashAttribute("updMess", "Update card success");
+//        attributes.addFlashAttribute("updMess", "Update card success");
+        model.addAttribute("updMess", "Update card success");
         return "front-end/cart";
     }
 
@@ -124,6 +127,7 @@ public class CartController {
     public String deleteProductInCart(@PathVariable(name = "idProduct") Long idProduct,
                                       HttpSession session,
                                       RedirectAttributes attributes,
+                                      Model model,
                                       HttpServletRequest request) throws SQLException {
         Order order = (Order) session.getAttribute("order");
 
@@ -133,7 +137,9 @@ public class CartController {
         List<OrderDetail> details = order.getOrderDetails();
         if (details.size() == 1) {
             session.setAttribute("order", null);
-            return "redirect:" + request.getHeader("Referer");
+//            attributes.addFlashAttribute("delMess", "Delete card success");
+            model.addAttribute("delMess", "Delete card success");
+            return "front-end/cart";
         }
 
 //        list co nhieu sp
@@ -154,8 +160,9 @@ public class CartController {
             total += detail.getProduct().getPrice() * detail.getQuantity();
         }
         order.setTotalPrice(total);
-        attributes.addFlashAttribute("delMess", "Delete card success");
-        return "redirect:" + request.getHeader("Referer");
+//        attributes.addFlashAttribute("delMess", "Delete card success");
+        model.addAttribute("delMess", "Delete card success");
+        return "front-end/cart";
     }
 
 }
