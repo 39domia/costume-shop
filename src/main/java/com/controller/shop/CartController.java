@@ -117,7 +117,7 @@ public class CartController {
         order.setTotalPrice(total);
         session.setAttribute("order", order);
         attributes.addFlashAttribute("updMess", "Update card success");
-        return "front-end/cart";
+        return "front-end/cart" ;
     }
 
     @GetMapping("showCart/deleteProduct/{idProduct}")
