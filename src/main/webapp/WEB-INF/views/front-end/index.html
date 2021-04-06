@@ -956,7 +956,9 @@
     </footer><!-- #footer end -->
 
 </div><!-- #wrapper end -->
-
+<div class="row">
+    <input type="hidden" th:value="${addMess}" id="addMess">
+</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -1032,18 +1034,15 @@
         });
     }); //ready
 
-    // let addCart = document.getElementsByClassName('add-to-cart');
-    // for (let i = 0; i < addCart.length; i++) {
-    //
-    //     addCart[i].addEventListener("click", add);
-    //
-    // }
-    //
-    // function add() {
-    //     let id = document.getElementById('idProduct').value;
-    //     window.location = "/cart/add/" + id + "/1";
-    // }
+
 
 </script>
+<script>
+    const addMess = document.getElementById("addMess").value;
+    if(addMess != ""){
+        toastr.success(addMess, 'addMess');
+    }
+</script>
+
 </body>
 </html>

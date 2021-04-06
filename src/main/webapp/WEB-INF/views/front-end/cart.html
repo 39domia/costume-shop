@@ -664,7 +664,12 @@
     </footer><!-- #footer end -->
 
 </div><!-- #wrapper end -->
-
+<div class="row">
+    <input type="hidden" th:value="${updMess}" id="updMess">
+</div>
+<div class="row">
+    <input type="hidden" th:value="${delMess}" id="delMess">
+</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -684,6 +689,18 @@
         window.location.href = "/cart/update/" + getCartValues();
     }
 
+</script>
+<script>
+    const updMess = document.getElementById("updMess").value;
+    if(updMess != ""){
+        toastr.success(updMess, 'updMess');
+    }
+</script>
+<script>
+    const delMess = document.getElementById("delMess").value;
+    if(delMess != ""){
+        toastr.success(delMess, 'delMess');
+    }
 </script>
 </body>
 </html>

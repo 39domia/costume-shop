@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -64,7 +65,8 @@ public class CheckoutController {
     }
 
     @PostMapping("/checkout/addOrder")
-    public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, HttpServletRequest request,
+    public String addOrder(@Valid @ModelAttribute("order") Order order, BindingResult bindingResult, RedirectAttributes attributes,
+                           HttpServletRequest request,
                            @PageableDefault(size = 12) Pageable pageable,
                            @RequestParam(defaultValue = "") String keyword,
                            HttpSession session, Model model) {

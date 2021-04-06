@@ -9,6 +9,7 @@ import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,7 @@ public class CartController {
     public String add(@PathVariable(value = "id") Long id,
                       @PathVariable Integer quantity,
                       HttpServletRequest request,
+                      RedirectAttributes attributes,
                       HttpSession session) throws SQLException {
         Optional<Product> optionalProduct = productService.findOne(id);
         if (optionalProduct.isEmpty())
@@ -73,6 +75,7 @@ public class CartController {
         }
         order.setTotalPrice(total);
         session.setAttribute("order", order);
+        attributes.addFlashAttribute("addMess", "Add to card success");
         return "redirect:" + request.getHeader("Referer");
     }
 
@@ -82,7 +85,10 @@ public class CartController {
     }
 
     @GetMapping("update/{data}")
-    public String updateCart(@PathVariable("data") String data, HttpSession session, HttpServletRequest request) {
+    public String updateCart(@PathVariable("data") String data,
+                             HttpSession session,
+                             RedirectAttributes attributes,
+                             HttpServletRequest request) {
         Map<Long, Integer> quantityMap = new HashMap<>();
         try {
             String[] parts = data.split("-");
@@ -110,11 +116,15 @@ public class CartController {
         }
         order.setTotalPrice(total);
         session.setAttribute("order", order);
+        attributes.addFlashAttribute("updMess", "Update card success");
         return "front-end/cart";
     }
 
     @GetMapping("showCart/deleteProduct/{idProduct}")
-    public String deleteProductInCart(@PathVariable(name = "idProduct") Long idProduct, HttpSession session, HttpServletRequest request) throws SQLException {
+    public String deleteProductInCart(@PathVariable(name = "idProduct") Long idProduct,
+                                      HttpSession session,
+                                      RedirectAttributes attributes,
+                                      HttpServletRequest request) throws SQLException {
         Order order = (Order) session.getAttribute("order");
 
         if (order == null)
@@ -144,6 +154,7 @@ public class CartController {
             total += detail.getProduct().getPrice() * detail.getQuantity();
         }
         order.setTotalPrice(total);
+        attributes.addFlashAttribute("delMess", "Delete card success");
         return "redirect:" + request.getHeader("Referer");
     }
 

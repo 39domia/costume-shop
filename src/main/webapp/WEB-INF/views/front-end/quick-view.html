@@ -660,7 +660,9 @@
     </footer><!-- #footer end -->
 
 </div><!-- #wrapper end -->
-
+<div class="row">
+    <input type="hidden" th:value="${addMess}" id="addMess">
+</div>
 <!-- Go To Top
 ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
@@ -748,6 +750,11 @@
         window.location = "/cart/add/" + id + "/" + quantity;
     }
 </script>
-
+<script>
+    const addMess = document.getElementById("addMess").value;
+    if(addMess != ""){
+        toastr.success(addMess, 'addMess');
+    }
+</script>
 </body>
 </html>
