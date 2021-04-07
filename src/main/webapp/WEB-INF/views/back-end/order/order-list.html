@@ -74,7 +74,10 @@
                                         <td th:text="${order.phone}"></td>
                                         <td th:text="${order.createDate}"></td>
                                         <td th:text="${order.paymentMethod}"></td>
-                                        <td th:text="${order.status}"></td>
+                                        <td th:if="${order.status ==1}" th:text="'Đã đặt, đang chờ xác nhận'"></td>
+                                        <td th:if="${order.status ==2}" th:text="'Xác nhận thành công, chờ nhận hàng'"></td>
+                                        <td th:if="${order.status ==3}" th:text="'Đã hủy'"></td>
+                                        <td th:if="${order.status ==4}" th:text="'Giao hàng thành công'"></td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <a
