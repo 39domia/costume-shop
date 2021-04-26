@@ -38,7 +38,7 @@ public class CartController {
                       RedirectAttributes attributes,
                       HttpSession session) throws SQLException {
         Optional<Product> optionalProduct = productService.findOne(id);
-        if (optionalProduct.isEmpty())
+        if (optionalProduct.isPresent())
             return "redirect:/shop";
 
         Order order = (Order) session.getAttribute("order");
