@@ -121,6 +121,7 @@ public class CartController {
 //        attributes.addFlashAttribute("updMess", "Update card success");
         model.addAttribute("updMess", "Update card success");
         return "front-end/cart";
+
     }
 
     @GetMapping("showCart/deleteProduct/{idProduct}")
