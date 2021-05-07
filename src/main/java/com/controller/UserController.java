@@ -54,7 +54,8 @@ public class UserController {
             return "back-end/user/user-add";
         String uploadRootPath = request.getServletContext().getRealPath("upload");
         File uploadRootDir = new File(uploadRootPath);
-        String uploadLocalPath = "C:\\mainCode\\costume-shop-cs-4\\src\\main\\webapp\\upload";
+//        String uploadLocalPath = "C:\\mainCode\\costume-shop-cs-4\\src\\main\\webapp\\upload";
+        String uploadLocalPath = "D:\\JAVA\\All-project\\Casse-Study-module-4-Online-Shop\\costume-shop\\src\\main\\webapp\\upload";
         File uploadLocalDir = new File(uploadLocalPath);
         // Tạo thư mục gốc upload nếu nó không tồn tại.
         if (!uploadRootDir.exists()) {

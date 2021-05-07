@@ -2,9 +2,11 @@ package com.controller;
 
 
 import com.model.Order;
+import com.model.Product;
 import com.service.*;
 import com.service.impl.OrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -80,6 +83,15 @@ public class OrderController {
             attributes.addFlashAttribute("mess", "Update success");
             return "redirect:/order";
         }
+    }
+    @GetMapping("/order/search")
+    public String search(@RequestParam(defaultValue = "") String keyword,
+                         Model model, @PageableDefault(size = 20) Pageable pageable) {
+        Page<Order> orders = orderService.findByEmailContaining(keyword, pageable);
+        model.addAttribute("orders", orders);
+        if (!orders.hasContent())
+            model.addAttribute("searchMess", "Not found");
+        return "back-end/order/order-list";
     }
 
     @GetMapping("/order/delete/{id}")

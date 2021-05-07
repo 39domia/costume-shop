@@ -50,7 +50,9 @@ public class TagServiceImpl implements TagService {
         repository.deleteById(id);
     }
 
+    @Override
     public Page<Tag> findByNameContaining(String name, Pageable pageable) {
         return repository.findByNameContaining(name, pageable);
     }
+
 }
